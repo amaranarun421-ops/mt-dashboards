@@ -1,0 +1,327 @@
+     1→     1→# Helios Pro — Multi-Agent Worklog
+     2→     2→
+     3→     3→This file is the shared work log for all agents working on the Helios Pro dashboard upgrade.
+     4→     4→Read this file BEFORE working, and append your section AFTER finishing.
+     5→     5→
+     6→     6→## Project Overview
+     7→     7→
+     8→     8→Helios Pro is a premium Next.js 16 admin dashboard UI kit built by upgrading an existing
+     9→     9→TailAdmin-free Next.js codebase. Brand: "Helios Pro", emerald + amber palette, sun-ray logo.
+    10→    10→
+    11→    11→## Foundation (Phase 1-3) — DONE by main agent
+    12→    12→
+    13→    13→### Tech Stack (NON-NEGOTIABLE — DO NOT CHANGE)
+    14→    14→- Next.js 16 (App Router) + React 19 + TypeScript 5
+    15→    15→- Tailwind CSS v4 with custom `@theme` tokens in `src/css/style.css`
+    16→    16→- ApexCharts via `react-apexcharts`
+    17→    17→- jsvectormap (already installed)
+    18→    18→- flatpickr (date pickers, already installed)
+    19→    19→- next-themes (light/dark mode)
+    20→    20→- sonner (toasts)
+    21→    21→- No new dependencies. DO NOT install new packages.
+    22→    22→
+    23→    23→### Design Tokens (in src/css/style.css)
+    24→    24→- `--color-primary: #10b981` (emerald)
+    25→    25→- `--color-primary-dark: #047857`
+    26→    26→- `--color-primary-light: #34d399`
+    27→    27→- `--color-accent: #f59e0b` (amber)
+    28→    28→- `--color-accent-dark: #d97706`
+    29→    29→- Slate-based neutrals (`--color-dark`, `--color-dark-3` through `--color-dark-7`, `--color-gray-1`..7)
+    30→    30→- Premium shadows (`--shadow-card-2`, `--shadow-3`, `--shadow-glow`)
+    31→    31→- Animations: `--animate-fade-in`, `--animate-slide-up`, `--animate-shimmer`
+    32→    32→- Custom utilities: `.helios-scroll`, `.surface-gradient`, `.card-premium`, `.card-premium-hover`, `.shimmer-bg`
+    33→    33→
+    34→    34→### Branding
+    35→    35→- Name: **Helios Pro**
+    36→    36→- Tagline: "Illuminating Data, Empowering Decisions"
+    37→    37→- Logo: `/images/logo/logo.svg` (light), `/images/logo/logo-dark.svg` (dark), `/images/logo/logo-icon.svg`
+    38→    38→- Favicon: `/public/favicon.svg` (also at `src/app/favicon.svg`)
+    39→    39→- Metadata title template: `"%s | Helios Pro"`
+    40→    40→
+    41→    41→### Routing Layout
+    42→    42→- `(with-layout)` — pages WITH sidebar + topbar (use this for dashboards, apps, ecommerce, user-account, forms, tables, charts, ui-components, pages)
+    43→    43→- `(without-layout)` — pages WITHOUT sidebar (auth, errors)
+    44→    44→- Existing legacy pages kept at root: `/calendar`, `/profile`, `/forms/*`, `/tables`, `/charts/basic-chart`, `/ui-elements/*`, `/pages/settings`. **Leave these in place** — they still compile. New pages live under the new directories listed below.
+    45→    45→
+    46→    46→### NEW Page Routes (build these)
+    47→    47→```
+    48→    48→/                                   -> (home) — already exists, KEEP but update to use Helios Pro home dashboard
+    49→    49→/dashboards/{analytics,crm,finance,saas,projects,marketing,ai,support,logistics}
+    50→    50→/apps/{email,email/detail,chat,calendar,kanban,notes,tasks,file-manager,contacts,support-tickets,support-tickets/detail,invoices,invoices/detail,invoices/create,invoices/edit}
+    51→    51→/ecommerce/{products,products/detail,products/add,products/edit,orders,orders/detail,customers,customers/detail,cart,checkout,reviews,coupons,inventory}
+    52→    52→/user-account/{profile,account-settings,security-settings,billing-settings,team-members,roles,permissions,activity-log,notifications-settings,connected-apps}
+    53→    53→/forms/{basic-inputs,advanced-inputs,selects,checkbox-radio,switches,date-picker,file-upload,rich-text-editor,form-layouts,form-validation,multi-step-form,payment-form}
+    54→    54→/tables/{basic,data,sorting,filtering,pagination,row-selection,editable,sticky,column-visibility,drag-drop,empty-state}
+    55→    55→/charts/{line,area,bar,pie-doughnut,radar-radial,candlestick,kpi-cards,realtime-metrics,chart-dashboard,reports}
+    56→    56→/ui-components/{buttons,badges,cards,alerts,avatars,dropdowns,modals,drawers,tabs,accordions,tooltips,popovers,breadcrumbs,pagination,progress,spinners,toasts,timeline,empty-states,banners,command-menu}
+    57→    57→/pages/{landing,pricing,faq,help-center,about,contact,maintenance,coming-soon,changelog,roadmap}
+    58→    58→/auth/{sign-in,sign-up,forgot-password,reset-password,two-step,lock-screen,side-login,side-register,boxed-login,boxed-register}
+    59→    59→/errors/{400,401,403,404,500,503}
+    60→    60→```
+    61→    61→
+    62→    62→### Reusable Components (AVAILABLE — USE THESE, do NOT reinvent)
+    63→    63→
+    64→    64→All live in `src/components/shared/`. Import via `@/components/shared/<name>`.
+    65→    65→
+    66→    66→| Component | File | Purpose |
+    67→    67→|-----------|------|---------|
+    68→    68→| `Button` | `button.tsx` | variants: primary/accent/outline/ghost/soft/danger/subtle; sizes: sm/md/lg/icon/iconSm |
+    69→    69→| `Badge` | `badge.tsx` | variants: neutral/primary/accent/success/warning/danger/info/violet/outline; size sm/md/lg |
+    70→    70→| `Card`, `CardHeader`, `CardBody`, `CardFooter` | `card.tsx` | `hover` prop adds lift; `padded` toggles padding |
+    71→    71→| `Avatar`, `AvatarGroup` | `avatar.tsx` | size xs/sm/md/lg/xl; auto color from name; `ring` prop |
+    72→    72→| `PageHeader` | `page-header.tsx` | title, description, breadcrumbs[], actions |
+    73→    73→| `StatCard` | `stat-card.tsx` | label, value, delta {value, trend}, icon, tone, sublabel, footer |
+    74→    74→| `ChartCard` | `chart-card.tsx` | title, subtitle, action, children, footer |
+    75→    75→| `EmptyState` | `empty-state.tsx` | title, description, icon, action, size |
+    76→    76→| `ActivityFeed` | `activity-feed.tsx` | items[]: {user, action, target, time, tone} |
+    77→    77→| `DataTable` | `data-table.tsx` | columns[], data[], selectable, sortable, paginated, stickyHeader |
+    78→    78→| `Modal` | `modal.tsx` | open, onClose, title, description, footer, size sm/md/lg/xl |
+    79→    79→| `Drawer` | `drawer.tsx` | open, onClose, title, side left/right, width |
+    80→    80→| `Tabs` | `tabs.tsx` | tabs[], value, onChange, variant underline/pills/boxed |
+    81→    81→| `Accordion` | `accordion.tsx` | items[], defaultOpen[], multiple |
+    82→    82→| `Progress`, `CircularProgress` | `progress.tsx` | value, tone, size, showLabel |
+    83→    83→| `Spinner`, `PageLoader`, `SkeletonCard`, `SkeletonRow` | `spinner.tsx` | loading states |
+    84→    84→| `Timeline` | `timeline.tsx` | events[]: {title, description, time, tone, icon}; vertical or horizontal |
+    85→    85→| `Tooltip`, `Popover` | `tooltip.tsx` | content/trigger based |
+    86→    86→| `Banner` | `banner.tsx` | title, description, tone info/success/warning/danger/primary, action, onClose |
+    87→    87→| `Pagination` | `pagination.tsx` | page, totalPages, onPageChange, showEdges |
+    88→    88→| `Breadcrumbs` | `breadcrumbs.tsx` | items[]: {label, href?} |
+    89→    89→| `CommandPalette`, `useCommandPalette` | `command-palette.tsx` | global search (Ctrl/Cmd+K) |
+    90→    90→| `ThemeCustomizer` | `theme-customizer.tsx` | color/density/mode switcher |
+    91→    91→| `UserAvatar` | `user-avatar.tsx` | quick avatar |
+    92→    92→| `FormSection`, `FormField`, `inputClass` | `form-section.tsx` | titled form sections with grid |
+    93→    93→| `SettingsPanel` | `settings-panel.tsx` | side nav + content panels |
+    94→    94→| `HeliosChart`, `heliosChartColors` | `helios-chart.tsx` | ApexCharts wrapper, theme-aware |
+    95→    95→
+    96→    96→### Existing Layout (already wired)
+    97→    97→- `src/app/(with-layout)/layout.tsx` — wraps every (with-layout) page with `<Sidebar/>` + `<Header/>` + `<main>`. **Do NOT modify.**
+    98→    98→- `src/components/Layouts/header/index.tsx` — top bar with search trigger, theme toggle, theme customizer, notifications, user menu, command palette
+    99→    99→- `src/components/Layouts/sidebar/index.tsx` — collapsible nav with search, badges, upgrade card
+   100→   100→- `src/components/Layouts/sidebar/data/index.ts` — **NAV_DATA + FLAT_NAV** (already contains all 100+ routes above; do NOT modify)
+   101→   101→
+   102→   102→### Mock Data Location
+   103→   103→- Put ALL mock data files in `src/data/<category>/<file>.ts`
+   104→   104→- Export typed constants; e.g. `export const customers: Customer[] = [...]`
+   105→   105→- Use realistic sample names (Helios Pro employees), realistic but FAKE numbers
+   106→   106→
+   107→   107→### Code Quality Rules (CRITICAL)
+   108→   108→1. Every page must be a Server Component by default (`"use client"` only when needed for state/effects)
+   109→   109→2. Every page MUST export `metadata` with `title` and `description`
+   110→   110→3. Use `PageHeader` for page titles — don't hand-roll
+   111→   111→4. Use `Card`, `StatCard`, `ChartCard` for layouts — no raw divs with shadow classes
+   112→   112→5. Use real SVG icons only — no emojis. (Helper: `@/components/Layouts/sidebar/icons` exports many, including `HomeIcon`, `User`, `Calendar`, `Table`, `PieChart`, `FourCircle`, `BriefcaseIcon`, `ShoppingBagIcon`, `UsersIcon`, `WalletIcon`, `CloudIcon`, `MegaphoneIcon`, `CpuIcon`, `LifeBuoyIcon`, `TruckIcon`, `MailIcon`, `ChatIcon`, `KanbanIcon`, `StickyNoteIcon`, `CheckSquareIcon`, `FolderIcon`, `ContactBookIcon`, `TicketIcon`, `FileTextIcon`, `PackageIcon`, `ShoppingCartIcon`, `StarIcon`, `TagIcon`, `BoxIcon`, `ShieldIcon`, `CreditCardIcon`, `ActivityIcon`, `BellIcon`, `PlugIcon`, `InputIcon`, `ToggleIcon`, `CalendarPlusIcon`, `UploadIcon`, `EditIcon`, `CheckIcon`, `LayersIcon`, `CandlestickIcon`, `GaugeIcon`, `RadioIcon`, `FileBarIcon`, `BtnIcon`, `BadgeIcon`, `CardIcon`, `AlertIcon`, `AvatarIcon`, `DropdownIcon`, `ModalIcon`, `DrawerIcon`, `TabsIcon`, `AccordionIcon`, `TooltipIcon`, `PopoverIcon`, `PaginationIcon`, `ProgressIcon`, `SpinnerIcon`, `ToastIcon`, `TimelineIcon`, `BannerIcon`, `CommandIcon`, `GlobeIcon`, `RocketIcon`, `BookIcon`, `HelpCircleIcon`, `PhoneIcon`, `WrenchIcon`, `MapPinIcon`, `LockIcon`, `LogInIcon`, `UserPlusIcon`, `KeyIcon`, `RefreshCwIcon`, `AlertTriangleIcon`, `XCircleIcon`, `ServerIcon`)
+   113→   113→6. Light AND dark mode must work — use Tailwind `dark:` variants
+   114→   114→7. Pages must be responsive — use `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` etc.
+   115→   115→8. Charts use `<HeliosChart options={...} series={...} type="..." height={...} />` — DO NOT use raw `Chart` from react-apexcharts
+   116→   116→9. NO `console.log`, NO `any` types in shared code
+   117→   117→10. Each page should have ~80-150 lines of meaningful content (not a stub)
+   118→   118→
+   119→   119→### Anti-patterns to AVOID
+   120→   120→- DO NOT import `@/lib/db` or `@/lib/auth/auth-client` in NEW pages — we ship in demo mode
+   121→   121→- DO NOT use `<Image>` from next/image for mock data — use plain `<img>` or `<Avatar>` (we have user-XX.png assets in `/images/user/` but Avatar with initials is cleaner)
+   122→   122→- DO NOT create new design tokens — use what's in style.css
+   123→   123→- DO NOT install new dependencies
+   124→   124→- DO NOT modify `src/css/style.css`, `src/app/layout.tsx`, `src/app/providers.tsx`, `src/components/Layouts/sidebar/data/index.ts`, or `src/components/shared/*`
+   125→   125→
+   126→   126→### Testing your work
+   127→   127→After writing your pages, run:
+   128→   128→```bash
+   129→   129→npx tsc --noEmit 2>&1 | grep -v "^skills/" | grep -v "z-ai-web-dev-sdk" | head -30
+   130→   130→```
+   131→   131→It should produce NO output (clean compile). If you see errors, FIX THEM before reporting done.
+   132→   132→
+   133→   133→---
+   134→   134→
+   135→   135→Task ID: 1
+   136→   136→Agent: main
+   137→   137→Task: Foundation — branding, design tokens, layout, sidebar nav, reusable component library
+   138→   138→
+   139→   139→Work Log:
+   140→   140→- Rebranded package, metadata, logo (Helios Pro emerald + amber), favicon, README
+   141→   141→- Rewrote src/css/style.css with Helios Pro design tokens
+   142→   142→- Built reusable component library in src/components/shared/ (Button, Badge, Card, Avatar, PageHeader, StatCard, ChartCard, EmptyState, ActivityFeed, DataTable, Modal, Drawer, Tabs, Accordion, Progress, Spinner, Timeline, Tooltip/Popover, Banner, Pagination, Breadcrumbs, CommandPalette, ThemeCustomizer, UserAvatar, FormSection, SettingsPanel, HeliosChart)
+   143→   143→- Rebuilt sidebar with 100+ route NavData, search, badges, collapsible sections
+   144→   144→- Wired CommandPalette (Ctrl/Cmd+K) + ThemeCustomizer into header
+   145→   145→- Made db + auth-client defensive (no-op stubs) so app runs in demo mode without DB
+   146→   146→- Fixed tsconfig to exclude skills/, added SVG module declarations, fixed type errors
+   147→   147→
+   148→   148→Stage Summary:
+   149→   149→- Foundation compiles cleanly (`npx tsc --noEmit` produces no project errors)
+   150→   150→- All 100+ routes are defined in sidebar data; pages do not exist yet — that's the next phase
+   151→   151→- Existing legacy pages (home, calendar, profile, settings, forms, tables, charts, ui-elements) still work and should be left in place
+   152→   152→
+   153→   153→---
+   154→   154→Task ID: 4a
+   155→   155→Agent: full-stack-developer (dashboards)
+   156→   156→Task: Build 10 dashboards
+   157→   157→
+   158→   158→Work Log:
+   159→   159→- Built 10 distinct dashboards, each with a unique layout & widget set, all using the shared Helios Pro component library (PageHeader, StatCard, ChartCard, Card, HeliosChart, DataTable, ActivityFeed, Timeline, Progress, Badge, Avatar, AvatarGroup, Breadcrumbs, Button).
+   160→   160→- Replaced the legacy home page (`src/app/(with-layout)/(home)/page.tsx`) with the Ecommerce Dashboard.
+   161→   161→- Created 9 new dashboard pages under `src/app/(with-layout)/dashboards/<name>/page.tsx`.
+   162→   162→- Used inline typed mock data with realistic Helios Pro team members (Aarav, Priya, Daniel, Sofia, Liam, Yuki, Emma, Marcus, Layla, Noah) and fictional customers.
+   163→   163→- Each page exports `metadata` (title + description), uses 4 StatCards at top, 2-3 HeliosChart charts, 1-2 tables/feeds, and a sidebar/bottom widget.
+   164→   164→- Highlighted different chart types per spec:
+   165→   165→  - Ecommerce: area (revenue) + donut (categories) + DataTable (top products, recent orders) + ActivityFeed + category tiles
+   166→   166→  - Analytics: line (sessions) + area (pageviews vs unique) + donut (sources) + top pages w/ Progress + 7×6 engagement heatmap grid
+   167→   167→  - CRM: bar funnel (deals by stage) + radialBar (lead score) + DataTable (deals w/ probability Progress) + ActivityFeed + top reps grid
+   168→   168→  - Finance: candlestick (HLPX 14d OHLC) + donut (expense breakdown) + area (revenue vs expense) + KPI tiles + transactions DataTable
+   169→   169→  - SaaS: area (MRR growth) + radialBar (trial conversion) + bar (churn by cohort) + polarArea (plan distribution) + accounts DataTable
+   170→   170→  - Projects: 4-column kanban preview (Backlog/In Progress/Review/Done) with priority badges + AvatarGroup + Progress + line burndown + team load Progress + ActivityFeed
+   171→   171→  - Marketing: bar (spend vs revenue by campaign) + donut (channel mix) + area funnel (impressions→paid) + top campaigns ranked list + full campaigns DataTable
+   172→   172→  - AI: area (3-model usage) + donut (tokens by category) + multi-line latency (p50/p95/p99) + ActivityFeed (inference) + models DataTable w/ health badges
+   173→   173→  - Support: area (ticket volume) + radialBar (CSAT) + line (response time Email vs Chat) + agent leaderboard list + recent tickets DataTable
+   174→   174→  - Logistics: stacked bar (shipments by region per day) + radialBar (on-time) + custom in-transit world map placeholder (SVG + ping pins) + Timeline (dispatch events) + carrier performance DataTable
+   175→   175→- Used only SVG icons from `@/components/Layouts/sidebar/icons` (no emojis).
+   176→   176→- All pages are Server Components (HeliosChart handles its own "use client").
+   177→   177→- Verified `npx tsc --noEmit` is clean after each page and after final fixes.
+   178→   178→
+   179→   179→Issues hit & fixed:
+   180→   180→- Badge component does not have a `"rose"` variant — changed Marketing's Affiliate channel badge to `"danger"`.
+   181→   181→- Timeline `tone` does not accept `"warning"` — changed Logistics dispatch "Delay flagged" event tone to `"danger"`.
+   182→   182→- Removed an unused `WalletIcon` import in the Analytics dashboard to keep imports tight.
+   183→   183→
+   184→   184→Stage Summary:
+   185→   185→- Files produced:
+   186→   186→  - `src/app/(with-layout)/(home)/page.tsx` (rewritten → Ecommerce dashboard)
+   187→   187→  - `src/app/(with-layout)/dashboards/analytics/page.tsx`
+   188→   188→  - `src/app/(with-layout)/dashboards/crm/page.tsx`
+   189→   189→  - `src/app/(with-layout)/dashboards/finance/page.tsx`
+   190→   190→  - `src/app/(with-layout)/dashboards/saas/page.tsx`
+   191→   191→  - `src/app/(with-layout)/dashboards/projects/page.tsx`
+   192→   192→  - `src/app/(with-layout)/dashboards/marketing/page.tsx`
+   193→   193→  - `src/app/(with-layout)/dashboards/ai/page.tsx`
+   194→   194→  - `src/app/(with-layout)/dashboards/support/page.tsx`
+   195→   195→  - `src/app/(with-layout)/dashboards/logistics/page.tsx`
+   196→   196→- Decisions: kept mock data inline per page (spec allows inline OR data files) to keep dashboards self-contained and avoid cross-page coupling; each dashboard has a visually distinct layout (kanban, candlestick, heatmap, polar area, world-map placeholder, etc.) so no two look the same.
+   197→   197→- `npx tsc --noEmit` produces NO project errors (only skills/ and z-ai-web-dev-sdk lines, which are filtered out per spec).
+   198→   198→- No shared components, sidebar data, or style.css were modified. No new dependencies installed.
+   199→   199→
+   200→   200→---
+   201→   201→Task ID: 4b
+   202→   202→Agent: full-stack-developer (apps)
+   203→   203→Task: Build 15 apps pages
+   204→   204→
+   205→   205→Work Log:
+   206→   206→- Inherited 11 already-built apps pages (email, email/detail, chat, calendar, kanban, notes, tasks, file-manager, contacts, support-tickets, support-tickets/detail) and 9 mock-data files (emails, chat, calendar, kanban, notes, tasks, files, contacts, tickets, invoices). All 4 missing invoices pages were absent.
+   207→   207→- Audited the inherited work against the spec and found: (a) 4 TypeScript errors and (b) every interactive ("use client") page lacked the required `export const metadata` because Next.js disallows metadata exports from client components.
+   208→   208→- Fixed the 4 TS errors:
+   209→   209→  - `apps/calendar/_client.tsx`: Badge `variant="rose"` is not in the shared Badge variants — changed `toneBadge` record to map `rose → "danger"`.
+   210→   210→  - `apps/kanban/_client.tsx`: Progress `tone="neutral"` is not in the shared Progress tones — wrapped `col.tone` in a ternary that maps `"neutral" → "info"` (other tones pass through unchanged).
+   211→   211→  - `apps/email/detail/page.tsx`: referenced `msg.role` but `emailThread` type had no `role` field — added a `role` field ("Author" | "Reply" | "Latest") to each thread entry in `src/data/apps/emails.ts`.
+   212→   212→  - `apps/support-tickets/detail/page.tsx`: referenced `r.email` but `ticketThread.replies` type had no `email` field — annotated the replies array explicitly in `src/data/apps/tickets.ts` and swapped the page to display `r.role` instead (which is what the side panel already implied).
+   213→   213→- Refactored the 9 interactive apps pages to the canonical Next.js pattern for client pages with metadata:
+   214→   214→  - Moved each `page.tsx` body to a sibling `_client.tsx` ("use client") with its existing default export.
+   215→   215→  - Replaced `page.tsx` with a thin server component that exports `metadata` (title + description) and renders `<XClient />`.
+   216→   216→  - Pages refactored: email, chat, calendar, kanban, notes, tasks, file-manager, contacts, support-tickets. (email/detail and support-tickets/detail were already server components with metadata and were untouched.)
+   217→   217→- Built the 4 missing invoices pages:
+   218→   218→  - `apps/invoices/page.tsx` + `_client.tsx` — invoice list with DataTable, status filter Tabs (All/Paid/Sent/Overdue/Draft), search, 4 StatCards (Outstanding / Overdue / Paid / Drafts), reconciliation banner, row click → /apps/invoices/detail, "Create invoice" CTA → /apps/invoices/create.
+   219→   219→  - `apps/invoices/detail/page.tsx` — server-rendered invoice document: Helios Pro letterhead, Bill-to/Account-manager block, line-items table (qty/rate/amount), totals (subtotal, discount, tax, total), notes, PDF / record-payment / duplicate actions; side panel with payment status card, activity Timeline, and Linked resources.
+   220→   220→  - `apps/invoices/_form.tsx` — shared client form component used by both create and edit, with `mode: "create" | "edit"` and optional `initialValues`. Includes client info select, issue/due dates, line-items editor (add/remove rows with description/qty/rate inputs), tax rate (%), discount ($), notes textarea, and a live totals sidebar (subtotal / discount / tax / total computed client-side via `useMemo`).
+   221→   221→  - `apps/invoices/create/page.tsx` — server, metadata "Create Invoice", renders `<InvoiceForm mode="create" />`.
+   222→   222→  - `apps/invoices/edit/page.tsx` — server, metadata "Edit Invoice", renders `<InvoiceForm mode="edit" initialValues={sampleInvoice} />`.
+   223→   223→- Used only icons from `@/components/Layouts/sidebar/icons` and `icons-extra`. Added an inline `DownloadIcon` SVG helper inside both invoices/_form.tsx and invoices/detail/page.tsx (no such icon exists in the icon set; the spec mandates SVG-only, no emojis, so this is consistent).
+   224→   224→- All 15 apps pages now export `metadata` with `title` and `description`.
+   225→   225→- Used shared components throughout: PageHeader, Card, CardHeader, CardBody, CardFooter, Badge, Button, Avatar, AvatarGroup, DataTable, Tabs, Modal, Drawer, EmptyState, Timeline, Progress, StatCard, FormSection, FormField, inputClass, Breadcrumbs (via PageHeader).
+   226→   226→- All Helios Pro team members (Aarav, Priya, Daniel, Sofia, Liam, Yuki, Emma, Marcus, Layla, Noah) and customers (Grace, Henrik, Mei, Rafael, Ingrid, Tobias) appear in the apps data.
+   227→   227→- Did NOT install any new dependencies. Did NOT modify `src/components/shared/*`, `src/components/Layouts/sidebar/data/index.ts`, or `src/css/style.css`.
+   228→   228→- Did NOT import `@/lib/db` or `@/lib/auth/auth-client`. No `any` types introduced.
+   229→   229→
+   230→   230→Stage Summary:
+   231→   231→- Files produced / modified:
+   232→   232→  - NEW (4 page files): `apps/invoices/page.tsx`, `apps/invoices/detail/page.tsx`, `apps/invoices/create/page.tsx`, `apps/invoices/edit/page.tsx`
+   233→   233→  - NEW (3 helper files): `apps/invoices/_client.tsx` (list), `apps/invoices/_form.tsx` (shared create/edit form)
+   234→   234→  - NEW (9 thin server wrappers): `apps/{email,chat,calendar,kanban,notes,tasks,file-manager,contacts,support-tickets}/page.tsx`
+   235→   235→  - MOVED (9 client bodies): `apps/{email,chat,calendar,kanban,notes,tasks,file-manager,contacts,support-tickets}/_client.tsx` (renamed from page.tsx, content unchanged except the 2 inline TS-error fixes in calendar & kanban)
+   236→   236→  - MODIFIED (data files): `src/data/apps/emails.ts` (added `role` field to emailThread), `src/data/apps/tickets.ts` (typed ticketThread.replies explicitly)
+   237→   237→  - UNTOUCHED: `apps/email/detail/page.tsx` (server, metadata present), `apps/support-tickets/detail/page.tsx` (server, metadata present, only the `r.email → r.role` swap)
+   238→   238→- Decisions:
+   239→   239→  - Chose the `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern so every interactive page can satisfy the "must export metadata" requirement without sacrificing stateful UX.
+   240→   240→  - Shared the invoice create/edit form via a single `_form.tsx` to keep behavior identical and avoid duplicating ~330 lines.
+   241→   241→  - Added a small `DownloadIcon` inline SVG where needed because the icon set doesn't ship one; this keeps the "SVG only, no emojis" rule.
+   242→   242→- `npx tsc --noEmit` produces NO project errors (only the skills/ and z-ai-web-dev-sdk lines that are filtered out per spec). Verified clean both before and after building the invoices pages.
+   243→   243→- All 15 routes resolve: `/apps/email`, `/apps/email/detail`, `/apps/chat`, `/apps/calendar`, `/apps/kanban`, `/apps/notes`, `/apps/tasks`, `/apps/file-manager`, `/apps/contacts`, `/apps/support-tickets`, `/apps/support-tickets/detail`, `/apps/invoices`, `/apps/invoices/detail`, `/apps/invoices/create`, `/apps/invoices/edit`.
+   244→   244→
+   245→   245→---
+   246→   246→Task ID: 4c
+   247→   247→Agent: full-stack-developer (ecommerce)
+   248→   248→Task: Build 12 ecommerce pages
+   249→   249→
+   250→   250→Work Log:
+   251→   251→- Created 6 typed mock-data files under `src/data/ecommerce/`:
+   252→   252→  - `products.ts` — 14 products across Audio/Wearables/Home Office/Video/Peripherals/Power/Smart Home/Parts, each with gallery, specs, variants, SEO, reviews, related-product IDs. Exports `products`, `sampleProduct`, `productById`, `productCategories`, `productBrands`, `productWarehouses`.
+   253→   253→  - `orders.ts` — 13 orders with full customer/shipping/billing/tracking/timeline data, 7 statuses, 5 payment states, 5 fulfillment states. Exports `orders`, `sampleOrder`, `orderById`, `orderStatuses`.
+   254→   254→  - `customers.ts` — 15 customers across all 6 segments (VIP/Loyal/New/At risk/Lost/Wholesale) with LTV, AOV, notes, payment methods. Exports `customers`, `sampleCustomer`, `customerById`, `customerSegments`.
+   255→   255→  - `reviews.ts` — 22 reviews across 4 statuses (Published/Pending/Flagged/Hidden) and all star levels, including flagged + hidden moderation cases. Exports `reviews`, `reviewStatuses`, `reviewSummary`.
+   256→   256→  - `coupons.ts` — 12 coupons spanning all 4 discount types (Percentage/Fixed/Free shipping/BOGO) and 4 statuses (Active/Scheduled/Paused/Expired) with usage limits and revenue impact.
+   257→   257→  - `inventory.ts` — 15 inventory items + 5 warehouses with capacity/utilization, per-item 7-day movement arrays, and `inventorySummary` aggregate stats.
+   258→   258→- Built 13 page files across 12 routes (products/add + products/edit share `_form.tsx`):
+   259→   259→  - `products/page.tsx` + `_client.tsx` — product grid/table toggle, search, category filter, sort dropdown, status tabs, 4 quick-stat tiles, product cards with sale badges & stock state, sortable DataTable in table view.
+   260→   260→  - `products/detail/page.tsx` + `_client.tsx` — gallery with thumbnail switcher, Overview/Specs/Reviews/Related tabs, rating breakdown with Progress bars, per-review reply form, HeliosChart area chart for 7-month sales trend, purchase panel, inventory health with Progress, SEO card.
+   261→   261→  - `products/_form.tsx` — shared multi-section form (Basic info, Media, Pricing, Inventory, Variants, SEO) with live price/margin sidebar, completion checklist, status badge, used by both add and edit.
+   262→   262→  - `products/add/page.tsx` — server, metadata "Add Product", renders `<ProductForm mode="create" />`.
+   263→   263→  - `products/edit/page.tsx` — server, metadata "Edit Product", renders `<ProductForm mode="edit" initialValues={sampleProduct} />`.
+   264→   264→  - `orders/page.tsx` + `_client.tsx` — search, status tabs (All + 7 statuses with counts), 4 StatCards (revenue/orders/AOV/pending), sortable DataTable with item thumbnails, customer Avatar, channel/payment/status badges.
+   265→   265→  - `orders/detail/page.tsx` — server, status banner with payment/fulfillment badges, 4 StatCards, items table with totals, Timeline of fulfillment events, customer card, shipping address with tracking Progress, payment card, billing address, notes.
+   266→   266→  - `customers/page.tsx` + `_client.tsx` — search, segment tabs (All + 6 segments with counts), 4 StatCards (customers/LTV/AOV/VIP), sortable DataTable with Avatar, segment Badge, AOV, last order.
+   267→   267→  - `customers/detail/page.tsx` — server, profile header with Avatar, 4 StatCards, HeliosChart bar spend trend, recent orders table, internal notes, contact info, summary dl, recent ActivityFeed.
+   268→   268→  - `cart/page.tsx` + `_client.tsx` — cart lines with qty stepper, remove/save-for-later, recommended products, live order summary (subtotal/discount/shipping/tax/total), promo code UI (try WELCOME10/FREESHIP/VIP20/AERO50) with apply/remove and error state, trust badges.
+   269→   269→  - `checkout/page.tsx` + `_client.tsx` — 3-step horizontal Timeline indicator (Shipping → Payment → Review), shipping form, shipping-method radio cards (Standard/Express/Next-day), payment-method radio (Card/PayPal/Apple Pay) with card form, billing form, review summary with shipping+payment cards, order-confirmation screen, sticky order summary sidebar.
+   270→   270→  - `reviews/page.tsx` + `_client.tsx` — 4 StatCards, rating-filter sidebar with Progress bars, status tabs (All + 4 statuses with counts), search, per-review card with reply form (post/cancel), feature/hide/delete actions, status badges, helpful count.
+   271→   271→  - `coupons/page.tsx` + `_client.tsx` — 4 StatCards, search, status tabs, sortable DataTable with copy-to-clipboard code button, discount-type badge, usage Progress, revenue, applies-to, status, create-coupon Modal with code/description/discount-type/value/min-order/usage-limit/schedule + live preview.
+   272→   272→  - `inventory/page.tsx` + `_client.tsx` — 4 StatCards (value/units/low-stock/warehouses), low-stock alerts grid with red/amber cards and restock CTA, HeliosChart bar (stock in vs out, 7 days), warehouse capacity Progress sidebar, items/warehouses view tabs, sortable inventory DataTable with status badges and per-row restock action, warehouse cards grid in warehouse view, restock Modal with live new-stock computation.
+   273→   273→- Used the same `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern that task 4b established for interactive pages so every page exports `metadata`. Server-only detail pages (orders/detail, customers/detail) export `metadata` directly.
+   274→   274→- Used `HeliosChart` for the product detail sales-trend area chart, customer detail spend-trend bar chart, inventory stock-movement bar chart, and (no chart needed on inventory warehouse view).
+   275→   275→- All product/customer/review images use plain `<img>` with picsum.photos seeded URLs (consistent with spec). Avatars use the shared `Avatar` component.
+   276→   276→- Cart and Checkout compute totals client-side with `useMemo`; cart supports promo codes (4 mock codes); checkout computes shipping/tax/total based on selected shipping method.
+   277→   277→- Reviews page supports filtering by rating (1-5 stars) and shows reply/response forms per review with persisted state. Coupons table shows code/type/value/status/expiry/usage with a Create-coupon Modal. Inventory highlights low-stock items with red/amber badges + alert cards and offers per-item restock Modal.
+   278→   278→- All icons imported from `@/components/Layouts/sidebar/icons` (and `icons-extra` for `SearchIcon`). No emojis. No `any` types.
+   279→   279→- Did NOT modify `src/components/shared/*`, sidebar data, or `style.css`. Did NOT install new dependencies. Did NOT import `@/lib/db` or `@/lib/auth/auth-client`.
+   280→   280→
+   281→   281→Issues hit & fixed:
+   282→   282→- `SearchIcon` is exported from `@/components/Layouts/sidebar/icons-extra`, not `icons` — fixed in all 4 _client files that use it (products, orders, customers, reviews).
+   283→   283→- `ProductReview` type needed a `helpful?` field for the detail page — added as optional and used `review.helpful ?? 0` to avoid touching every existing mock entry.
+   284→   284→- Initially wrote a bogus type assertion for `stockVariant` in inventory (Badge has `warning` already in its variant set) — removed the duplicate `stockVariant` map and kept a single `badgeVariant: Record<StockLevel, "success" | "warning" | "danger" | "info">`.
+   285→   285→- Initially wrote `{ day, ... }` shorthand in the inventory stock-movement `useMemo` but the loop variable was `d`, not `day` — fixed to `{ day: d, ... }`.
+   286→   286→
+   287→   287→Stage Summary:
+   288→   288→- Files produced (13 page files + 6 helper files + 6 data files = 25 files):
+   289→   289→  - NEW (6 data files): `src/data/ecommerce/{products,orders,customers,reviews,coupons,inventory}.ts`
+   290→   290→  - NEW (13 page files):
+   291→   291→    - `ecommerce/products/page.tsx` (server, metadata)
+   292→   292→    - `ecommerce/products/detail/page.tsx` (server, metadata)
+   293→   293→    - `ecommerce/products/add/page.tsx` (server, metadata)
+   294→   294→    - `ecommerce/products/edit/page.tsx` (server, metadata)
+   295→   295→    - `ecommerce/orders/page.tsx` (server, metadata)
+   296→   296→    - `ecommerce/orders/detail/page.tsx` (server, metadata)
+   297→   297→    - `ecommerce/customers/page.tsx` (server, metadata)
+   298→   298→    - `ecommerce/customers/detail/page.tsx` (server, metadata)
+   299→   299→    - `ecommerce/cart/page.tsx` (server, metadata)
+   300→   300→    - `ecommerce/checkout/page.tsx` (server, metadata)
+   301→   301→    - `ecommerce/reviews/page.tsx` (server, metadata)
+   302→   302→    - `ecommerce/coupons/page.tsx` (server, metadata)
+   303→   303→    - `ecommerce/inventory/page.tsx` (server, metadata)
+   304→   304→  - NEW (6 client helpers):
+   305→   305→    - `ecommerce/products/_client.tsx`
+   306→   306→    - `ecommerce/products/detail/_client.tsx`
+   307→   307→    - `ecommerce/products/_form.tsx` (shared by add + edit)
+   308→   308→    - `ecommerce/orders/_client.tsx`
+   309→   309→    - `ecommerce/customers/_client.tsx`
+   310→   310→    - `ecommerce/cart/_client.tsx`
+   311→   311→    - `ecommerce/checkout/_client.tsx`
+   312→   312→    - `ecommerce/reviews/_client.tsx`
+   313→   313→    - `ecommerce/coupons/_client.tsx`
+   314→   314→    - `ecommerce/inventory/_client.tsx`
+   315→   315→  - (Total: 6 data + 13 page + 10 client helpers = 29 new files.)
+   316→   316→- Decisions:
+   317→   317→  - Reused the 4b `page.tsx` (server) + `_client.tsx` ("use client") split for every interactive page so all 13 pages export `metadata`.
+   318→   318→  - Shared the product add/edit form via a single `_form.tsx` (same pattern as 4b's invoices `_form.tsx`) — `mode: "create" | "edit"` + optional `initialValues`.
+   319→   319→  - All product/customer/review images are plain `<img>` with picsum.photos seeded URLs (per spec). Avatars use the shared `Avatar` component.
+   320→   320→  - Cart totals compute client-side; promo codes are 4 mock codes (WELCOME10, AERO50, FREESHIP, VIP20) with apply/remove and error states.
+   321→   321→  - Multi-step checkout uses the shared `Timeline` (horizontal) as the step indicator — current step is `primary`, completed steps are `success` with a check icon, future steps are `info` with the step number.
+   322→   322→  - Reviews filtering: rating filter lives in a left sidebar with Progress bars; status filter uses `Tabs pills`; each review row has its own reply form with persisted state.
+   323→   323→  - Coupons table uses a copy-to-clipboard code button (no `any`), and the Create-coupon Modal includes a live preview.
+   324→   324→  - Inventory low-stock items are surfaced in a dedicated alert Card at the top with red/amber styling and per-item Restock CTA that opens a Modal showing live new-stock computation.
+   325→   325→- `npx tsc --noEmit` produces NO project errors (output is empty after filtering skills/ and z-ai-web-dev-sdk lines). Verified clean before and after the 4 fixes above.
+   326→   326→- All 13 routes resolve: `/ecommerce/products`, `/ecommerce/products/detail`, `/ecommerce/products/add`, `/ecommerce/products/edit`, `/ecommerce/orders`, `/ecommerce/orders/detail`, `/ecommerce/customers`, `/ecommerce/customers/detail`, `/ecommerce/cart`, `/ecommerce/checkout`, `/ecommerce/reviews`, `/ecommerce/coupons`, `/ecommerce/inventory`.
+   327→   327→

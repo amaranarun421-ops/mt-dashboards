@@ -1,0 +1,787 @@
+     1→=== /home/z/my-project/src/app/(with-layout)/forms/advanced-inputs/page.tsx ===
+     2→import AdvancedInputsClient from "./_client";
+     3→
+     4→export const metadata = {
+     5→  title: "Advanced Inputs",
+     6→  description:
+     7→    "Helios Pro — input groups, prefix/suffix, phone + currency masks, tags input, OTP input, password strength meter and an autocomplete combobox.",
+     8→};
+     9→
+    10→export default function AdvancedInputsPage() {
+    11→  return <AdvancedInputsClient />;
+    12→}
+    13→=== /home/z/my-project/src/app/(with-layout)/forms/basic-inputs/page.tsx ===
+    14→import type { Metadata } from "next";
+    15→import { PageHeader } from "@/components/shared/page-header";
+    16→import { Card, CardHeader } from "@/components/shared/card";
+    17→import { FormSection, FormField, inputClass } from "@/components/shared/form-section";
+    18→import { Badge } from "@/components/shared/badge";
+    19→import { InputIcon } from "@/components/Layouts/sidebar/icons";
+    20→
+    21→export const metadata: Metadata = {
+    22→  title: "Basic Inputs",
+    23→  description:
+    24→    "Helios Pro — text, email, password, number and textarea inputs rendered in default, focused, disabled, error and success states.",
+    25→};
+    26→
+    27→export default function BasicInputsPage() {
+    28→  return (
+    29→    <div>
+    30→      <PageHeader
+    31→        title="Basic Inputs"
+    32→        description="Text, email, password, number and textarea controls across every interactive state."
+    33→        breadcrumbs={[
+    34→          { label: "Dashboard", href: "/" },
+    35→          { label: "Forms", href: "/forms/basic-inputs" },
+    36→          { label: "Basic Inputs" },
+    37→        ]}
+    38→        actions={
+    39→          <Badge variant="primary" size="lg">
+    40→            <InputIcon className="size-4" /> 5 field types
+    41→          </Badge>
+    42→        }
+    43→      />
+    44→
+    45→      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+    46→        {/* Text inputs */}
+    47→        <FormSection
+    48→          title="Text inputs"
+    49→          description="Standard single-line text fields with validation feedback."
+    50→          columns={1}
+    51→        >
+    52→          <FormField label="Default" htmlFor="txt-default" hint="Neutral state — ready for input.">
+    53→            <input id="txt-default" type="text" placeholder="Helios Pro user" className={inputClass} />
+    54→          </FormField>
+    55→          <FormField label="Focused" htmlFor="txt-focus" hint="Rings appear when the field has focus.">
+    56→            <input
+    57→              id="txt-focus"
+    58→              type="text"
+    59→              defaultValue="Aarav Mehta"
+    60→              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+    61→            />
+    62→          </FormField>
+    63→          <FormField label="Disabled" htmlFor="txt-disabled" hint="Disabled fields are not editable.">
+    64→            <input id="txt-disabled" type="text" placeholder="Read-only" disabled className={`${inputClass} opacity-60`} />
+    65→          </FormField>
+    66→          <FormField label="Error" htmlFor="txt-error" error="This field is required.">
+    67→            <input
+    68→              id="txt-error"
+    69→              type="text"
+    70→              placeholder="Required value"
+    71→              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+    72→            />
+    73→          </FormField>
+    74→          <FormField label="Success" htmlFor="txt-success" hint="Looks good — value validated.">
+    75→            <input
+    76→              id="txt-success"
+    77→              type="text"
+    78→              defaultValue="helios-pro"
+    79→              className={`${inputClass} border-primary ring-2 ring-primary/20 focus:border-primary focus:ring-primary/20`}
+    80→            />
+    81→          </FormField>
+    82→        </FormSection>
+    83→
+    84→        {/* Email + Password */}
+    85→        <FormSection
+    86→          title="Email & password"
+    87→          description="Email formatting and password entry."
+    88→          columns={1}
+    89→        >
+    90→          <FormField label="Email — default" htmlFor="email-default" hint="We never share your email.">
+    91→            <input id="email-default" type="email" placeholder="you@heliospro.io" className={inputClass} />
+    92→          </FormField>
+    93→          <FormField label="Email — success" htmlFor="email-success" hint="Verified format.">
+    94→            <input
+    95→              id="email-success"
+    96→              type="email"
+    97→              defaultValue="priya@heliospro.io"
+    98→              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+    99→            />
+   100→          </FormField>
+   101→          <FormField label="Email — error" htmlFor="email-error" error="Enter a valid email address.">
+   102→            <input
+   103→              id="email-error"
+   104→              type="email"
+   105→              defaultValue="priya@helios"
+   106→              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+   107→            />
+   108→          </FormField>
+   109→          <FormField label="Password — default" htmlFor="pw-default">
+   110→            <input id="pw-default" type="password" placeholder="••••••••" className={inputClass} />
+   111→          </FormField>
+   112→          <FormField label="Password — disabled" htmlFor="pw-disabled" hint="Locked by SSO policy.">
+   113→            <input
+   114→              id="pw-disabled"
+   115→              type="password"
+   116→              defaultValue="••••••••"
+   117→              disabled
+   118→              className={`${inputClass} opacity-60`}
+   119→            />
+   120→          </FormField>
+   121→        </FormSection>
+   122→
+   123→        {/* Number inputs */}
+   124→        <FormSection
+   125→          title="Number inputs"
+   126→          description="Numeric entry with min/max constraints and stepper controls."
+   127→          columns={2}
+   128→        >
+   129→          <FormField label="Quantity" htmlFor="num-qty" hint="Min 1, max 99.">
+   130→            <input id="num-qty" type="number" min={1} max={99} defaultValue={12} className={inputClass} />
+   131→          </FormField>
+   132→          <FormField label="Price (USD)" htmlFor="num-price">
+   133→            <input id="num-price" type="number" min={0} step="0.01" defaultValue={129.5} className={inputClass} />
+   134→          </FormField>
+   135→          <FormField label="Discount %" htmlFor="num-disc" error="Must be between 0 and 100.">
+   136→            <input
+   137→              id="num-disc"
+   138→              type="number"
+   139→              defaultValue={120}
+   140→              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+   141→            />
+   142→          </FormField>
+   143→          <FormField label="Stock units" htmlFor="num-stock" hint="Validated against warehouse capacity.">
+   144→            <input
+   145→              id="num-stock"
+   146→              type="number"
+   147→              defaultValue={482}
+   148→              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+   149→            />
+   150→          </FormField>
+   151→        </FormSection>
+   152→
+   153→        {/* Textarea */}
+   154→        <FormSection
+   155→          title="Textarea fields"
+   156→          description="Multi-line input for notes, bios and long-form content."
+   157→          columns={1}
+   158→        >
+   159→          <FormField label="Default textarea" htmlFor="ta-default" hint="Up to 500 characters.">
+   160→            <textarea
+   161→              id="ta-default"
+   162→              rows={3}
+   163→              placeholder="Add a note about this customer..."
+   164→              className={`${inputClass} resize-y`}
+   165→            />
+   166→          </FormField>
+   167→          <FormField label="Focused textarea" htmlFor="ta-focus">
+   168→            <textarea
+   169→              id="ta-focus"
+   170→              rows={3}
+   171→              defaultValue="Followed up on the Q3 enterprise renewal — Aarav confirmed budget approval."
+   172→              className={`${inputClass} resize-y border-primary ring-2 ring-primary/20`}
+   173→            />
+   174→          </FormField>
+   175→          <FormField label="Disabled textarea" htmlFor="ta-disabled">
+   176→            <textarea
+   177→              id="ta-disabled"
+   178→              rows={3}
+   179→              placeholder="Locked"
+   180→              disabled
+   181→              className={`${inputClass} resize-y opacity-60`}
+   182→            />
+   183→          </FormField>
+   184→          <FormField label="Error textarea" htmlFor="ta-error" error="Description must be at least 20 characters.">
+   185→            <textarea
+   186→              id="ta-error"
+   187→              rows={3}
+   188→              defaultValue="too short"
+   189→              className={`${inputClass} resize-y border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+   190→            />
+   191→          </FormField>
+   192→        </FormSection>
+   193→      </div>
+   194→
+   195→      <Card className="mt-6">
+   196→        <CardHeader
+   197→          title="Field state reference"
+   198→          subtitle="A quick cheat-sheet of the visual treatments used across this page."
+   199→        />
+   200→        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
+   201→          {[
+   202→            { label: "Default", tone: "border-stroke dark:border-dark-3", desc: "Neutral border." },
+   203→            { label: "Focused", tone: "border-primary ring-2 ring-primary/20", desc: "Emerald ring." },
+   204→            { label: "Disabled", tone: "opacity-60", desc: "Greyed-out, non-editable." },
+   205→            { label: "Error", tone: "border-red ring-2 ring-red/20", desc: "Red border + message." },
+   206→            { label: "Success", tone: "border-primary ring-2 ring-primary/20", desc: "Emerald border." },
+   207→          ].map((s) => (
+   208→            <div key={s.label} className={`rounded-lg border ${s.tone} bg-white p-3 dark:bg-dark-2`}>
+   209→              <p className="text-sm font-semibold text-dark dark:text-white">{s.label}</p>
+   210→              <p className="mt-1 text-xs text-dark-5 dark:text-dark-6">{s.desc}</p>
+   211→            </div>
+   212→          ))}
+   213→        </div>
+   214→      </Card>
+   215→    </div>
+   216→  );
+   217→}
+   218→=== /home/z/my-project/src/app/(with-layout)/forms/checkbox-radio/page.tsx ===
+   219→import CheckboxRadioClient from "./_client";
+   220→
+   221→export const metadata = {
+   222→  title: "Checkbox & Radio",
+   223→  description:
+   224→    "Helios Pro — basic, grouped, inline, cards-as-radio and toggle-style checkbox/radio controls.",
+   225→};
+   226→
+   227→export default function CheckboxRadioPage() {
+   228→  return <CheckboxRadioClient />;
+   229→}
+   230→=== /home/z/my-project/src/app/(with-layout)/forms/date-picker/page.tsx ===
+   231→import DatePickerClient from "./_client";
+   232→
+   233→export const metadata = {
+   234→  title: "Date Picker",
+   235→  description:
+   236→    "Helios Pro — single date, range, time, inline calendar and quick presets using flatpickr.",
+   237→};
+   238→
+   239→export default function DatePickerPage() {
+   240→  return <DatePickerClient />;
+   241→}
+   242→=== /home/z/my-project/src/app/(with-layout)/forms/file-upload/page.tsx ===
+   243→import FileUploadClient from "./_client";
+   244→
+   245→export const metadata = {
+   246→  title: "File Upload",
+   247→  description:
+   248→    "Helios Pro — drag-drop zone, file list with progress, multi-file, image preview grid and avatar upload with crop UI.",
+   249→};
+   250→
+   251→export default function FileUploadPage() {
+   252→  return <FileUploadClient />;
+   253→}
+   254→=== /home/z/my-project/src/app/(with-layout)/forms/form-elements/page.tsx ===
+   255→import type { Metadata } from "next";
+   256→
+   257→import { GlobeIcon } from "@/assets/icons";
+   258→import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+   259→import DatePickerOne from "@/components/FormElements/DatePicker/DatePickerOne";
+   260→import DatePickerTwo from "@/components/FormElements/DatePicker/DatePickerTwo";
+   261→import InputGroup from "@/components/FormElements/InputGroup";
+   262→import { TextAreaGroup } from "@/components/FormElements/InputGroup/text-area";
+   263→import MultiSelect from "@/components/FormElements/MultiSelect";
+   264→import { Checkbox } from "@/components/FormElements/checkbox";
+   265→import { RadioInput } from "@/components/FormElements/radio";
+   266→import { Select } from "@/components/FormElements/select";
+   267→import { Switch } from "@/components/FormElements/switch";
+   268→import { ShowcaseSection } from "@/components/Layouts/showcase-section";
+   269→
+   270→export const metadata: Metadata = {
+   271→  title: "Form Elements",
+   272→};
+   273→
+   274→export default function FormElementsPage() {
+   275→  return (
+   276→    <>
+   277→      <Breadcrumb pageName="Form Elements" />
+   278→
+   279→      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+   280→        <div className="flex flex-col gap-9">
+   281→          <ShowcaseSection title="Input Fields" className="space-y-5.5 p-6.5!">
+   282→            <InputGroup
+   283→              label="Default input"
+   284→              placeholder="Default input text"
+   285→              type="text"
+   286→            />
+   287→
+   288→            <InputGroup
+   289→              label="Active input"
+   290→              placeholder="Active input text"
+   291→              active
+   292→              type="text"
+   293→            />
+   294→
+   295→            <InputGroup
+   296→              label="Disabled input"
+   297→              placeholder="Disabled input text"
+   298→              type="text"
+   299→              disabled
+   300→            />
+   301→          </ShowcaseSection>
+   302→
+   303→          <ShowcaseSection
+   304→            title="Toggle switch input"
+   305→            className="space-y-5.5 p-6.5!"
+   306→          >
+   307→            <Switch />
+   308→            <Switch backgroundSize="sm" />
+   309→            <Switch withIcon />
+   310→            <Switch background="dark" />
+   311→          </ShowcaseSection>
+   312→
+   313→          <ShowcaseSection title="Time and date" className="space-y-5.5 p-6.5!">
+   314→            <DatePickerOne />
+   315→            <DatePickerTwo />
+   316→          </ShowcaseSection>
+   317→
+   318→          <ShowcaseSection title="File upload" className="space-y-5.5 p-6.5!">
+   319→            <InputGroup
+   320→              type="file"
+   321→              fileStyleVariant="style1"
+   322→              label="Attach file"
+   323→              placeholder="Attach file"
+   324→            />
+   325→
+   326→            <InputGroup
+   327→              type="file"
+   328→              fileStyleVariant="style2"
+   329→              label="Attach file"
+   330→              placeholder="Attach file"
+   331→            />
+   332→          </ShowcaseSection>
+   333→        </div>
+   334→
+   335→        <div className="flex flex-col gap-9">
+   336→          <ShowcaseSection title="Textarea Fields" className="space-y-6 p-6.5!">
+   337→            <TextAreaGroup
+   338→              label="Default textarea"
+   339→              placeholder="Default textarea"
+   340→            />
+   341→
+   342→            <TextAreaGroup
+   343→              label="Active textarea"
+   344→              placeholder="Active textarea"
+   345→              active
+   346→            />
+   347→
+   348→            <TextAreaGroup
+   349→              label="Disabled textarea"
+   350→              placeholder="Disabled textarea"
+   351→              disabled
+   352→            />
+   353→          </ShowcaseSection>
+   354→
+   355→          <ShowcaseSection title="Select input" className="space-y-5.5 p-6.5!">
+   356→            <Select
+   357→              label="Select Country"
+   358→              items={[
+   359→                { label: "United States", value: "USA" },
+   360→                { label: "United Kingdom", value: "UK" },
+   361→                { label: "Canada", value: "Canada" },
+   362→              ]}
+   363→              defaultValue="USA"
+   364→              prefixIcon={<GlobeIcon />}
+   365→            />
+   366→            <MultiSelect id="multiSelect" />
+   367→          </ShowcaseSection>
+   368→
+   369→          <ShowcaseSection
+   370→            title="Checkbox and radio"
+   371→            className="space-y-5.5 p-6.5!"
+   372→          >
+   373→            <Checkbox label="Checkbox Text" />
+   374→            <Checkbox label="Checkbox Text" withIcon="check" />
+   375→            <Checkbox label="Checkbox Text" withIcon="x" />
+   376→            <RadioInput label="Checkbox Text" />
+   377→            <RadioInput label="Checkbox Text" variant="circle" />
+   378→          </ShowcaseSection>
+   379→        </div>
+   380→      </div>
+   381→    </>
+   382→  );
+   383→}
+   384→=== /home/z/my-project/src/app/(with-layout)/forms/form-layout/page.tsx ===
+   385→import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+   386→
+   387→import type { Metadata } from "next";
+   388→import { ContactForm } from "./_components/contact-form";
+   389→import { SignInForm } from "./_components/sign-in-form";
+   390→import { SignUpForm } from "./_components/sign-up-form";
+   391→
+   392→export const metadata: Metadata = {
+   393→  title: "Form Layout",
+   394→};
+   395→
+   396→export default function Page() {
+   397→  return (
+   398→    <>
+   399→      <Breadcrumb pageName="Form Layout" />
+   400→
+   401→      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+   402→        <div className="flex flex-col gap-9">
+   403→          <ContactForm />
+   404→        </div>
+   405→
+   406→        <div className="flex flex-col gap-9">
+   407→          <SignInForm />
+   408→
+   409→          <SignUpForm />
+   410→        </div>
+   411→      </div>
+   412→    </>
+   413→  );
+   414→}
+   415→=== /home/z/my-project/src/app/(with-layout)/forms/form-layouts/page.tsx ===
+   416→import type { Metadata } from "next";
+   417→import { PageHeader } from "@/components/shared/page-header";
+   418→import { Card, CardHeader } from "@/components/shared/card";
+   419→import { FormSection, FormField, inputClass } from "@/components/shared/form-section";
+   420→import { Badge } from "@/components/shared/badge";
+   421→import { Button } from "@/components/shared/button";
+   422→import { InputIcon } from "@/components/Layouts/sidebar/icons";
+   423→
+   424→export const metadata: Metadata = {
+   425→  title: "Form Layouts",
+   426→  description:
+   427→    "Helios Pro — vertical, horizontal, inline, 2-col, 3-col, sectioned and sidebar-style form layouts.",
+   428→};
+   429→
+   430→export default function FormLayoutsPage() {
+   431→  return (
+   432→    <div>
+   433→      <PageHeader
+   434→        title="Form Layouts"
+   435→        description="Vertical, horizontal, inline, multi-column, sectioned and sidebar arrangements."
+   436→        breadcrumbs={[
+   437→          { label: "Dashboard", href: "/" },
+   438→          { label: "Forms", href: "/forms/basic-inputs" },
+   439→          { label: "Form Layouts" },
+   440→        ]}
+   441→        actions={
+   442→          <Badge variant="primary" size="lg">
+   443→            <InputIcon className="size-4" /> 7 layouts
+   444→          </Badge>
+   445→        }
+   446→      />
+   447→
+   448→      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+   449→        {/* vertical */}
+   450→        <FormSection title="Vertical layout" description="Labels stacked above inputs — the default." columns={1}>
+   451→          <FormField label="Full name" htmlFor="v-name" required>
+   452→            <input id="v-name" type="text" placeholder="Aarav Mehta" className={inputClass} />
+   453→          </FormField>
+   454→          <FormField label="Email" htmlFor="v-email" required>
+   455→            <input id="v-email" type="email" placeholder="you@heliospro.io" className={inputClass} />
+   456→          </FormField>
+   457→          <FormField label="Role" htmlFor="v-role">
+   458→            <select id="v-role" className={inputClass} defaultValue="owner">
+   459→              <option value="owner">Owner</option>
+   460→              <option value="admin">Admin</option>
+   461→              <option value="editor">Editor</option>
+   462→              <option value="viewer">Viewer</option>
+   463→            </select>
+   464→          </FormField>
+   465→          <div className="flex justify-end gap-2">
+   466→            <Button variant="ghost" size="md">Cancel</Button>
+   467→            <Button variant="primary" size="md">Save</Button>
+   468→          </div>
+   469→        </FormSection>
+   470→
+   471→        {/* horizontal */}
+   472→        <FormSection title="Horizontal layout" description="Labels aligned left of inputs — great for desktop." columns={1}>
+   473→          {[
+   474→            { label: "First name", id: "h-first", placeholder: "Daniel", type: "text" },
+   475→            { label: "Last name", id: "h-last", placeholder: "Okafor", type: "text" },
+   476→            { label: "Email", id: "h-email", placeholder: "daniel@heliospro.io", type: "email" },
+   477→            { label: "Phone", id: "h-phone", placeholder: "(415) 555-0199", type: "tel" },
+   478→          ].map((row) => (
+   479→            <div key={row.id} className="grid grid-cols-1 items-center gap-3 sm:grid-cols-[160px_1fr]">
+   480→              <label htmlFor={row.id} className="text-sm font-medium text-dark dark:text-white">
+   481→                {row.label}
+   482→              </label>
+   483→              <input
+   484→                id={row.id}
+   485→                type={row.type}
+   486→                placeholder={row.placeholder}
+   487→                className={inputClass}
+   488→              />
+   489→            </div>
+   490→          ))}
+   491→          <div className="grid grid-cols-1 items-center gap-3 sm:grid-cols-[160px_1fr]">
+   492→            <span className="text-sm font-medium text-dark dark:text-white">Preferences</span>
+   493→            <div className="flex items-center gap-2">
+   494→              <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+   495→                <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Newsletter
+   496→              </label>
+   497→              <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+   498→                <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Product updates
+   499→              </label>
+   500→            </div>
+   501→          </div>
+   502→          <div className="grid grid-cols-1 gap-3 sm:grid-cols-[160px_1fr]">
+   503→            <span />
+   504→            <div className="flex justify-end gap-2">
+   505→              <Button variant="ghost" size="md">Cancel</Button>
+   506→              <Button variant="primary" size="md">Save changes</Button>
+   507→            </div>
+   508→          </div>
+   509→        </FormSection>
+   510→
+   511→        {/* inline */}
+   512→        <FormSection title="Inline form" description="Single-row search-and-action pattern." columns={1}>
+   513→          <form className="flex flex-col gap-2 sm:flex-row sm:items-end">
+   514→            <div className="flex-1">
+   515→              <label htmlFor="in-name" className="sr-only">Name</label>
+   516→              <input id="in-name" type="text" placeholder="Search by customer name…" className={inputClass} />
+   517→            </div>
+   518→            <div className="sm:w-40">
+   519→              <label htmlFor="in-status" className="sr-only">Status</label>
+   520→              <select id="in-status" className={inputClass} defaultValue="all">
+   521→                <option value="all">All statuses</option>
+   522→                <option value="active">Active</option>
+   523→                <option value="paused">Paused</option>
+   524→                <option value="churned">Churned</option>
+   525→              </select>
+   526→            </div>
+   527→            <Button variant="primary" size="md" type="submit">Search</Button>
+   528→            <Button variant="outline" size="md" type="reset">Reset</Button>
+   529→          </form>
+   530→        </FormSection>
+   531→
+   532→        {/* 2-col */}
+   533→        <FormSection title="Two-column layout" description="Pairs of fields side-by-side on >= sm." columns={2}>
+   534→          <FormField label="First name" htmlFor="two-first">
+   535→            <input id="two-first" type="text" placeholder="Priya" className={inputClass} />
+   536→          </FormField>
+   537→          <FormField label="Last name" htmlFor="two-last">
+   538→            <input id="two-last" type="text" placeholder="Sharma" className={inputClass} />
+   539→          </FormField>
+   540→          <FormField label="Email" htmlFor="two-email">
+   541→            <input id="two-email" type="email" placeholder="priya@heliospro.io" className={inputClass} />
+   542→          </FormField>
+   543→          <FormField label="Phone" htmlFor="two-phone">
+   544→            <input id="two-phone" type="tel" placeholder="(415) 555-0148" className={inputClass} />
+   545→          </FormField>
+   546→          <FormField label="City" htmlFor="two-city">
+   547→            <input id="two-city" type="text" placeholder="San Francisco" className={inputClass} />
+   548→          </FormField>
+   549→          <FormField label="Country" htmlFor="two-country">
+   550→            <select id="two-country" className={inputClass} defaultValue="us">
+   551→              <option value="us">United States</option>
+   552→              <option value="ca">Canada</option>
+   553→              <option value="uk">United Kingdom</option>
+   554→              <option value="in">India</option>
+   555→            </select>
+   556→          </FormField>
+   557→        </FormSection>
+   558→
+   559→        {/* 3-col */}
+   560→        <FormSection title="Three-column layout" description="Wide-screen only — collapses on smaller viewports." columns={3}>
+   561→          <FormField label="SKU" htmlFor="three-sku">
+   562→            <input id="three-sku" type="text" placeholder="HLP-001" className={inputClass} />
+   563→          </FormField>
+   564→          <FormField label="Name" htmlFor="three-name">
+   565→            <input id="three-name" type="text" placeholder="Aurora headset" className={inputClass} />
+   566→          </FormField>
+   567→          <FormField label="Category" htmlFor="three-cat">
+   568→            <select id="three-cat" className={inputClass} defaultValue="audio">
+   569→              <option value="audio">Audio</option>
+   570→              <option value="wearables">Wearables</option>
+   571→              <option value="video">Video</option>
+   572→            </select>
+   573→          </FormField>
+   574→          <FormField label="Price (USD)" htmlFor="three-price">
+   575→            <input id="three-price" type="number" placeholder="129.00" className={inputClass} />
+   576→          </FormField>
+   577→          <FormField label="Stock" htmlFor="three-stock">
+   578→            <input id="three-stock" type="number" placeholder="482" className={inputClass} />
+   579→          </FormField>
+   580→          <FormField label="Status" htmlFor="three-status">
+   581→            <select id="three-status" className={inputClass} defaultValue="active">
+   582→              <option value="active">Active</option>
+   583→              <option value="draft">Draft</option>
+   584→              <option value="archived">Archived</option>
+   585→            </select>
+   586→          </FormField>
+   587→        </FormSection>
+   588→
+   589→        {/* sectioned */}
+   590→        <Card className="xl:col-span-2">
+   591→          <CardHeader
+   592→            title="Sectioned form"
+   593→            subtitle="Group fields into labelled sections — perfect for long forms like onboarding."
+   594→            action={<Badge variant="outline">3 sections</Badge>}
+   595→          />
+   596→          <div className="space-y-6">
+   597→            <FormSection title="1. Account" description="Login credentials." columns={2}>
+   598→              <FormField label="Email" htmlFor="sec-email" required>
+   599→                <input id="sec-email" type="email" placeholder="you@heliospro.io" className={inputClass} />
+   600→              </FormField>
+   601→              <FormField label="Password" htmlFor="sec-pw" required>
+   602→                <input id="sec-pw" type="password" placeholder="••••••••" className={inputClass} />
+   603→              </FormField>
+   604→            </FormSection>
+   605→            <FormSection title="2. Profile" description="Tell us a bit about you." columns={2}>
+   606→              <FormField label="Full name" htmlFor="sec-name">
+   607→                <input id="sec-name" type="text" placeholder="Sofia Rossi" className={inputClass} />
+   608→              </FormField>
+   609→              <FormField label="Job title" htmlFor="sec-title">
+   610→                <input id="sec-title" type="text" placeholder="Head of Growth" className={inputClass} />
+   611→              </FormField>
+   612→              <FormField label="Bio" htmlFor="sec-bio" hint="Up to 280 characters.">
+   613→                <textarea id="sec-bio" rows={3} placeholder="Short intro…" className={`${inputClass} resize-y`} />
+   614→              </FormField>
+   615→              <FormField label="Timezone" htmlFor="sec-tz">
+   616→                <select id="sec-tz" className={inputClass} defaultValue="pst">
+   617→                  <option value="pst">PST (UTC-8)</option>
+   618→                  <option value="est">EST (UTC-5)</option>
+   619→                  <option value="gmt">GMT (UTC+0)</option>
+   620→                  <option value="cet">CET (UTC+1)</option>
+   621→                  <option value="ist">IST (UTC+5:30)</option>
+   622→                  <option value="jst">JST (UTC+9)</option>
+   623→                </select>
+   624→              </FormField>
+   625→            </FormSection>
+   626→            <FormSection title="3. Preferences" description="How should we reach you?" columns={3}>
+   627→              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+   628→                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+   629→                  <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Email
+   630→                </label>
+   631→              </div>
+   632→              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+   633→                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+   634→                  <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Push
+   635→                </label>
+   636→              </div>
+   637→              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+   638→                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+   639→                  <input type="checkbox" className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> SMS
+   640→                </label>
+   641→              </div>
+   642→            </FormSection>
+   643→            <div className="flex justify-end gap-2 border-t border-stroke pt-4 dark:border-dark-3">
+   644→              <Button variant="ghost" size="md">Cancel</Button>
+   645→              <Button variant="primary" size="md">Complete onboarding</Button>
+   646→            </div>
+   647→          </div>
+   648→        </Card>
+   649→      </div>
+   650→
+   651→      {/* sidebar form */}
+   652→      <Card className="mt-6">
+   653→        <CardHeader
+   654→          title="Sidebar form"
+   655→          subtitle="Settings panel: left navigation, right content — a classic two-pane layout."
+   656→        />
+   657→        <div className="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr]">
+   658→          {/* sidebar nav */}
+   659→          <nav className="flex flex-row gap-1 overflow-x-auto md:flex-col md:overflow-visible">
+   660→            {[
+   661→              { label: "General", active: true },
+   662→              { label: "Profile" },
+   663→              { label: "Security" },
+   664→              { label: "Notifications" },
+   665→              { label: "Billing" },
+   666→              { label: "Danger zone" },
+   667→            ].map((n) => (
+   668→              <a
+   669→                key={n.label}
+   670→                href="#"
+   671→                className={
+   672→                  n.active
+   673→                    ? "rounded-lg bg-primary-subtle px-3 py-2 text-sm font-medium text-primary dark:bg-primary/15"
+   674→                    : "rounded-lg px-3 py-2 text-sm text-dark-5 transition hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-white/5"
+   675→                }
+   676→              >
+   677→                {n.label}
+   678→              </a>
+   679→            ))}
+   680→          </nav>
+   681→          {/* content */}
+   682→          <FormSection title="General settings" description="Workspace name, default language and timezone." columns={2}>
+   683→            <FormField label="Workspace name" htmlFor="sb-name">
+   684→              <input id="sb-name" type="text" defaultValue="Helios Pro" className={inputClass} />
+   685→            </FormField>
+   686→            <FormField label="URL" htmlFor="sb-url">
+   687→              <input id="sb-url" type="text" defaultValue="heliospro.io" className={inputClass} />
+   688→            </FormField>
+   689→            <FormField label="Default language" htmlFor="sb-lang">
+   690→              <select id="sb-lang" className={inputClass} defaultValue="en">
+   691→                <option value="en">English</option>
+   692→                <option value="fr">Français</option>
+   693→                <option value="de">Deutsch</option>
+   694→                <option value="es">Español</option>
+   695→                <option value="ja">日本語</option>
+   696→              </select>
+   697→            </FormField>
+   698→            <FormField label="Timezone" htmlFor="sb-tz">
+   699→              <select id="sb-tz" className={inputClass} defaultValue="pst">
+   700→                <option value="pst">PST (UTC-8)</option>
+   701→                <option value="est">EST (UTC-5)</option>
+   702→                <option value="gmt">GMT (UTC+0)</option>
+   703→                <option value="jst">JST (UTC+9)</option>
+   704→              </select>
+   705→            </FormField>
+   706→            <div className="col-span-full flex justify-end gap-2">
+   707→              <Button variant="ghost" size="md">Discard</Button>
+   708→              <Button variant="primary" size="md">Save changes</Button>
+   709→            </div>
+   710→          </FormSection>
+   711→        </div>
+   712→      </Card>
+   713→    </div>
+   714→  );
+   715→}
+   716→=== /home/z/my-project/src/app/(with-layout)/forms/form-validation/page.tsx ===
+   717→import FormValidationClient from "./_client";
+   718→
+   719→export const metadata = {
+   720→  title: "Form Validation",
+   721→  description:
+   722→    "Helios Pro — real-time validation for required, email, min-length, password match, URL and numeric range fields.",
+   723→};
+   724→
+   725→export default function FormValidationPage() {
+   726→  return <FormValidationClient />;
+   727→}
+   728→=== /home/z/my-project/src/app/(with-layout)/forms/multi-step-form/page.tsx ===
+   729→import MultiStepFormClient from "./_client";
+   730→
+   731→export const metadata = {
+   732→  title: "Multi-Step Form",
+   733→  description:
+   734→    "Helios Pro — 4-step wizard (Account, Profile, Preferences, Review) with step indicator, per-step validation and a final summary.",
+   735→};
+   736→
+   737→export default function MultiStepFormPage() {
+   738→  return <MultiStepFormClient />;
+   739→}
+   740→=== /home/z/my-project/src/app/(with-layout)/forms/payment-form/page.tsx ===
+   741→import PaymentFormClient from "./_client";
+   742→
+   743→export const metadata = {
+   744→  title: "Payment Form",
+   745→  description:
+   746→    "Helios Pro — UI-only card form with card-type detection, formatted card number, expiry MM/YY, CVC and billing ZIP.",
+   747→};
+   748→
+   749→export default function PaymentFormPage() {
+   750→  return <PaymentFormClient />;
+   751→}
+   752→=== /home/z/my-project/src/app/(with-layout)/forms/rich-text-editor/page.tsx ===
+   753→import RichTextEditorClient from "./_client";
+   754→
+   755→export const metadata = {
+   756→  title: "Rich Text Editor",
+   757→  description:
+   758→    "Helios Pro — UI-only rich text editor with a full toolbar (bold, italic, lists, headings, alignment, links).",
+   759→};
+   760→
+   761→export default function RichTextEditorPage() {
+   762→  return <RichTextEditorClient />;
+   763→}
+   764→=== /home/z/my-project/src/app/(with-layout)/forms/selects/page.tsx ===
+   765→import SelectsClient from "./_client";
+   766→
+   767→export const metadata = {
+   768→  title: "Selects",
+   769→  description:
+   770→    "Helios Pro — single, multi, grouped, searchable and avatar variants for select controls.",
+   771→};
+   772→
+   773→export default function SelectsPage() {
+   774→  return <SelectsClient />;
+   775→}
+   776→=== /home/z/my-project/src/app/(with-layout)/forms/switches/page.tsx ===
+   777→import SwitchesClient from "./_client";
+   778→
+   779→export const metadata = {
+   780→  title: "Switches",
+   781→  description:
+   782→    "Helios Pro — basic, labelled, sized, coloured, icon and grouped-panel switch controls.",
+   783→};
+   784→
+   785→export default function SwitchesPage() {
+   786→  return <SwitchesClient />;
+   787→}

@@ -1,0 +1,845 @@
+     1→import { SVGProps } from "react";
+     2→
+     3→export type PropsType = SVGProps<SVGSVGElement>;
+     4→
+     5→export function ChevronUp(props: PropsType) {
+     6→  return (
+     7→    <svg width={16} height={8} viewBox="0 0 16 8" fill="currentColor" {...props}>
+     8→      <path
+     9→        fillRule="evenodd"
+    10→        clipRule="evenodd"
+    11→        d="M7.553.728a.687.687 0 01.895 0l6.416 5.5a.688.688 0 01-.895 1.044L8 2.155 2.03 7.272a.688.688 0 11-.894-1.044l6.417-5.5z"
+    12→      />
+    13→    </svg>
+    14→  );
+    15→}
+    16→
+    17→export function ChevronRight(props: PropsType) {
+    18→  return (
+    19→    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" {...props}>
+    20→      <path
+    21→        d="M6 3.5L10.5 8L6 12.5"
+    22→        stroke="currentColor"
+    23→        strokeWidth="1.5"
+    24→        strokeLinecap="round"
+    25→        strokeLinejoin="round"
+    26→      />
+    27→    </svg>
+    28→  );
+    29→}
+    30→
+    31→export function HomeIcon(props: PropsType) {
+    32→  return (
+    33→    <svg width={22} height={22} viewBox="0 0 24 24" fill="currentColor" {...props}>
+    34→      <path d="M9 17.25a.75.75 0 000 1.5h6a.75.75 0 000-1.5H9z" />
+    35→      <path
+    36→        fillRule="evenodd"
+    37→        clipRule="evenodd"
+    38→        d="M12 1.25c-.725 0-1.387.2-2.11.537-.702.327-1.512.81-2.528 1.415l-1.456.867c-1.119.667-2.01 1.198-2.686 1.706C2.523 6.3 2 6.84 1.66 7.551c-.342.711-.434 1.456-.405 2.325.029.841.176 1.864.36 3.146l.293 2.032c.237 1.65.426 2.959.707 3.978.29 1.05.702 1.885 1.445 2.524.742.64 1.63.925 2.716 1.062 1.056.132 2.387.132 4.066.132h2.316c1.68 0 3.01 0 4.066-.132 1.086-.137 1.974-.422 2.716-1.061.743-.64 1.155-1.474 1.445-2.525.281-1.02.47-2.328.707-3.978l.292-2.032c.185-1.282.332-2.305.36-3.146.03-.87-.062-1.614-.403-2.325C22 6.84 21.477 6.3 20.78 5.775c-.675-.508-1.567-1.039-2.686-1.706l-1.456-.867c-1.016-.605-1.826-1.088-2.527-1.415-.724-.338-1.386-.537-2.111-.537zM8.096 4.511c1.057-.63 1.803-1.073 2.428-1.365.609-.284 1.047-.396 1.476-.396.43 0 .867.112 1.476.396.625.292 1.37.735 2.428 1.365l1.385.825c1.165.694 1.986 1.184 2.59 1.638.587.443.91.809 1.11 1.225.199.416.282.894.257 1.626-.026.75-.16 1.691-.352 3.026l-.28 1.937c-.246 1.714-.422 2.928-.675 3.845-.247.896-.545 1.415-.977 1.787-.433.373-.994.593-1.925.71-.951.119-2.188.12-3.93.12h-2.213c-1.743 0-2.98-.001-3.931-.12-.93-.117-1.492-.337-1.925-.71-.432-.372-.73-.891-.977-1.787-.253-.917-.43-2.131-.676-3.845l-.279-1.937c-.192-1.335-.326-2.277-.352-3.026-.025-.732.058-1.21.258-1.626.2-.416.521-.782 1.11-1.225.603-.454 1.424-.944 2.589-1.638l1.385-.825z"
+    39→      />
+    40→    </svg>
+    41→  );
+    42→}
+    43→
+    44→export function Calendar(props: PropsType) {
+    45→  return (
+    46→    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+    47→      <path
+    48→        d="M17 14a1 1 0 100-2 1 1 0 000 2zM17 18a1 1 0 100-2 1 1 0 000 2zM13 13a1 1 0 11-2 0 1 1 0 012 0zM13 17a1 1 0 11-2 0 1 1 0 012 0zM7 14a1 1 0 100-2 1 1 0 000 2zM7 18a1 1 0 100-2 1 1 0 000 2z"
+    49→        fill="currentColor"
+    50→      />
+    51→      <path
+    52→        fillRule="evenodd"
+    53→        clipRule="evenodd"
+    54→        d="M7 1.75a.75.75 0 01.75.75v.763c.662-.013 1.391-.013 2.193-.013h4.113c.803 0 1.532 0 2.194.013V2.5a.75.75 0 011.5 0v.827c.26.02.506.045.739.076 1.172.158 2.121.49 2.87 1.238.748.749 1.08 1.698 1.238 2.87.153 1.14.153 2.595.153 4.433v2.112c0 1.838 0 3.294-.153 4.433-.158 1.172-.49 2.121-1.238 2.87-.749.748-1.698 1.08-2.87 1.238-1.14.153-2.595.153-4.433.153H9.944c-1.838 0-3.294 0-4.433-.153-1.172-.158-2.121-.49-2.87-1.238-.748-.749-1.08-1.698-1.238-2.87-.153-1.14-.153-2.595-.153-4.433v-2.112c0-1.838 0-3.294.153-4.433.158-1.172.49-2.121 1.238-2.87.749-.748 1.698-1.08 2.87-1.238.233-.031.48-.056.739-.076V2.5A.75.75 0 017 1.75zM5.71 4.89c-1.005.135-1.585.389-2.008.812-.423.423-.677 1.003-.812 2.009-.023.17-.042.35-.058.539h18.336c-.016-.19-.035-.369-.058-.54-.135-1.005-.389-1.585-.812-2.008-.423-.423-1.003-.677-2.009-.812-1.027-.138-2.382-.14-4.289-.14h-4c-1.907 0-3.261.002-4.29.14zM2.75 12c0-.854 0-1.597.013-2.25h18.474c.013.653.013 1.396.013 2.25v2c0 1.907-.002 3.262-.14 4.29-.135 1.005-.389 1.585-.812 2.008-.423.423-1.003.677-2.009.812-1.027.138-2.382.14-4.289.14h-4c-1.907 0-3.261-.002-4.29-.14-1.005-.135-1.585-.389-2.008-.812-.423-.423-.677-1.003-.812-2.009-.138-1.027-.14-2.382-.14-4.289v-2z"
+    55→        fill="currentColor"
+    56→      />
+    57→    </svg>
+    58→  );
+    59→}
+    60→
+    61→export function User(props: PropsType) {
+    62→  return (
+    63→    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+    64→      <path
+    65→        fillRule="evenodd"
+    66→        clipRule="evenodd"
+    67→        d="M12 1.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM8.75 6a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0zM12 12.25c-2.313 0-4.445.526-6.024 1.414C4.42 14.54 3.25 15.866 3.25 17.5v.102c-.001 1.162-.002 2.62 1.277 3.662.629.512 1.51.877 2.7 1.117 1.192.242 2.747.369 4.773.369s3.58-.127 4.774-.369c1.19-.24 2.07-.605 2.7-1.117 1.279-1.042 1.277-2.5 1.276-3.662V17.5c0-1.634-1.17-2.96-2.725-3.836-1.58-.888-3.711-1.414-6.025-1.414zM4.75 17.5c0-.851.622-1.775 1.961-2.528 1.316-.74 3.184-1.222 5.29-1.222 2.104 0 3.972.482 5.288 1.222 1.34.753 1.961 1.677 1.961 2.528 0 1.308-.04 2.044-.724 2.6-.37.302-.99.597-2.05.811-1.057.214-2.502.339-4.476.339-1.974 0-3.42-.125-4.476-.339-1.06-.214-1.68-.509-2.05-.81-.684-.557-.724-1.293-.724-2.601z"
+    68→        fill="currentColor"
+    69→      />
+    70→    </svg>
+    71→  );
+    72→}
+    73→
+    74→export function Alphabet(props: PropsType) {
+    75→  return (
+    76→    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+    77→      <path
+    78→        fillRule="evenodd"
+    79→        clipRule="evenodd"
+    80→        d="M2.25 7A.75.75 0 013 6.25h10a.75.75 0 010 1.5H3A.75.75 0 012.25 7zm14.25-.75a.75.75 0 01.684.442l4.5 10a.75.75 0 11-1.368.616l-1.437-3.194H14.12l-1.437 3.194a.75.75 0 11-1.368-.616l4.5-10a.75.75 0 01.684-.442zm-1.704 6.364h3.408L16.5 8.828l-1.704 3.786zM2.25 12a.75.75 0 01.75-.75h7a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zm0 5a.75.75 0 01.75-.75h5a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75z"
+    81→        fill="currentColor"
+    82→      />
+    83→    </svg>
+    84→  );
+    85→}
+    86→
+    87→export function Table(props: PropsType) {
+    88→  return (
+    89→    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="currentColor" {...props}>
+    90→      <path
+    91→        fillRule="evenodd"
+    92→        clipRule="evenodd"
+    93→        d="M18.29 4.89c-1.028-.138-2.383-.14-4.29-.14h-4c-1.907 0-3.261.002-4.29.14-1.005.135-1.585.389-2.008.812-.423.423-.677 1.003-.812 2.009-.138 1.028-.14 2.382-.14 4.289 0 1.907.002 3.261.14 4.29.135 1.005.389 1.585.812 2.008.423.423 1.003.677 2.009.812 1.028.138 2.382.14 4.289.14h4c1.907 0 3.262-.002 4.29-.14 1.005-.135 1.585-.389 2.008-.812.423-.423.677-1.003.812-2.009.138-1.028.14-2.382.14-4.289 0-1.907-.002-3.261-.14-4.29-.135-1.005-.389-1.585-.812-2.008-.423-.423-1.003-.677-2.009-.812zm.199-1.487c1.172.158 2.121.49 2.87 1.238.748.749 1.08 1.698 1.238 2.87.153 1.14.153 2.595.153 4.433v.112c0 1.838 0 3.294-.153 4.433-.158 1.172-.49 2.121-1.238 2.87-.749.748-1.698 1.08-2.87 1.238-1.14.153-2.595.153-4.433.153H9.944c-1.838 0-3.294 0-4.433-.153-1.172-.158-2.121-.49-2.87-1.238-.748-.749-1.08-1.698-1.238-2.87-.153-1.14-.153-2.595-.153-4.433v-.112c0-1.838 0-3.294.153-4.433.158-1.172.49-2.121 1.238-2.87.749-.748 1.698-1.08 2.87-1.238 1.14-.153 2.595-.153 4.433-.153h4.112c1.838 0 3.294 0 4.433.153zM8.25 17a.75.75 0 01.75-.75h6a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z"
+    94→      />
+    95→    </svg>
+    96→  );
+    97→}
+    98→
+    99→export function PieChart(props: PropsType) {
+   100→  return (
+   101→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   102→      <path
+   103→        fillRule="evenodd"
+   104→        clipRule="evenodd"
+   105→        d="M14.254 1.365c-1.096-.306-2.122.024-2.851.695-.719.66-1.153 1.646-1.153 2.7v6.695a2.295 2.295 0 002.295 2.295h6.694c1.055 0 2.042-.434 2.701-1.153.67-.729 1.001-1.755.695-2.851a12.102 12.102 0 00-8.38-8.381zM11.75 4.76c0-.652.27-1.232.668-1.597.386-.355.886-.508 1.433-.355 3.55.991 6.349 3.79 7.34 7.34.153.548 0 1.048-.355 1.434-.365.397-.945.667-1.597.667h-6.694a.795.795 0 01-.795-.795V4.761z"
+   106→        fill="currentColor"
+   107→      />
+   108→      <path
+   109→        d="M8.672 4.716a.75.75 0 00-.45-1.432C4.183 4.554 1.25 8.328 1.25 12.79c0 5.501 4.46 9.961 9.96 9.961 4.462 0 8.236-2.932 9.505-6.973a.75.75 0 10-1.43-.45 8.465 8.465 0 01-8.074 5.923 8.46 8.46 0 01-8.461-8.46 8.465 8.465 0 015.922-8.074z"
+   110→        fill="currentColor"
+   111→      />
+   112→    </svg>
+   113→  );
+   114→}
+   115→
+   116→export function FourCircle(props: PropsType) {
+   117→  return (
+   118→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   119→      <path
+   120→        fillRule="evenodd"
+   121→        clipRule="evenodd"
+   122→        d="M6.5 1.75a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM3.25 6.5a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0zM17.5 12.75a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zm-3.25 4.75a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0zM12.75 6.5a4.75 4.75 0 119.5 0 4.75 4.75 0 01-9.5 0zm4.75-3.25a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5zM6.5 12.75a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM3.25 17.5a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0z"
+   123→        fill="currentColor"
+   124→      />
+   125→    </svg>
+   126→  );
+   127→}
+   128→
+   129→export function Authentication(props: PropsType) {
+   130→  return (
+   131→    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="currentColor" {...props}>
+   132→      <path d="M14.945 1.25c-1.367 0-2.47 0-3.337.117-.9.12-1.658.38-2.26.981-.524.525-.79 1.17-.929 1.928-.135.737-.161 1.638-.167 2.72a.75.75 0 001.5.008c.006-1.093.034-1.868.142-2.457.105-.566.272-.895.515-1.138.277-.277.666-.457 1.4-.556.755-.101 1.756-.103 3.191-.103h1c1.436 0 2.437.002 3.192.103.734.099 1.122.28 1.4.556.276.277.456.665.555 1.4.102.754.103 1.756.103 3.191v8c0 1.435-.001 2.436-.103 3.192-.099.734-.279 1.122-.556 1.399-.277.277-.665.457-1.399.556-.755.101-1.756.103-3.192.103h-1c-1.435 0-2.436-.002-3.192-.103-.733-.099-1.122-.28-1.399-.556-.243-.244-.41-.572-.515-1.138-.108-.589-.136-1.364-.142-2.457a.75.75 0 10-1.5.008c.006 1.082.032 1.983.167 2.72.14.758.405 1.403.93 1.928.601.602 1.36.86 2.26.982.866.116 1.969.116 3.336.116h1.11c1.368 0 2.47 0 3.337-.116.9-.122 1.658-.38 2.26-.982.602-.602.86-1.36.982-2.26.116-.867.116-1.97.116-3.337v-8.11c0-1.367 0-2.47-.116-3.337-.121-.9-.38-1.658-.982-2.26-.602-.602-1.36-.86-2.26-.981-.867-.117-1.97-.117-3.337-.117h-1.11z" />
+   133→      <path d="M2.001 11.249a.75.75 0 000 1.5h11.973l-1.961 1.68a.75.75 0 10.976 1.14l3.5-3a.75.75 0 000-1.14l-3.5-3a.75.75 0 00-.976 1.14l1.96 1.68H2.002z" />
+   134→    </svg>
+   135→  );
+   136→}
+   137→
+   138→export function ArrowLeftIcon(props: PropsType) {
+   139→  return (
+   140→    <svg width={18} height={18} viewBox="0 0 18 18" fill="currentColor" {...props}>
+   141→      <path
+   142→        fillRule="evenodd"
+   143→        clipRule="evenodd"
+   144→        d="M7.89775 4.10225C8.11742 4.32192 8.11742 4.67808 7.89775 4.89775L4.358 8.4375H15C15.3107 8.4375 15.5625 8.68934 15.5625 9C15.5625 9.31066 15.3107 9.5625 15 9.5625H4.358L7.89775 13.1023C8.11742 13.3219 8.11742 13.6781 7.89775 13.8977C7.67808 14.1174 7.32192 14.1174 7.10225 13.8977L2.60225 9.39775C2.38258 9.17808 2.38258 8.82192 2.60225 8.60225L7.10225 4.10225C7.32192 3.88258 7.67808 3.88258 7.89775 4.10225Z"
+   145→        fill="currentColor"
+   146→      />
+   147→    </svg>
+   148→  );
+   149→}
+   150→
+   151→/* ===== Helios Pro: navigation icon set ===== */
+   152→
+   153→export function GridIcon(props: PropsType) {
+   154→  return (
+   155→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   156→      <rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   157→      <rect x="14" y="3" width="7" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   158→      <rect x="3" y="14" width="7" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   159→      <rect x="14" y="14" width="7" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   160→    </svg>
+   161→  );
+   162→}
+   163→
+   164→export function ShoppingBagIcon(props: PropsType) {
+   165→  return (
+   166→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   167→      <path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   168→      <path d="M9 8V6a3 3 0 016 0v2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   169→    </svg>
+   170→  );
+   171→}
+   172→
+   173→export function UsersIcon(props: PropsType) {
+   174→  return (
+   175→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   176→      <circle cx="9" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.6"/>
+   177→      <path d="M3 20c0-3 2.7-5.5 6-5.5s6 2.5 6 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   178→      <path d="M16 4.5a3 3 0 010 6M18 20c0-2-.8-3.7-2-4.8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   179→    </svg>
+   180→  );
+   181→}
+   182→
+   183→export function WalletIcon(props: PropsType) {
+   184→  return (
+   185→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   186→      <rect x="3" y="6" width="18" height="13" rx="2.5" stroke="currentColor" strokeWidth="1.6"/>
+   187→      <path d="M3 10h18" stroke="currentColor" strokeWidth="1.6"/>
+   188→      <circle cx="17" cy="14.5" r="1.4" fill="currentColor"/>
+   189→    </svg>
+   190→  );
+   191→}
+   192→
+   193→export function CloudIcon(props: PropsType) {
+   194→  return (
+   195→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   196→      <path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A3.5 3.5 0 0117 18H7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   197→    </svg>
+   198→  );
+   199→}
+   200→
+   201→export function BriefcaseIcon(props: PropsType) {
+   202→  return (
+   203→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   204→      <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   205→      <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" strokeWidth="1.6"/>
+   206→      <path d="M3 13h18" stroke="currentColor" strokeWidth="1.6"/>
+   207→    </svg>
+   208→  );
+   209→}
+   210→
+   211→export function MegaphoneIcon(props: PropsType) {
+   212→  return (
+   213→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   214→      <path d="M3 10v4a1 1 0 001 1h3l8 4V5L7 9H4a1 1 0 00-1 1z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   215→      <path d="M19 8a4 4 0 010 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   216→    </svg>
+   217→  );
+   218→}
+   219→
+   220→export function CpuIcon(props: PropsType) {
+   221→  return (
+   222→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   223→      <rect x="6" y="6" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   224→      <rect x="9.5" y="9.5" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.4"/>
+   225→      <path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+   226→    </svg>
+   227→  );
+   228→}
+   229→
+   230→export function LifeBuoyIcon(props: PropsType) {
+   231→  return (
+   232→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   233→      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+   234→      <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.6"/>
+   235→      <path d="M5 5l4.5 4.5M14.5 14.5L19 19M19 5l-4.5 4.5M9.5 14.5L5 19" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   236→    </svg>
+   237→  );
+   238→}
+   239→
+   240→export function TruckIcon(props: PropsType) {
+   241→  return (
+   242→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   243→      <path d="M3 6h11v9H3V6z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   244→      <path d="M14 9h4l3 3v3h-7V9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   245→      <circle cx="7" cy="18" r="2" stroke="currentColor" strokeWidth="1.6"/>
+   246→      <circle cx="17" cy="18" r="2" stroke="currentColor" strokeWidth="1.6"/>
+   247→    </svg>
+   248→  );
+   249→}
+   250→
+   251→export function MailIcon(props: PropsType) {
+   252→  return (
+   253→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   254→      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   255→      <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   256→    </svg>
+   257→  );
+   258→}
+   259→
+   260→export function ChatIcon(props: PropsType) {
+   261→  return (
+   262→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   263→      <path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H8l-4 4V6a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   264→      <circle cx="9" cy="11" r="1" fill="currentColor"/>
+   265→      <circle cx="13" cy="11" r="1" fill="currentColor"/>
+   266→      <circle cx="17" cy="11" r="1" fill="currentColor"/>
+   267→    </svg>
+   268→  );
+   269→}
+   270→
+   271→export function KanbanIcon(props: PropsType) {
+   272→  return (
+   273→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   274→      <rect x="3" y="3" width="5" height="13" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+   275→      <rect x="10" y="3" width="5" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+   276→      <rect x="17" y="3" width="4" height="15" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+   277→    </svg>
+   278→  );
+   279→}
+   280→
+   281→export function StickyNoteIcon(props: PropsType) {
+   282→  return (
+   283→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   284→      <path d="M4 4h12l4 4v12H4V4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   285→      <path d="M16 4v4h4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   286→    </svg>
+   287→  );
+   288→}
+   289→
+   290→export function CheckSquareIcon(props: PropsType) {
+   291→  return (
+   292→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   293→      <rect x="3" y="3" width="18" height="18" rx="2.5" stroke="currentColor" strokeWidth="1.6"/>
+   294→      <path d="M8 12l3 3 5-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   295→    </svg>
+   296→  );
+   297→}
+   298→
+   299→export function FolderIcon(props: PropsType) {
+   300→  return (
+   301→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   302→      <path d="M3 6a1 1 0 011-1h5l2 3h9a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V6z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   303→    </svg>
+   304→  );
+   305→}
+   306→
+   307→export function ContactBookIcon(props: PropsType) {
+   308→  return (
+   309→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   310→      <path d="M4 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke="currentColor" strokeWidth="1.6"/>
+   311→      <path d="M19 8h2v3h-2M19 13h2v3h-2" stroke="currentColor" strokeWidth="1.6"/>
+   312→      <circle cx="11" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.5"/>
+   313→      <path d="M7.5 16c.6-1.7 2-2.6 3.5-2.6s2.9.9 3.5 2.6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+   314→    </svg>
+   315→  );
+   316→}
+   317→
+   318→export function TicketIcon(props: PropsType) {
+   319→  return (
+   320→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   321→      <path d="M4 6a1 1 0 011-1h14a1 1 0 011 1v3a2 2 0 000 4v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3a2 2 0 000-4V6z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   322→      <path d="M14 5v14" stroke="currentColor" strokeWidth="1.6" strokeDasharray="2 2"/>
+   323→    </svg>
+   324→  );
+   325→}
+   326→
+   327→export function FileTextIcon(props: PropsType) {
+   328→  return (
+   329→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   330→      <path d="M5 3h9l5 5v13H5V3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   331→      <path d="M14 3v5h5M8 13h8M8 17h6M8 9h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   332→    </svg>
+   333→  );
+   334→}
+   335→
+   336→export function PackageIcon(props: PropsType) {
+   337→  return (
+   338→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   339→      <path d="M12 3l9 5v8l-9 5-9-5V8l9-5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   340→      <path d="M12 3v18M3 8l9 5 9-5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   341→    </svg>
+   342→  );
+   343→}
+   344→
+   345→export function ShoppingCartIcon(props: PropsType) {
+   346→  return (
+   347→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   348→      <circle cx="9" cy="20" r="1.6" fill="currentColor"/>
+   349→      <circle cx="18" cy="20" r="1.6" fill="currentColor"/>
+   350→      <path d="M2 3h2l3 13h12l2-8H6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   351→    </svg>
+   352→  );
+   353→}
+   354→
+   355→export function StarIcon(props: PropsType) {
+   356→  return (
+   357→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   358→      <path d="M12 3l2.6 5.7 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 19.9l1.4-6.3L3 9.3l6.4-.6L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   359→    </svg>
+   360→  );
+   361→}
+   362→
+   363→export function TagIcon(props: PropsType) {
+   364→  return (
+   365→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   366→      <path d="M3 3h8l10 10-8 8L3 11V3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   367→      <circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/>
+   368→    </svg>
+   369→  );
+   370→}
+   371→
+   372→export function BoxIcon(props: PropsType) {
+   373→  return (
+   374→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   375→      <rect x="3" y="3" width="18" height="18" rx="2.5" stroke="currentColor" strokeWidth="1.6"/>
+   376→      <path d="M3 9h18M9 9v12" stroke="currentColor" strokeWidth="1.6"/>
+   377→    </svg>
+   378→  );
+   379→}
+   380→
+   381→export function ShieldIcon(props: PropsType) {
+   382→  return (
+   383→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   384→      <path d="M12 3l8 3v6c0 4.5-3 8-8 9-5-1-8-4.5-8-9V6l8-3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   385→      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   386→    </svg>
+   387→  );
+   388→}
+   389→
+   390→export function CreditCardIcon(props: PropsType) {
+   391→  return (
+   392→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   393→      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   394→      <path d="M3 10h18" stroke="currentColor" strokeWidth="1.6"/>
+   395→      <path d="M7 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   396→    </svg>
+   397→  );
+   398→}
+   399→
+   400→export function ActivityIcon(props: PropsType) {
+   401→  return (
+   402→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   403→      <path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   404→    </svg>
+   405→  );
+   406→}
+   407→
+   408→export function BellIcon(props: PropsType) {
+   409→  return (
+   410→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   411→      <path d="M6 9a6 6 0 1112 0c0 5 2 7 2 7H4s2-2 2-7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   412→      <path d="M10 20a2 2 0 004 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   413→    </svg>
+   414→  );
+   415→}
+   416→
+   417→export function PlugIcon(props: PropsType) {
+   418→  return (
+   419→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   420→      <path d="M9 3v6M15 3v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   421→      <path d="M6 9h12v3a6 6 0 01-12 0V9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   422→      <path d="M12 18v3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   423→    </svg>
+   424→  );
+   425→}
+   426→
+   427→export function InputIcon(props: PropsType) {
+   428→  return (
+   429→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   430→      <rect x="3" y="8" width="18" height="8" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   431→      <path d="M7 12h10M7 12l2-2M7 12l2 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   432→    </svg>
+   433→  );
+   434→}
+   435→
+   436→export function ToggleIcon(props: PropsType) {
+   437→  return (
+   438→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   439→      <rect x="2" y="7" width="20" height="10" rx="5" stroke="currentColor" strokeWidth="1.6"/>
+   440→      <circle cx="16" cy="12" r="2.6" fill="currentColor"/>
+   441→    </svg>
+   442→  );
+   443→}
+   444→
+   445→export function CalendarPlusIcon(props: PropsType) {
+   446→  return (
+   447→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   448→      <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   449→      <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   450→      <path d="M12 13v4M10 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   451→    </svg>
+   452→  );
+   453→}
+   454→
+   455→export function UploadIcon(props: PropsType) {
+   456→  return (
+   457→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   458→      <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   459→      <path d="M12 3v12M8 7l4-4 4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   460→    </svg>
+   461→  );
+   462→}
+   463→
+   464→export function EditIcon(props: PropsType) {
+   465→  return (
+   466→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   467→      <path d="M4 20h4l11-11a2.8 2.8 0 00-4-4L4 16v4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   468→      <path d="M13.5 6.5l4 4" stroke="currentColor" strokeWidth="1.6"/>
+   469→    </svg>
+   470→  );
+   471→}
+   472→
+   473→export function CheckIcon(props: PropsType) {
+   474→  return (
+   475→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   476→      <path d="M5 12l4 4 10-10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+   477→    </svg>
+   478→  );
+   479→}
+   480→
+   481→export function LayersIcon(props: PropsType) {
+   482→  return (
+   483→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   484→      <path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   485→      <path d="M3 13l9 5 9-5M3 17l9 5 9-5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   486→    </svg>
+   487→  );
+   488→}
+   489→
+   490→export function CandlestickIcon(props: PropsType) {
+   491→  return (
+   492→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   493→      <path d="M6 3v4M6 17v4M6 7h0a1 1 0 011 1v8a1 1 0 01-1 1H6a1 1 0 01-1-1V8a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.6"/>
+   494→      <path d="M18 5v3M18 16v3M18 8h0a1 1 0 011 1v5a1 1 0 01-1 1h0a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.6"/>
+   495→    </svg>
+   496→  );
+   497→}
+   498→
+   499→export function GaugeIcon(props: PropsType) {
+   500→  return (
+   501→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   502→      <path d="M3 14a9 9 0 1118 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   503→      <path d="M12 14l4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   504→      <circle cx="12" cy="14" r="1.6" fill="currentColor"/>
+   505→    </svg>
+   506→  );
+   507→}
+   508→
+   509→export function RadioIcon(props: PropsType) {
+   510→  return (
+   511→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   512→      <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="1.6"/>
+   513→      <path d="M5 5a10 10 0 010 14M19 5a10 10 0 010 14M8 8a6 6 0 010 8M16 8a6 6 0 010 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   514→    </svg>
+   515→  );
+   516→}
+   517→
+   518→export function FileBarIcon(props: PropsType) {
+   519→  return (
+   520→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   521→      <path d="M5 3h9l5 5v13H5V3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   522→      <path d="M14 3v5h5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   523→      <path d="M8 17v-3M11 17v-5M14 17v-7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   524→    </svg>
+   525→  );
+   526→}
+   527→
+   528→export function BtnIcon(props: PropsType) {
+   529→  return (
+   530→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   531→      <rect x="3" y="8" width="18" height="8" rx="4" stroke="currentColor" strokeWidth="1.6"/>
+   532→      <path d="M9 12h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   533→    </svg>
+   534→  );
+   535→}
+   536→
+   537→export function BadgeIcon(props: PropsType) {
+   538→  return (
+   539→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   540→      <path d="M12 3l8 4v5c0 4-3.5 7.5-8 9-4.5-1.5-8-5-8-9V7l8-4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   541→      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   542→    </svg>
+   543→  );
+   544→}
+   545→
+   546→export function CardIcon(props: PropsType) {
+   547→  return (
+   548→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   549→      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   550→      <path d="M3 10h18" stroke="currentColor" strokeWidth="1.6"/>
+   551→      <path d="M7 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   552→    </svg>
+   553→  );
+   554→}
+   555→
+   556→export function AlertIcon(props: PropsType) {
+   557→  return (
+   558→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   559→      <path d="M12 3l9 16H3l9-16z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   560→      <path d="M12 9v4M12 16h.01" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   561→    </svg>
+   562→  );
+   563→}
+   564→
+   565→export function AvatarIcon(props: PropsType) {
+   566→  return (
+   567→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   568→      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+   569→      <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.6"/>
+   570→      <path d="M6 18c1-2.5 3.5-4 6-4s5 1.5 6 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   571→    </svg>
+   572→  );
+   573→}
+   574→
+   575→export function DropdownIcon(props: PropsType) {
+   576→  return (
+   577→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   578→      <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   579→      <path d="M7 12h6M16 11l2 2-2 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   580→    </svg>
+   581→  );
+   582→}
+   583→
+   584→export function ModalIcon(props: PropsType) {
+   585→  return (
+   586→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   587→      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   588→      <path d="M3 9h18M7 7h.01" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   589→    </svg>
+   590→  );
+   591→}
+   592→
+   593→export function DrawerIcon(props: PropsType) {
+   594→  return (
+   595→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   596→      <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   597→      <path d="M14 3v18" stroke="currentColor" strokeWidth="1.6"/>
+   598→      <path d="M16.5 9l1.5 1.5L16.5 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+   599→    </svg>
+   600→  );
+   601→}
+   602→
+   603→export function TabsIcon(props: PropsType) {
+   604→  return (
+   605→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   606→      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   607→      <path d="M3 9h18M8 5v4M14 5v4" stroke="currentColor" strokeWidth="1.6"/>
+   608→    </svg>
+   609→  );
+   610→}
+   611→
+   612→export function AccordionIcon(props: PropsType) {
+   613→  return (
+   614→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   615→      <rect x="3" y="4" width="18" height="5" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+   616→      <rect x="3" y="11" width="18" height="5" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+   617→      <path d="M7 6.5h2M7 13.5h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+   618→    </svg>
+   619→  );
+   620→}
+   621→
+   622→export function TooltipIcon(props: PropsType) {
+   623→  return (
+   624→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   625→      <path d="M3 5h18v10H8l-5 4V5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   626→      <circle cx="12" cy="10" r="1" fill="currentColor"/>
+   627→      <path d="M9 10h.01M15 10h.01" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   628→    </svg>
+   629→  );
+   630→}
+   631→
+   632→export function PopoverIcon(props: PropsType) {
+   633→  return (
+   634→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   635→      <rect x="3" y="3" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   636→      <path d="M8 15l4 6 4-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   637→    </svg>
+   638→  );
+   639→}
+   640→
+   641→export function PaginationIcon(props: PropsType) {
+   642→  return (
+   643→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   644→      <rect x="3" y="9" width="4" height="6" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+   645→      <rect x="10" y="9" width="4" height="6" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+   646→      <rect x="17" y="9" width="4" height="6" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+   647→    </svg>
+   648→  );
+   649→}
+   650→
+   651→export function ProgressIcon(props: PropsType) {
+   652→  return (
+   653→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   654→      <rect x="3" y="6" width="18" height="6" rx="3" stroke="currentColor" strokeWidth="1.6"/>
+   655→      <rect x="3" y="14" width="18" height="6" rx="3" stroke="currentColor" strokeWidth="1.6"/>
+   656→      <rect x="3" y="6" width="12" height="6" rx="3" fill="currentColor"/>
+   657→      <rect x="3" y="14" width="6" height="6" rx="3" fill="currentColor"/>
+   658→    </svg>
+   659→  );
+   660→}
+   661→
+   662→export function SpinnerIcon(props: PropsType) {
+   663→  return (
+   664→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   665→      <path d="M12 3a9 9 0 109 9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   666→    </svg>
+   667→  );
+   668→}
+   669→
+   670→export function ToastIcon(props: PropsType) {
+   671→  return (
+   672→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   673→      <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   674→      <path d="M7 10h6M7 14h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   675→    </svg>
+   676→  );
+   677→}
+   678→
+   679→export function TimelineIcon(props: PropsType) {
+   680→  return (
+   681→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   682→      <path d="M5 3v18M5 6h10M5 12h7M5 18h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   683→      <circle cx="5" cy="6" r="2" fill="currentColor"/>
+   684→      <circle cx="5" cy="12" r="2" fill="currentColor"/>
+   685→      <circle cx="5" cy="18" r="2" fill="currentColor"/>
+   686→    </svg>
+   687→  );
+   688→}
+   689→
+   690→export function BannerIcon(props: PropsType) {
+   691→  return (
+   692→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   693→      <path d="M4 4h16v10H4zM4 14v6l4-3 4 3 4-3 4 3v-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   694→    </svg>
+   695→  );
+   696→}
+   697→
+   698→export function CommandIcon(props: PropsType) {
+   699→  return (
+   700→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   701→      <path d="M9 9V6a2.5 2.5 0 10-2.5 2.5H9zm0 0v6m0-6h6m-6 6v3a2.5 2.5 0 11-2.5-2.5H9zm0 0h6m0-6v6m0-6h2.5A2.5 2.5 0 1015 6v3zm0 6v3a2.5 2.5 0 102.5-2.5H15z" stroke="currentColor" strokeWidth="1.6"/>
+   702→    </svg>
+   703→  );
+   704→}
+   705→
+   706→export function GlobeIcon(props: PropsType) {
+   707→  return (
+   708→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   709→      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+   710→      <path d="M3 12h18M12 3c2.5 2.5 4 6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-6-4-9s1.5-6.5 4-9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   711→    </svg>
+   712→  );
+   713→}
+   714→
+   715→export function RocketIcon(props: PropsType) {
+   716→  return (
+   717→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   718→      <path d="M12 3c4 2 6 6 6 11l-3 2H9l-3-2c0-5 2-9 6-11z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   719→      <circle cx="12" cy="9" r="1.6" stroke="currentColor" strokeWidth="1.6"/>
+   720→      <path d="M9 18l-2 3M15 18l2 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   721→    </svg>
+   722→  );
+   723→}
+   724→
+   725→export function LifeBuoy(props: PropsType) { return LifeBuoyIcon(props); }
+   726→
+   727→export function BookIcon(props: PropsType) {
+   728→  return (
+   729→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   730→      <path d="M4 4h7a3 3 0 013 3v13a3 3 0 00-3-3H4V4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   731→      <path d="M20 4h-7a3 3 0 00-3 3v13a3 3 0 013-3h7V4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   732→    </svg>
+   733→  );
+   734→}
+   735→
+   736→export function HelpCircleIcon(props: PropsType) {
+   737→  return (
+   738→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   739→      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+   740→      <path d="M9.5 9.5a2.5 2.5 0 114 2c-.8.6-1.5 1-1.5 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   741→      <circle cx="12" cy="17" r="1" fill="currentColor"/>
+   742→    </svg>
+   743→  );
+   744→}
+   745→
+   746→export function PhoneIcon(props: PropsType) {
+   747→  return (
+   748→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   749→      <path d="M5 4h3l1.5 5L7 10c1 3 4 6 7 7l1-2.5L20 16v3a1 1 0 01-1 1A14 14 0 014 5a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   750→    </svg>
+   751→  );
+   752→}
+   753→
+   754→export function WrenchIcon(props: PropsType) {
+   755→  return (
+   756→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   757→      <path d="M14 4a4 4 0 015 5l-9 9-4 1 1-4 7-9z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   758→    </svg>
+   759→  );
+   760→}
+   761→
+   762→export function MapPinIcon(props: PropsType) {
+   763→  return (
+   764→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   765→      <path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   766→      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
+   767→    </svg>
+   768→  );
+   769→}
+   770→
+   771→export function LockIcon(props: PropsType) {
+   772→  return (
+   773→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   774→      <rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   775→      <path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   776→    </svg>
+   777→  );
+   778→}
+   779→
+   780→export function LogInIcon(props: PropsType) {
+   781→  return (
+   782→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   783→      <path d="M14 4h4a2 2 0 012 2v12a2 2 0 01-2 2h-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   784→      <path d="M3 12h12M11 8l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   785→    </svg>
+   786→  );
+   787→}
+   788→
+   789→export function UserPlusIcon(props: PropsType) {
+   790→  return (
+   791→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   792→      <circle cx="9" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.6"/>
+   793→      <path d="M3 20c0-3 2.7-5.5 6-5.5s6 2.5 6 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   794→      <path d="M18 8v6M15 11h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   795→    </svg>
+   796→  );
+   797→}
+   798→
+   799→export function KeyIcon(props: PropsType) {
+   800→  return (
+   801→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   802→      <circle cx="8" cy="8" r="4" stroke="currentColor" strokeWidth="1.6"/>
+   803→      <path d="M11 11l8 8M16 16l2-2M14 18l2-2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   804→    </svg>
+   805→  );
+   806→}
+   807→
+   808→export function RefreshCwIcon(props: PropsType) {
+   809→  return (
+   810→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   811→      <path d="M3 12a9 9 0 0115-6.7L21 8M21 8V3M21 8h-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   812→      <path d="M21 12a9 9 0 01-15 6.7L3 16M3 16v5M3 16h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+   813→    </svg>
+   814→  );
+   815→}
+   816→
+   817→export function AlertTriangleIcon(props: PropsType) {
+   818→  return (
+   819→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   820→      <path d="M12 3l9 16H3l9-16z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+   821→      <path d="M12 9v4M12 16h.01" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   822→    </svg>
+   823→  );
+   824→}
+   825→
+   826→export function XCircleIcon(props: PropsType) {
+   827→  return (
+   828→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   829→      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+   830→      <path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+   831→    </svg>
+   832→  );
+   833→}
+   834→
+   835→export function ServerIcon(props: PropsType) {
+   836→  return (
+   837→    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" {...props}>
+   838→      <rect x="3" y="4" width="18" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   839→      <rect x="3" y="13" width="18" height="7" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+   840→      <circle cx="7" cy="7.5" r="1" fill="currentColor"/>
+   841→      <circle cx="7" cy="16.5" r="1" fill="currentColor"/>
+   842→    </svg>
+   843→  );
+   844→}
+   845→

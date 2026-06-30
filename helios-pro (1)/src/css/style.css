@@ -1,0 +1,846 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    'Satoshi', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --breakpoint-2xsm: 375px;
+  --breakpoint-xsm: 425px;
+  --breakpoint-3xl: 2000px;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+
+  /* Helios Pro brand tokens — emerald primary, amber accent */
+  --color-primary: #10b981;
+  --color-primary-dark: #047857;
+  --color-primary-light: #34d399;
+  --color-primary-lighter: #6ee7b7;
+  --color-primary-lightest: #a7f3d0;
+  --color-primary-subtle: #d1fae5;
+  --color-primary-faint: #ecfdf5;
+
+  --color-accent: #f59e0b;
+  --color-accent-dark: #d97706;
+  --color-accent-light: #fbbf24;
+  --color-accent-subtle: #fef3c7;
+
+  --color-stroke: #e6ebf1;
+  --color-stroke-dark: #27303e;
+
+  --color-dark-2: #1f2a37;
+  --color-dark-3: #374151;
+  --color-dark-4: #4b5563;
+  --color-dark-5: #475569;
+  --color-dark-6: #94a3b8;
+  --color-dark-7: #cbd5e1;
+  --color-dark-8: #e2e8f0;
+  --color-dark: #0f172a;
+
+  --color-gray-1: #f8fafc;
+  --color-gray-2: #f1f5f9;
+  --color-gray-3: #e2e8f0;
+  --color-gray-4: #cbd5e1;
+  --color-gray-5: #94a3b8;
+  --color-gray-6: #64748b;
+  --color-gray-7: #334155;
+  --color-gray: #eff4fb;
+  --color-gray-dark: #0b1220;
+
+  --color-green: #10b981;
+  --color-green-dark: #047857;
+
+  --color-green-light-1: #10b981;
+  --color-green-light-2: #34d399;
+  --color-green-light-3: #6ee7b7;
+  --color-green-light-4: #a7f3d0;
+  --color-green-light-5: #d1fae5;
+  --color-green-light-6: #ecfdf5;
+  --color-green-light-7: #f0fdf4;
+  --color-green-light: #34d399;
+
+  --color-red: #ef4444;
+  --color-red-dark: #dc2626;
+
+  --color-red-light-2: #f87171;
+  --color-red-light-3: #fca5a5;
+  --color-red-light-4: #fecaca;
+  --color-red-light-5: #fee2e2;
+  --color-red-light-6: #fef2f2;
+  --color-red-light: #f87171;
+
+  --color-blue: #0ea5e9;
+  --color-blue-dark: #0284c7;
+
+  --color-blue-light-2: #38bdf8;
+  --color-blue-light-3: #7dd3fc;
+  --color-blue-light-4: #bae6fd;
+  --color-blue-light-5: #e0f2fe;
+  --color-blue-light: #38bdf8;
+
+  --color-orange-light: #fb923c;
+
+  --color-yellow-dark-2: #d97706;
+  --color-yellow-dark: #f59e0b;
+
+  --color-yellow-light-4: #fffbeb;
+  --color-yellow-light: #fcd34d;
+
+  --color-violet: #8b5cf6;
+  --color-violet-light: #a78bfa;
+  --color-violet-subtle: #ede9fe;
+
+  --color-rose: #f43f5e;
+  --color-rose-light: #fb7185;
+  --color-rose-subtle: #ffe4e6;
+
+  --color-cyan: #06b6d4;
+  --color-cyan-light: #22d3ee;
+
+  --text-heading-1: 60px;
+  --text-heading-1--line-height: 72px;
+  --text-heading-2: 48px;
+  --text-heading-2--line-height: 58px;
+  --text-heading-3: 40px;
+  --text-heading-3--line-height: 48px;
+  --text-heading-4: 35px;
+  --text-heading-4--line-height: 45px;
+  --text-heading-5: 28px;
+  --text-heading-5--line-height: 40px;
+  --text-heading-6: 24px;
+  --text-heading-6--line-height: 30px;
+  --text-body-2xlg: 22px;
+  --text-body-2xlg--line-height: 28px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 22px;
+  --text-body-xs: 12px;
+  --text-body-xs--line-height: 20px;
+
+  --container-3: 0.75rem;
+  --container-4: 1rem;
+  --container-7: 1.75rem;
+  --container-9: 2.25rem;
+  --container-10: 2.5rem;
+  --container-11: 2.75rem;
+  --container-13: 3.25rem;
+  --container-14: 3.5rem;
+  --container-15: 3.75rem;
+  --container-16: 4rem;
+  --container-25: 6.25rem;
+  --container-30: 7.5rem;
+  --container-34: 8.5rem;
+  --container-35: 8.75rem;
+  --container-40: 10rem;
+  --container-44: 11rem;
+  --container-45: 11.25rem;
+  --container-60: 15rem;
+  --container-70: 17.5rem;
+  --container-90: 22.5rem;
+  --container-94: 23.5rem;
+  --container-100: 25rem;
+  --container-103: 25.75rem;
+  --container-125: 31.25rem;
+  --container-150: 37.5rem;
+  --container-180: 45rem;
+  --container-203: 50.75rem;
+  --container-230: 57.5rem;
+  --container-270: 67.5rem;
+  --container-280: 70rem;
+  --container-2_5: 0.625rem;
+  --container-10_5: 2.625rem;
+  --container-22_5: 5.625rem;
+  --container-42_5: 10.625rem;
+  --container-46_5: 11.625rem;
+  --container-132_5: 33.125rem;
+  --container-142_5: 35.625rem;
+  --container-242_5: 60.625rem;
+  --container-292_5: 73.125rem;
+
+  --max-height-35: 8.75rem;
+  --max-height-70: 17.5rem;
+  --max-height-90: 22.5rem;
+  --max-height-300: 18.75rem;
+  --max-height-550: 34.375rem;
+
+  --min-width-75: 18.75rem;
+  --min-width-22_5: 5.625rem;
+  --min-width-42_5: 10.625rem;
+  --min-width-47_5: 11.875rem;
+
+  --z-index-1: 1;
+  --z-index-9: 9;
+  --z-index-99: 99;
+  --z-index-999: 999;
+  --z-index-9999: 9999;
+  --z-index-99999: 99999;
+  --z-index-999999: 999999;
+
+  --aspect-4\/3: 4 / 3;
+  --aspect-21\/9: 21 / 9;
+
+  --background-image-video: url('../images/video/video.png');
+
+  --content-icon-copy: url('../images/icon/icon-copy-alt.svg');
+
+  --transition-property-width: width;
+  --transition-property-stroke: stroke;
+
+  --border-width-6: 6px;
+  --border-width-10: 10px;
+  --border-width-12: 12px;
+
+  /* Helios Pro refined shadow system */
+  --shadow-1: 0px 1px 2px 0px rgba(15, 23, 42, 0.06);
+  --shadow-2: 0px 2px 4px 0px rgba(15, 23, 42, 0.08);
+  --shadow-3:
+    0px 4px 8px -2px rgba(15, 23, 42, 0.06),
+    0px 10px 24px -4px rgba(15, 23, 42, 0.08);
+  --shadow-4:
+    0px 8px 16px -4px rgba(15, 23, 42, 0.1),
+    0px 24px 48px -12px rgba(15, 23, 42, 0.12);
+  --shadow-5:
+    0px 6px 16px 0px rgba(16, 185, 129, 0.16),
+    0px 2px 6px 0px rgba(16, 185, 129, 0.08);
+  --shadow-6:
+    0px 12px 34px 0px rgba(13, 10, 44, 0.08),
+    0px 34px 26px 0px rgba(13, 10, 44, 0.05);
+  --shadow-7: 0px 12px 32px -8px rgba(15, 23, 42, 0.12);
+  --shadow-default: 0px 4px 7px 0px rgba(0, 0, 0, 0.14);
+  --shadow-error: 0px 12px 34px 0px rgba(13, 10, 44, 0.05);
+  --shadow-card: 0px 1px 3px 0px rgba(15, 23, 42, 0.08);
+  --shadow-card-2: 0px 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-card-3: 0px 2px 4px 0px rgba(15, 23, 42, 0.06);
+  --shadow-card-4: 0px 1px 3px 0px rgba(15, 23, 42, 0.1);
+  --shadow-card-5: 0px 2px 6px -1px rgba(15, 23, 42, 0.1);
+  --shadow-card-6: 0px 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-card-7: 0px 1px 4px 0px rgba(15, 23, 42, 0.1);
+  --shadow-card-8: 0px 2px 4px 0px rgba(15, 23, 42, 0.08);
+  --shadow-card-9: 0px 2px 6px 0px rgba(15, 23, 42, 0.06);
+  --shadow-card-10: 0px 4px 8px 0px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(16, 185, 129, 0.18), 0 8px 24px -8px rgba(16, 185, 129, 0.4);
+  --shadow-switcher:
+    0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #ffffff,
+    inset 0px -1px 1px rgba(0, 0, 0, 0.1);
+  --shadow-switch-1: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  --shadow-switch-2: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  --shadow-datepicker: -5px 0 0 #0f172a, 5px 0 0 #0f172a;
+
+  --drop-shadow-1: 0px 1px 0px #e2e8f0;
+  --drop-drop-2: 0px 1px 4px rgba(0, 0, 0, 0.12);
+  --drop-shadow-3: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  --drop-shadow-4: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  --drop-shadow-5: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  --drop-shadow-card: 0px 8px 13px rgba(0, 0, 0, 0.07);
+
+  --animate-linspin: linspin 1568.2353ms linear infinite;
+  --animate-easespin: easespin 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  --animate-left-spin: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite
+    both;
+  --animate-right-spin: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite
+    both;
+  --animate-ping-once: ping 5s cubic-bezier(0, 0, 0.2, 1);
+  --animate-rotating: rotating 30s linear infinite;
+  --animate-topbottom: topbottom 60s infinite alternate linear;
+  --animate-bottomtop: bottomtop 60s infinite alternate linear;
+  --animate-spin-1_5: spin 1.5s linear infinite;
+  --animate-spin-2: spin 2s linear infinite;
+  --animate-spin-3: spin 3s linear infinite;
+  --animate-line1: line 10s infinite linear;
+  --animate-line2: line-revert 8s infinite linear;
+  --animate-line3: line 7s infinite linear;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-down: slide-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes linspin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes easespin {
+    12.5% {
+      transform: rotate(135deg);
+    }
+    25% {
+      transform: rotate(270deg);
+    }
+    37.5% {
+      transform: rotate(405deg);
+    }
+    50% {
+      transform: rotate(540deg);
+    }
+    62.5% {
+      transform: rotate(675deg);
+    }
+    75% {
+      transform: rotate(810deg);
+    }
+    87.5% {
+      transform: rotate(945deg);
+    }
+    100% {
+      transform: rotate(1080deg);
+    }
+  }
+  @keyframes left-spin {
+    0% {
+      transform: rotate(130deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(130deg);
+    }
+  }
+  @keyframes right-spin {
+    0% {
+      transform: rotate(-130deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(-130deg);
+    }
+  }
+  @keyframes rotating {
+    0%,
+    100% {
+      transform: rotate(360deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes topbottom {
+    0%,
+    100% {
+      transform: translate3d(0, -100%, 0);
+    }
+    50% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes bottomtop {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  @keyframes line {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes line-revert {
+    0%,
+    100% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility custom-scrollbar {
+  @apply overflow-auto;
+
+  &::-webkit-scrollbar {
+    @apply size-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply dark:bg-stroke-dark relative flex-1 rounded-full bg-slate-200/60;
+  }
+}
+
+@utility chat-height {
+  @apply h-[calc(100vh-8.125rem)] lg:h-[calc(100vh-5.625rem)];
+}
+
+@utility inbox-height {
+  @apply h-[calc(100vh-8.125rem)] lg:h-[calc(100vh-5.625rem)];
+}
+
+/*
+  Tailwind CSS v4 default border color compatibility.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-gray-2 text-dark-5 dark:text-dark-6 dark:bg-[#020D1A];
+  }
+}
+
+/* Helios Pro premium gradient surfaces */
+@utility surface-gradient {
+  background-image: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(245, 158, 11, 0.04) 100%);
+}
+
+@utility card-premium {
+  @apply relative overflow-hidden rounded-2xl border border-stroke bg-white shadow-card-2 transition-all duration-300 dark:border-dark-3 dark:bg-gray-dark;
+}
+
+@utility card-premium-hover {
+  @apply hover:-translate-y-0.5 hover:shadow-3 dark:hover:border-primary/40;
+}
+
+/* third-party libraries CSS */
+
+.tableCheckbox:checked ~ div span {
+  @apply opacity-100;
+}
+
+.tableCheckbox:checked ~ div {
+  @apply border-primary bg-primary;
+}
+
+.apexcharts-legend-text {
+  @apply text-dark-5! dark:text-dark-6!;
+}
+
+.apexcharts-text {
+  @apply fill-dark-5! dark:fill-dark-6!;
+}
+
+.apexcharts-yaxis-label {
+  @apply text-xs;
+}
+
+.apexcharts-xaxis-label {
+  @apply text-body-sm font-medium;
+}
+
+.apexcharts-xcrosshairs {
+  @apply fill-stroke! dark:fill-dark-3!;
+}
+
+.apexcharts-gridline {
+  @apply stroke-stroke! dark:stroke-dark-3!;
+}
+
+.apexcharts-series.apexcharts-pie-series path {
+  @apply dark:stroke-transparent!;
+}
+
+.apexcharts-legend-series {
+  @apply inline-flex! gap-1.5;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  @apply text-dark! shadow-card-2! dark:border-dark-3! dark:bg-gray-dark! rounded-lg! text-base! font-medium! dark:text-white!;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  @apply dark:border-dark-3! dark:bg-dark-2!;
+}
+
+.apexcharts-xaxistooltip,
+.apexcharts-yaxistooltip {
+  @apply dark:border-dark-2! dark:bg-dark-2! dark:text-dark-3!;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  @apply border-b-gray! dark:border-b-dark!;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  @apply border-b-gray! dark:border-b-dark!;
+}
+
+.apexcharts-xaxistooltip-bottom {
+  @apply bg-gray! text-dark! dark:bg-dark! rounded-sm! border-none! text-sm! font-medium! dark:text-white!;
+}
+
+.apexcharts-tooltip-series-group {
+  @apply pr-3.5! pb-px! pl-2.5!;
+}
+
+.apexcharts-tooltip-series-group .apexcharts-tooltip-text {
+  @apply text-base! font-medium!;
+}
+
+.apexcharts-datalabels-group .apexcharts-datalabel-label {
+  @apply fill-dark-5! dark:fill-dark-6!;
+}
+
+.apexcharts-datalabels-group .apexcharts-datalabel-value {
+  @apply fill-dark! dark:fill-white!;
+}
+
+.flatpickr-wrapper {
+  @apply w-full;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg {
+  @apply fill-primary!;
+}
+
+.flatpickr-calendar.arrowTop:before {
+  @apply dark:border-b-gray-dark!;
+}
+
+.flatpickr-calendar.arrowTop:after {
+  @apply dark:border-b-gray-dark!;
+}
+
+.flatpickr-calendar {
+  @apply shadow-3! dark:bg-gray-dark! dark:text-dark-6! dark:shadow-card! 2xsm:w-auto! p-6!;
+}
+
+.flatpickr-day {
+  @apply dark:text-dark-6! dark:hover:border-dark-2! dark:hover:bg-dark-2!;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  @apply top-7! dark:fill-white! dark:text-white!;
+}
+
+.flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month.flatpickr-prev-month {
+  @apply left-7!;
+}
+
+.flatpickr-months .flatpickr-prev-month.flatpickr-next-month,
+.flatpickr-months .flatpickr-next-month.flatpickr-next-month {
+  @apply right-7!;
+}
+
+span.flatpickr-weekday,
+.flatpickr-months .flatpickr-month {
+  @apply dark:fill-white! dark:text-white!;
+}
+
+.flatpickr-day.inRange {
+  box-shadow:
+    -5px 0 0 #f1f5f9,
+    5px 0 0 #f1f5f9 !important;
+  @apply dark:shadow-datepicker!;
+}
+
+.flatpickr-day.inRange,
+.flatpickr-day.prevMonthDay.inRange,
+.flatpickr-day.nextMonthDay.inRange,
+.flatpickr-day.today.inRange,
+.flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-day.nextMonthDay.today.inRange,
+.flatpickr-day:hover,
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover,
+.flatpickr-day:focus,
+.flatpickr-day.prevMonthDay:focus,
+.flatpickr-day.nextMonthDay:focus {
+  @apply border-gray-2! bg-gray-2! dark:border-dark-2! dark:bg-dark-2!;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.selected,
+.flatpickr-day.endRange {
+  @apply dark:text-white!;
+}
+
+.flatpickr-day.today {
+  @apply hover:bg-gray-2! hover:text-dark! dark:hover:bg-dark-2! border-none! dark:hover:text-white!;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+  background: #10b981;
+  @apply border-primary! bg-primary! hover:border-primary! hover:bg-primary!;
+}
+
+.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
+.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
+.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
+  box-shadow: -10px 0 0 #10b981;
+}
+
+.map-btn .jvm-zoom-btn {
+  @apply border-stroke text-dark-5 hover:border-primary hover:bg-primary dark:border-dark-3 dark:bg-dark-2 dark:text-dark-6 dark:hover:border-primary dark:hover:bg-primary flex h-7.5 w-7.5 items-center justify-center rounded-sm border bg-white px-0 pt-0 pb-0.5 text-2xl leading-none hover:text-white dark:hover:text-white;
+}
+
+.mapOne .jvm-zoom-btn {
+  @apply top-auto! bottom-0! left-auto!;
+}
+
+.mapOne .jvm-zoom-btn.jvm-zoomin {
+  @apply right-10!;
+}
+
+.mapOne .jvm-zoom-btn.jvm-zoomout {
+  @apply right-0!;
+}
+
+.mapTwo .jvm-zoom-btn {
+  @apply top-auto! bottom-0!;
+}
+
+.mapTwo .jvm-zoom-btn.jvm-zoomin {
+  @apply left-0!;
+}
+
+.mapTwo .jvm-zoom-btn.jvm-zoomout {
+  @apply left-10!;
+}
+
+.taskCheckbox:checked ~ .box span {
+  @apply opacity-100;
+}
+
+.taskCheckbox:checked ~ p {
+  @apply line-through;
+}
+
+.taskCheckbox:checked ~ .box {
+  @apply border-primary bg-primary dark:border-primary;
+}
+
+.custom-input-date::-webkit-calendar-picker-indicator {
+  background: transparent;
+}
+
+.data-table-common .datatable-search {
+  @apply relative ml-0! w-100 overflow-hidden rounded-sm;
+}
+
+.data-table-one .datatable-search input {
+  @apply border-stroke focus:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary h-[46px] w-full rounded-sm border bg-transparent px-5 outline-hidden;
+}
+
+.data-table-common .datatable-selector {
+  @apply text-dark-5 dark:text-dark-6 relative z-20 inline-flex bg-transparent p-0 font-medium outline-hidden;
+}
+
+.data-table-common .datatable-top {
+  @apply border-stroke dark:border-dark-6 flex flex-col gap-4 border-b px-7.5 py-4.5 after:hidden sm:flex-row-reverse sm:items-center sm:justify-between sm:gap-x-4 sm:gap-y-0;
+}
+
+.data-table-common .datatable-dropdown label {
+  @apply text-dark inline-flex items-center gap-2.5 font-medium capitalize dark:text-white;
+}
+
+.datatable-table .datatable-sorter {
+  @apply before:hidden after:hidden;
+}
+
+.datatable-table > thead > tr:first-child > th {
+  @apply border-transparent px-2.5 pt-9 pb-2.5 font-medium;
+}
+
+.data-table-common .datatable-table > tbody > tr > td:first-child,
+.data-table-common .datatable-table > thead > tr > th:first-child {
+  @apply pl-8;
+}
+
+.data-table-common .datatable-table > tbody > tr > td:last-child,
+.data-table-common .datatable-table > thead > tr > th:last-child {
+  @apply pr-8;
+}
+
+.data-table-common .datatable-table > thead > tr:last-child > th {
+  @apply border-stroke dark:border-dark-3 border-b! pb-6;
+}
+
+.data-table-common .datatable-table > thead > tr:last-child > th input {
+  @apply border-stroke focus:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary h-[34px] w-full rounded-sm border bg-transparent px-3 text-sm outline-hidden;
+}
+
+.data-table-common .datatable-table > tbody > tr {
+  @apply hover:bg-primary/5;
+}
+
+.data-table-one .datatable-table > tbody > tr > td:first-child {
+  @apply text-primary dark:text-white;
+}
+
+.data-table-common .datatable-table > tbody > tr > td {
+  @apply border-stroke dark:border-dark-3 border-b py-5 font-medium;
+}
+
+.data-table-one .datatable-bottom {
+  @apply flex flex-col gap-4 px-8 py-7 after:hidden sm:flex-row-reverse sm:items-center sm:justify-between sm:gap-0 sm:space-x-4;
+}
+
+.data-table-common .datatable-wrapper.no-footer .datatable-container {
+  @apply border-none;
+}
+
+.data-table-common .datatable-info {
+  @apply m-0! font-medium;
+}
+
+.data-table-common .datatable-pagination {
+  @apply m-0!;
+}
+
+.data-table-common .datatable-pagination a {
+  @apply text-dark-5 hover:bg-primary dark:text-dark-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm p-0 font-medium hover:text-white;
+}
+
+.data-table-common .datatable-pagination .datatable-active a {
+  @apply bg-primary text-white;
+}
+
+.data-table-common .datatable-pagination li.datatable-hidden {
+  @apply visible!;
+}
+
+.data-table-two .datatable-bottom {
+  @apply flex flex-col gap-4 px-8 py-7 after:hidden sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:space-x-4;
+}
+
+.data-table-two .datatable-search input {
+  @apply border-stroke bg-gray-2 focus:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary h-11.5 w-full rounded-sm border px-5 outline-hidden;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  @apply appearance-none;
+}
+
+.custom-input-date::-webkit-calendar-picker-indicator {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+.custom-gradient-1 {
+  background-image: linear-gradient(145deg, #ecfdf5 0%, #fffbeb 100%);
+}
+
+/* Helios Pro: shimmer skeleton */
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 232, 240, 0.4) 0%,
+    rgba(226, 232, 240, 0.8) 50%,
+    rgba(226, 232, 240, 0.4) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.dark .shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.4) 0%,
+    rgba(30, 41, 59, 0.8) 50%,
+    rgba(30, 41, 59, 0.4) 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Helios Pro: premium scrollbar */
+.helios-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.helios-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.helios-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+.helios-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Animated gradient border for premium accents */
+@keyframes border-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.6), 0 0 24px rgba(16, 185, 129, 0.15); }
+}
+.border-glow {
+  animation: border-glow 3s ease-in-out infinite;
+}

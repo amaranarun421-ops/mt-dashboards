@@ -1,0 +1,787 @@
+=== /home/z/my-project/src/app/(with-layout)/forms/advanced-inputs/page.tsx ===
+import AdvancedInputsClient from "./_client";
+
+export const metadata = {
+  title: "Advanced Inputs",
+  description:
+    "Helios Pro — input groups, prefix/suffix, phone + currency masks, tags input, OTP input, password strength meter and an autocomplete combobox.",
+};
+
+export default function AdvancedInputsPage() {
+  return <AdvancedInputsClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/basic-inputs/page.tsx ===
+import type { Metadata } from "next";
+import { PageHeader } from "@/components/shared/page-header";
+import { Card, CardHeader } from "@/components/shared/card";
+import { FormSection, FormField, inputClass } from "@/components/shared/form-section";
+import { Badge } from "@/components/shared/badge";
+import { InputIcon } from "@/components/Layouts/sidebar/icons";
+
+export const metadata: Metadata = {
+  title: "Basic Inputs",
+  description:
+    "Helios Pro — text, email, password, number and textarea inputs rendered in default, focused, disabled, error and success states.",
+};
+
+export default function BasicInputsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Basic Inputs"
+        description="Text, email, password, number and textarea controls across every interactive state."
+        breadcrumbs={[
+          { label: "Dashboard", href: "/" },
+          { label: "Forms", href: "/forms/basic-inputs" },
+          { label: "Basic Inputs" },
+        ]}
+        actions={
+          <Badge variant="primary" size="lg">
+            <InputIcon className="size-4" /> 5 field types
+          </Badge>
+        }
+      />
+
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        {/* Text inputs */}
+        <FormSection
+          title="Text inputs"
+          description="Standard single-line text fields with validation feedback."
+          columns={1}
+        >
+          <FormField label="Default" htmlFor="txt-default" hint="Neutral state — ready for input.">
+            <input id="txt-default" type="text" placeholder="Helios Pro user" className={inputClass} />
+          </FormField>
+          <FormField label="Focused" htmlFor="txt-focus" hint="Rings appear when the field has focus.">
+            <input
+              id="txt-focus"
+              type="text"
+              defaultValue="Aarav Mehta"
+              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+            />
+          </FormField>
+          <FormField label="Disabled" htmlFor="txt-disabled" hint="Disabled fields are not editable.">
+            <input id="txt-disabled" type="text" placeholder="Read-only" disabled className={`${inputClass} opacity-60`} />
+          </FormField>
+          <FormField label="Error" htmlFor="txt-error" error="This field is required.">
+            <input
+              id="txt-error"
+              type="text"
+              placeholder="Required value"
+              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+            />
+          </FormField>
+          <FormField label="Success" htmlFor="txt-success" hint="Looks good — value validated.">
+            <input
+              id="txt-success"
+              type="text"
+              defaultValue="helios-pro"
+              className={`${inputClass} border-primary ring-2 ring-primary/20 focus:border-primary focus:ring-primary/20`}
+            />
+          </FormField>
+        </FormSection>
+
+        {/* Email + Password */}
+        <FormSection
+          title="Email & password"
+          description="Email formatting and password entry."
+          columns={1}
+        >
+          <FormField label="Email — default" htmlFor="email-default" hint="We never share your email.">
+            <input id="email-default" type="email" placeholder="you@heliospro.io" className={inputClass} />
+          </FormField>
+          <FormField label="Email — success" htmlFor="email-success" hint="Verified format.">
+            <input
+              id="email-success"
+              type="email"
+              defaultValue="priya@heliospro.io"
+              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+            />
+          </FormField>
+          <FormField label="Email — error" htmlFor="email-error" error="Enter a valid email address.">
+            <input
+              id="email-error"
+              type="email"
+              defaultValue="priya@helios"
+              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+            />
+          </FormField>
+          <FormField label="Password — default" htmlFor="pw-default">
+            <input id="pw-default" type="password" placeholder="••••••••" className={inputClass} />
+          </FormField>
+          <FormField label="Password — disabled" htmlFor="pw-disabled" hint="Locked by SSO policy.">
+            <input
+              id="pw-disabled"
+              type="password"
+              defaultValue="••••••••"
+              disabled
+              className={`${inputClass} opacity-60`}
+            />
+          </FormField>
+        </FormSection>
+
+        {/* Number inputs */}
+        <FormSection
+          title="Number inputs"
+          description="Numeric entry with min/max constraints and stepper controls."
+          columns={2}
+        >
+          <FormField label="Quantity" htmlFor="num-qty" hint="Min 1, max 99.">
+            <input id="num-qty" type="number" min={1} max={99} defaultValue={12} className={inputClass} />
+          </FormField>
+          <FormField label="Price (USD)" htmlFor="num-price">
+            <input id="num-price" type="number" min={0} step="0.01" defaultValue={129.5} className={inputClass} />
+          </FormField>
+          <FormField label="Discount %" htmlFor="num-disc" error="Must be between 0 and 100.">
+            <input
+              id="num-disc"
+              type="number"
+              defaultValue={120}
+              className={`${inputClass} border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+            />
+          </FormField>
+          <FormField label="Stock units" htmlFor="num-stock" hint="Validated against warehouse capacity.">
+            <input
+              id="num-stock"
+              type="number"
+              defaultValue={482}
+              className={`${inputClass} border-primary ring-2 ring-primary/20`}
+            />
+          </FormField>
+        </FormSection>
+
+        {/* Textarea */}
+        <FormSection
+          title="Textarea fields"
+          description="Multi-line input for notes, bios and long-form content."
+          columns={1}
+        >
+          <FormField label="Default textarea" htmlFor="ta-default" hint="Up to 500 characters.">
+            <textarea
+              id="ta-default"
+              rows={3}
+              placeholder="Add a note about this customer..."
+              className={`${inputClass} resize-y`}
+            />
+          </FormField>
+          <FormField label="Focused textarea" htmlFor="ta-focus">
+            <textarea
+              id="ta-focus"
+              rows={3}
+              defaultValue="Followed up on the Q3 enterprise renewal — Aarav confirmed budget approval."
+              className={`${inputClass} resize-y border-primary ring-2 ring-primary/20`}
+            />
+          </FormField>
+          <FormField label="Disabled textarea" htmlFor="ta-disabled">
+            <textarea
+              id="ta-disabled"
+              rows={3}
+              placeholder="Locked"
+              disabled
+              className={`${inputClass} resize-y opacity-60`}
+            />
+          </FormField>
+          <FormField label="Error textarea" htmlFor="ta-error" error="Description must be at least 20 characters.">
+            <textarea
+              id="ta-error"
+              rows={3}
+              defaultValue="too short"
+              className={`${inputClass} resize-y border-red ring-2 ring-red/20 focus:border-red focus:ring-red/20`}
+            />
+          </FormField>
+        </FormSection>
+      </div>
+
+      <Card className="mt-6">
+        <CardHeader
+          title="Field state reference"
+          subtitle="A quick cheat-sheet of the visual treatments used across this page."
+        />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
+          {[
+            { label: "Default", tone: "border-stroke dark:border-dark-3", desc: "Neutral border." },
+            { label: "Focused", tone: "border-primary ring-2 ring-primary/20", desc: "Emerald ring." },
+            { label: "Disabled", tone: "opacity-60", desc: "Greyed-out, non-editable." },
+            { label: "Error", tone: "border-red ring-2 ring-red/20", desc: "Red border + message." },
+            { label: "Success", tone: "border-primary ring-2 ring-primary/20", desc: "Emerald border." },
+          ].map((s) => (
+            <div key={s.label} className={`rounded-lg border ${s.tone} bg-white p-3 dark:bg-dark-2`}>
+              <p className="text-sm font-semibold text-dark dark:text-white">{s.label}</p>
+              <p className="mt-1 text-xs text-dark-5 dark:text-dark-6">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+    </div>
+  );
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/checkbox-radio/page.tsx ===
+import CheckboxRadioClient from "./_client";
+
+export const metadata = {
+  title: "Checkbox & Radio",
+  description:
+    "Helios Pro — basic, grouped, inline, cards-as-radio and toggle-style checkbox/radio controls.",
+};
+
+export default function CheckboxRadioPage() {
+  return <CheckboxRadioClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/date-picker/page.tsx ===
+import DatePickerClient from "./_client";
+
+export const metadata = {
+  title: "Date Picker",
+  description:
+    "Helios Pro — single date, range, time, inline calendar and quick presets using flatpickr.",
+};
+
+export default function DatePickerPage() {
+  return <DatePickerClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/file-upload/page.tsx ===
+import FileUploadClient from "./_client";
+
+export const metadata = {
+  title: "File Upload",
+  description:
+    "Helios Pro — drag-drop zone, file list with progress, multi-file, image preview grid and avatar upload with crop UI.",
+};
+
+export default function FileUploadPage() {
+  return <FileUploadClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/form-elements/page.tsx ===
+import type { Metadata } from "next";
+
+import { GlobeIcon } from "@/assets/icons";
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import DatePickerOne from "@/components/FormElements/DatePicker/DatePickerOne";
+import DatePickerTwo from "@/components/FormElements/DatePicker/DatePickerTwo";
+import InputGroup from "@/components/FormElements/InputGroup";
+import { TextAreaGroup } from "@/components/FormElements/InputGroup/text-area";
+import MultiSelect from "@/components/FormElements/MultiSelect";
+import { Checkbox } from "@/components/FormElements/checkbox";
+import { RadioInput } from "@/components/FormElements/radio";
+import { Select } from "@/components/FormElements/select";
+import { Switch } from "@/components/FormElements/switch";
+import { ShowcaseSection } from "@/components/Layouts/showcase-section";
+
+export const metadata: Metadata = {
+  title: "Form Elements",
+};
+
+export default function FormElementsPage() {
+  return (
+    <>
+      <Breadcrumb pageName="Form Elements" />
+
+      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+        <div className="flex flex-col gap-9">
+          <ShowcaseSection title="Input Fields" className="space-y-5.5 p-6.5!">
+            <InputGroup
+              label="Default input"
+              placeholder="Default input text"
+              type="text"
+            />
+
+            <InputGroup
+              label="Active input"
+              placeholder="Active input text"
+              active
+              type="text"
+            />
+
+            <InputGroup
+              label="Disabled input"
+              placeholder="Disabled input text"
+              type="text"
+              disabled
+            />
+          </ShowcaseSection>
+
+          <ShowcaseSection
+            title="Toggle switch input"
+            className="space-y-5.5 p-6.5!"
+          >
+            <Switch />
+            <Switch backgroundSize="sm" />
+            <Switch withIcon />
+            <Switch background="dark" />
+          </ShowcaseSection>
+
+          <ShowcaseSection title="Time and date" className="space-y-5.5 p-6.5!">
+            <DatePickerOne />
+            <DatePickerTwo />
+          </ShowcaseSection>
+
+          <ShowcaseSection title="File upload" className="space-y-5.5 p-6.5!">
+            <InputGroup
+              type="file"
+              fileStyleVariant="style1"
+              label="Attach file"
+              placeholder="Attach file"
+            />
+
+            <InputGroup
+              type="file"
+              fileStyleVariant="style2"
+              label="Attach file"
+              placeholder="Attach file"
+            />
+          </ShowcaseSection>
+        </div>
+
+        <div className="flex flex-col gap-9">
+          <ShowcaseSection title="Textarea Fields" className="space-y-6 p-6.5!">
+            <TextAreaGroup
+              label="Default textarea"
+              placeholder="Default textarea"
+            />
+
+            <TextAreaGroup
+              label="Active textarea"
+              placeholder="Active textarea"
+              active
+            />
+
+            <TextAreaGroup
+              label="Disabled textarea"
+              placeholder="Disabled textarea"
+              disabled
+            />
+          </ShowcaseSection>
+
+          <ShowcaseSection title="Select input" className="space-y-5.5 p-6.5!">
+            <Select
+              label="Select Country"
+              items={[
+                { label: "United States", value: "USA" },
+                { label: "United Kingdom", value: "UK" },
+                { label: "Canada", value: "Canada" },
+              ]}
+              defaultValue="USA"
+              prefixIcon={<GlobeIcon />}
+            />
+            <MultiSelect id="multiSelect" />
+          </ShowcaseSection>
+
+          <ShowcaseSection
+            title="Checkbox and radio"
+            className="space-y-5.5 p-6.5!"
+          >
+            <Checkbox label="Checkbox Text" />
+            <Checkbox label="Checkbox Text" withIcon="check" />
+            <Checkbox label="Checkbox Text" withIcon="x" />
+            <RadioInput label="Checkbox Text" />
+            <RadioInput label="Checkbox Text" variant="circle" />
+          </ShowcaseSection>
+        </div>
+      </div>
+    </>
+  );
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/form-layout/page.tsx ===
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+
+import type { Metadata } from "next";
+import { ContactForm } from "./_components/contact-form";
+import { SignInForm } from "./_components/sign-in-form";
+import { SignUpForm } from "./_components/sign-up-form";
+
+export const metadata: Metadata = {
+  title: "Form Layout",
+};
+
+export default function Page() {
+  return (
+    <>
+      <Breadcrumb pageName="Form Layout" />
+
+      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+        <div className="flex flex-col gap-9">
+          <ContactForm />
+        </div>
+
+        <div className="flex flex-col gap-9">
+          <SignInForm />
+
+          <SignUpForm />
+        </div>
+      </div>
+    </>
+  );
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/form-layouts/page.tsx ===
+import type { Metadata } from "next";
+import { PageHeader } from "@/components/shared/page-header";
+import { Card, CardHeader } from "@/components/shared/card";
+import { FormSection, FormField, inputClass } from "@/components/shared/form-section";
+import { Badge } from "@/components/shared/badge";
+import { Button } from "@/components/shared/button";
+import { InputIcon } from "@/components/Layouts/sidebar/icons";
+
+export const metadata: Metadata = {
+  title: "Form Layouts",
+  description:
+    "Helios Pro — vertical, horizontal, inline, 2-col, 3-col, sectioned and sidebar-style form layouts.",
+};
+
+export default function FormLayoutsPage() {
+  return (
+    <div>
+      <PageHeader
+        title="Form Layouts"
+        description="Vertical, horizontal, inline, multi-column, sectioned and sidebar arrangements."
+        breadcrumbs={[
+          { label: "Dashboard", href: "/" },
+          { label: "Forms", href: "/forms/basic-inputs" },
+          { label: "Form Layouts" },
+        ]}
+        actions={
+          <Badge variant="primary" size="lg">
+            <InputIcon className="size-4" /> 7 layouts
+          </Badge>
+        }
+      />
+
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        {/* vertical */}
+        <FormSection title="Vertical layout" description="Labels stacked above inputs — the default." columns={1}>
+          <FormField label="Full name" htmlFor="v-name" required>
+            <input id="v-name" type="text" placeholder="Aarav Mehta" className={inputClass} />
+          </FormField>
+          <FormField label="Email" htmlFor="v-email" required>
+            <input id="v-email" type="email" placeholder="you@heliospro.io" className={inputClass} />
+          </FormField>
+          <FormField label="Role" htmlFor="v-role">
+            <select id="v-role" className={inputClass} defaultValue="owner">
+              <option value="owner">Owner</option>
+              <option value="admin">Admin</option>
+              <option value="editor">Editor</option>
+              <option value="viewer">Viewer</option>
+            </select>
+          </FormField>
+          <div className="flex justify-end gap-2">
+            <Button variant="ghost" size="md">Cancel</Button>
+            <Button variant="primary" size="md">Save</Button>
+          </div>
+        </FormSection>
+
+        {/* horizontal */}
+        <FormSection title="Horizontal layout" description="Labels aligned left of inputs — great for desktop." columns={1}>
+          {[
+            { label: "First name", id: "h-first", placeholder: "Daniel", type: "text" },
+            { label: "Last name", id: "h-last", placeholder: "Okafor", type: "text" },
+            { label: "Email", id: "h-email", placeholder: "daniel@heliospro.io", type: "email" },
+            { label: "Phone", id: "h-phone", placeholder: "(415) 555-0199", type: "tel" },
+          ].map((row) => (
+            <div key={row.id} className="grid grid-cols-1 items-center gap-3 sm:grid-cols-[160px_1fr]">
+              <label htmlFor={row.id} className="text-sm font-medium text-dark dark:text-white">
+                {row.label}
+              </label>
+              <input
+                id={row.id}
+                type={row.type}
+                placeholder={row.placeholder}
+                className={inputClass}
+              />
+            </div>
+          ))}
+          <div className="grid grid-cols-1 items-center gap-3 sm:grid-cols-[160px_1fr]">
+            <span className="text-sm font-medium text-dark dark:text-white">Preferences</span>
+            <div className="flex items-center gap-2">
+              <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+                <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Newsletter
+              </label>
+              <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+                <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Product updates
+              </label>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-[160px_1fr]">
+            <span />
+            <div className="flex justify-end gap-2">
+              <Button variant="ghost" size="md">Cancel</Button>
+              <Button variant="primary" size="md">Save changes</Button>
+            </div>
+          </div>
+        </FormSection>
+
+        {/* inline */}
+        <FormSection title="Inline form" description="Single-row search-and-action pattern." columns={1}>
+          <form className="flex flex-col gap-2 sm:flex-row sm:items-end">
+            <div className="flex-1">
+              <label htmlFor="in-name" className="sr-only">Name</label>
+              <input id="in-name" type="text" placeholder="Search by customer name…" className={inputClass} />
+            </div>
+            <div className="sm:w-40">
+              <label htmlFor="in-status" className="sr-only">Status</label>
+              <select id="in-status" className={inputClass} defaultValue="all">
+                <option value="all">All statuses</option>
+                <option value="active">Active</option>
+                <option value="paused">Paused</option>
+                <option value="churned">Churned</option>
+              </select>
+            </div>
+            <Button variant="primary" size="md" type="submit">Search</Button>
+            <Button variant="outline" size="md" type="reset">Reset</Button>
+          </form>
+        </FormSection>
+
+        {/* 2-col */}
+        <FormSection title="Two-column layout" description="Pairs of fields side-by-side on >= sm." columns={2}>
+          <FormField label="First name" htmlFor="two-first">
+            <input id="two-first" type="text" placeholder="Priya" className={inputClass} />
+          </FormField>
+          <FormField label="Last name" htmlFor="two-last">
+            <input id="two-last" type="text" placeholder="Sharma" className={inputClass} />
+          </FormField>
+          <FormField label="Email" htmlFor="two-email">
+            <input id="two-email" type="email" placeholder="priya@heliospro.io" className={inputClass} />
+          </FormField>
+          <FormField label="Phone" htmlFor="two-phone">
+            <input id="two-phone" type="tel" placeholder="(415) 555-0148" className={inputClass} />
+          </FormField>
+          <FormField label="City" htmlFor="two-city">
+            <input id="two-city" type="text" placeholder="San Francisco" className={inputClass} />
+          </FormField>
+          <FormField label="Country" htmlFor="two-country">
+            <select id="two-country" className={inputClass} defaultValue="us">
+              <option value="us">United States</option>
+              <option value="ca">Canada</option>
+              <option value="uk">United Kingdom</option>
+              <option value="in">India</option>
+            </select>
+          </FormField>
+        </FormSection>
+
+        {/* 3-col */}
+        <FormSection title="Three-column layout" description="Wide-screen only — collapses on smaller viewports." columns={3}>
+          <FormField label="SKU" htmlFor="three-sku">
+            <input id="three-sku" type="text" placeholder="HLP-001" className={inputClass} />
+          </FormField>
+          <FormField label="Name" htmlFor="three-name">
+            <input id="three-name" type="text" placeholder="Aurora headset" className={inputClass} />
+          </FormField>
+          <FormField label="Category" htmlFor="three-cat">
+            <select id="three-cat" className={inputClass} defaultValue="audio">
+              <option value="audio">Audio</option>
+              <option value="wearables">Wearables</option>
+              <option value="video">Video</option>
+            </select>
+          </FormField>
+          <FormField label="Price (USD)" htmlFor="three-price">
+            <input id="three-price" type="number" placeholder="129.00" className={inputClass} />
+          </FormField>
+          <FormField label="Stock" htmlFor="three-stock">
+            <input id="three-stock" type="number" placeholder="482" className={inputClass} />
+          </FormField>
+          <FormField label="Status" htmlFor="three-status">
+            <select id="three-status" className={inputClass} defaultValue="active">
+              <option value="active">Active</option>
+              <option value="draft">Draft</option>
+              <option value="archived">Archived</option>
+            </select>
+          </FormField>
+        </FormSection>
+
+        {/* sectioned */}
+        <Card className="xl:col-span-2">
+          <CardHeader
+            title="Sectioned form"
+            subtitle="Group fields into labelled sections — perfect for long forms like onboarding."
+            action={<Badge variant="outline">3 sections</Badge>}
+          />
+          <div className="space-y-6">
+            <FormSection title="1. Account" description="Login credentials." columns={2}>
+              <FormField label="Email" htmlFor="sec-email" required>
+                <input id="sec-email" type="email" placeholder="you@heliospro.io" className={inputClass} />
+              </FormField>
+              <FormField label="Password" htmlFor="sec-pw" required>
+                <input id="sec-pw" type="password" placeholder="••••••••" className={inputClass} />
+              </FormField>
+            </FormSection>
+            <FormSection title="2. Profile" description="Tell us a bit about you." columns={2}>
+              <FormField label="Full name" htmlFor="sec-name">
+                <input id="sec-name" type="text" placeholder="Sofia Rossi" className={inputClass} />
+              </FormField>
+              <FormField label="Job title" htmlFor="sec-title">
+                <input id="sec-title" type="text" placeholder="Head of Growth" className={inputClass} />
+              </FormField>
+              <FormField label="Bio" htmlFor="sec-bio" hint="Up to 280 characters.">
+                <textarea id="sec-bio" rows={3} placeholder="Short intro…" className={`${inputClass} resize-y`} />
+              </FormField>
+              <FormField label="Timezone" htmlFor="sec-tz">
+                <select id="sec-tz" className={inputClass} defaultValue="pst">
+                  <option value="pst">PST (UTC-8)</option>
+                  <option value="est">EST (UTC-5)</option>
+                  <option value="gmt">GMT (UTC+0)</option>
+                  <option value="cet">CET (UTC+1)</option>
+                  <option value="ist">IST (UTC+5:30)</option>
+                  <option value="jst">JST (UTC+9)</option>
+                </select>
+              </FormField>
+            </FormSection>
+            <FormSection title="3. Preferences" description="How should we reach you?" columns={3}>
+              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+                  <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Email
+                </label>
+              </div>
+              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+                  <input type="checkbox" defaultChecked className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> Push
+                </label>
+              </div>
+              <div className="rounded-lg border border-stroke p-3 dark:border-dark-3">
+                <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+                  <input type="checkbox" className="size-4 rounded border-stroke accent-[var(--color-primary)]" /> SMS
+                </label>
+              </div>
+            </FormSection>
+            <div className="flex justify-end gap-2 border-t border-stroke pt-4 dark:border-dark-3">
+              <Button variant="ghost" size="md">Cancel</Button>
+              <Button variant="primary" size="md">Complete onboarding</Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* sidebar form */}
+      <Card className="mt-6">
+        <CardHeader
+          title="Sidebar form"
+          subtitle="Settings panel: left navigation, right content — a classic two-pane layout."
+        />
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr]">
+          {/* sidebar nav */}
+          <nav className="flex flex-row gap-1 overflow-x-auto md:flex-col md:overflow-visible">
+            {[
+              { label: "General", active: true },
+              { label: "Profile" },
+              { label: "Security" },
+              { label: "Notifications" },
+              { label: "Billing" },
+              { label: "Danger zone" },
+            ].map((n) => (
+              <a
+                key={n.label}
+                href="#"
+                className={
+                  n.active
+                    ? "rounded-lg bg-primary-subtle px-3 py-2 text-sm font-medium text-primary dark:bg-primary/15"
+                    : "rounded-lg px-3 py-2 text-sm text-dark-5 transition hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-white/5"
+                }
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          {/* content */}
+          <FormSection title="General settings" description="Workspace name, default language and timezone." columns={2}>
+            <FormField label="Workspace name" htmlFor="sb-name">
+              <input id="sb-name" type="text" defaultValue="Helios Pro" className={inputClass} />
+            </FormField>
+            <FormField label="URL" htmlFor="sb-url">
+              <input id="sb-url" type="text" defaultValue="heliospro.io" className={inputClass} />
+            </FormField>
+            <FormField label="Default language" htmlFor="sb-lang">
+              <select id="sb-lang" className={inputClass} defaultValue="en">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="ja">日本語</option>
+              </select>
+            </FormField>
+            <FormField label="Timezone" htmlFor="sb-tz">
+              <select id="sb-tz" className={inputClass} defaultValue="pst">
+                <option value="pst">PST (UTC-8)</option>
+                <option value="est">EST (UTC-5)</option>
+                <option value="gmt">GMT (UTC+0)</option>
+                <option value="jst">JST (UTC+9)</option>
+              </select>
+            </FormField>
+            <div className="col-span-full flex justify-end gap-2">
+              <Button variant="ghost" size="md">Discard</Button>
+              <Button variant="primary" size="md">Save changes</Button>
+            </div>
+          </FormSection>
+        </div>
+      </Card>
+    </div>
+  );
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/form-validation/page.tsx ===
+import FormValidationClient from "./_client";
+
+export const metadata = {
+  title: "Form Validation",
+  description:
+    "Helios Pro — real-time validation for required, email, min-length, password match, URL and numeric range fields.",
+};
+
+export default function FormValidationPage() {
+  return <FormValidationClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/multi-step-form/page.tsx ===
+import MultiStepFormClient from "./_client";
+
+export const metadata = {
+  title: "Multi-Step Form",
+  description:
+    "Helios Pro — 4-step wizard (Account, Profile, Preferences, Review) with step indicator, per-step validation and a final summary.",
+};
+
+export default function MultiStepFormPage() {
+  return <MultiStepFormClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/payment-form/page.tsx ===
+import PaymentFormClient from "./_client";
+
+export const metadata = {
+  title: "Payment Form",
+  description:
+    "Helios Pro — UI-only card form with card-type detection, formatted card number, expiry MM/YY, CVC and billing ZIP.",
+};
+
+export default function PaymentFormPage() {
+  return <PaymentFormClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/rich-text-editor/page.tsx ===
+import RichTextEditorClient from "./_client";
+
+export const metadata = {
+  title: "Rich Text Editor",
+  description:
+    "Helios Pro — UI-only rich text editor with a full toolbar (bold, italic, lists, headings, alignment, links).",
+};
+
+export default function RichTextEditorPage() {
+  return <RichTextEditorClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/selects/page.tsx ===
+import SelectsClient from "./_client";
+
+export const metadata = {
+  title: "Selects",
+  description:
+    "Helios Pro — single, multi, grouped, searchable and avatar variants for select controls.",
+};
+
+export default function SelectsPage() {
+  return <SelectsClient />;
+}
+=== /home/z/my-project/src/app/(with-layout)/forms/switches/page.tsx ===
+import SwitchesClient from "./_client";
+
+export const metadata = {
+  title: "Switches",
+  description:
+    "Helios Pro — basic, labelled, sized, coloured, icon and grouped-panel switch controls.",
+};
+
+export default function SwitchesPage() {
+  return <SwitchesClient />;
+}

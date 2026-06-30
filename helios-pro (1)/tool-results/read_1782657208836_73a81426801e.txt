@@ -1,0 +1,208 @@
+   221→  - `apps/invoices/create/page.tsx` — server, metadata "Create Invoice", renders `<InvoiceForm mode="create" />`.
+   222→  - `apps/invoices/edit/page.tsx` — server, metadata "Edit Invoice", renders `<InvoiceForm mode="edit" initialValues={sampleInvoice} />`.
+   223→- Used only icons from `@/components/Layouts/sidebar/icons` and `icons-extra`. Added an inline `DownloadIcon` SVG helper inside both invoices/_form.tsx and invoices/detail/page.tsx (no such icon exists in the icon set; the spec mandates SVG-only, no emojis, so this is consistent).
+   224→- All 15 apps pages now export `metadata` with `title` and `description`.
+   225→- Used shared components throughout: PageHeader, Card, CardHeader, CardBody, CardFooter, Badge, Button, Avatar, AvatarGroup, DataTable, Tabs, Modal, Drawer, EmptyState, Timeline, Progress, StatCard, FormSection, FormField, inputClass, Breadcrumbs (via PageHeader).
+   226→- All Helios Pro team members (Aarav, Priya, Daniel, Sofia, Liam, Yuki, Emma, Marcus, Layla, Noah) and customers (Grace, Henrik, Mei, Rafael, Ingrid, Tobias) appear in the apps data.
+   227→- Did NOT install any new dependencies. Did NOT modify `src/components/shared/*`, `src/components/Layouts/sidebar/data/index.ts`, or `src/css/style.css`.
+   228→- Did NOT import `@/lib/db` or `@/lib/auth/auth-client`. No `any` types introduced.
+   229→
+   230→Stage Summary:
+   231→- Files produced / modified:
+   232→  - NEW (4 page files): `apps/invoices/page.tsx`, `apps/invoices/detail/page.tsx`, `apps/invoices/create/page.tsx`, `apps/invoices/edit/page.tsx`
+   233→  - NEW (3 helper files): `apps/invoices/_client.tsx` (list), `apps/invoices/_form.tsx` (shared create/edit form)
+   234→  - NEW (9 thin server wrappers): `apps/{email,chat,calendar,kanban,notes,tasks,file-manager,contacts,support-tickets}/page.tsx`
+   235→  - MOVED (9 client bodies): `apps/{email,chat,calendar,kanban,notes,tasks,file-manager,contacts,support-tickets}/_client.tsx` (renamed from page.tsx, content unchanged except the 2 inline TS-error fixes in calendar & kanban)
+   236→  - MODIFIED (data files): `src/data/apps/emails.ts` (added `role` field to emailThread), `src/data/apps/tickets.ts` (typed ticketThread.replies explicitly)
+   237→  - UNTOUCHED: `apps/email/detail/page.tsx` (server, metadata present), `apps/support-tickets/detail/page.tsx` (server, metadata present, only the `r.email → r.role` swap)
+   238→- Decisions:
+   239→  - Chose the `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern so every interactive page can satisfy the "must export metadata" requirement without sacrificing stateful UX.
+   240→  - Shared the invoice create/edit form via a single `_form.tsx` to keep behavior identical and avoid duplicating ~330 lines.
+   241→  - Added a small `DownloadIcon` inline SVG where needed because the icon set doesn't ship one; this keeps the "SVG only, no emojis" rule.
+   242→- `npx tsc --noEmit` produces NO project errors (only the skills/ and z-ai-web-dev-sdk lines that are filtered out per spec). Verified clean both before and after building the invoices pages.
+   243→- All 15 routes resolve: `/apps/email`, `/apps/email/detail`, `/apps/chat`, `/apps/calendar`, `/apps/kanban`, `/apps/notes`, `/apps/tasks`, `/apps/file-manager`, `/apps/contacts`, `/apps/support-tickets`, `/apps/support-tickets/detail`, `/apps/invoices`, `/apps/invoices/detail`, `/apps/invoices/create`, `/apps/invoices/edit`.
+   244→
+   245→---
+   246→Task ID: 4c
+   247→Agent: full-stack-developer (ecommerce)
+   248→Task: Build 12 ecommerce pages
+   249→
+   250→Work Log:
+   251→- Created 6 typed mock-data files under `src/data/ecommerce/`:
+   252→  - `products.ts` — 14 products across Audio/Wearables/Home Office/Video/Peripherals/Power/Smart Home/Parts, each with gallery, specs, variants, SEO, reviews, related-product IDs. Exports `products`, `sampleProduct`, `productById`, `productCategories`, `productBrands`, `productWarehouses`.
+   253→  - `orders.ts` — 13 orders with full customer/shipping/billing/tracking/timeline data, 7 statuses, 5 payment states, 5 fulfillment states. Exports `orders`, `sampleOrder`, `orderById`, `orderStatuses`.
+   254→  - `customers.ts` — 15 customers across all 6 segments (VIP/Loyal/New/At risk/Lost/Wholesale) with LTV, AOV, notes, payment methods. Exports `customers`, `sampleCustomer`, `customerById`, `customerSegments`.
+   255→  - `reviews.ts` — 22 reviews across 4 statuses (Published/Pending/Flagged/Hidden) and all star levels, including flagged + hidden moderation cases. Exports `reviews`, `reviewStatuses`, `reviewSummary`.
+   256→  - `coupons.ts` — 12 coupons spanning all 4 discount types (Percentage/Fixed/Free shipping/BOGO) and 4 statuses (Active/Scheduled/Paused/Expired) with usage limits and revenue impact.
+   257→  - `inventory.ts` — 15 inventory items + 5 warehouses with capacity/utilization, per-item 7-day movement arrays, and `inventorySummary` aggregate stats.
+   258→- Built 13 page files across 12 routes (products/add + products/edit share `_form.tsx`):
+   259→  - `products/page.tsx` + `_client.tsx` — product grid/table toggle, search, category filter, sort dropdown, status tabs, 4 quick-stat tiles, product cards with sale badges & stock state, sortable DataTable in table view.
+   260→  - `products/detail/page.tsx` + `_client.tsx` — gallery with thumbnail switcher, Overview/Specs/Reviews/Related tabs, rating breakdown with Progress bars, per-review reply form, HeliosChart area chart for 7-month sales trend, purchase panel, inventory health with Progress, SEO card.
+   261→  - `products/_form.tsx` — shared multi-section form (Basic info, Media, Pricing, Inventory, Variants, SEO) with live price/margin sidebar, completion checklist, status badge, used by both add and edit.
+   262→  - `products/add/page.tsx` — server, metadata "Add Product", renders `<ProductForm mode="create" />`.
+   263→  - `products/edit/page.tsx` — server, metadata "Edit Product", renders `<ProductForm mode="edit" initialValues={sampleProduct} />`.
+   264→  - `orders/page.tsx` + `_client.tsx` — search, status tabs (All + 7 statuses with counts), 4 StatCards (revenue/orders/AOV/pending), sortable DataTable with item thumbnails, customer Avatar, channel/payment/status badges.
+   265→  - `orders/detail/page.tsx` — server, status banner with payment/fulfillment badges, 4 StatCards, items table with totals, Timeline of fulfillment events, customer card, shipping address with tracking Progress, payment card, billing address, notes.
+   266→  - `customers/page.tsx` + `_client.tsx` — search, segment tabs (All + 6 segments with counts), 4 StatCards (customers/LTV/AOV/VIP), sortable DataTable with Avatar, segment Badge, AOV, last order.
+   267→  - `customers/detail/page.tsx` — server, profile header with Avatar, 4 StatCards, HeliosChart bar spend trend, recent orders table, internal notes, contact info, summary dl, recent ActivityFeed.
+   268→  - `cart/page.tsx` + `_client.tsx` — cart lines with qty stepper, remove/save-for-later, recommended products, live order summary (subtotal/discount/shipping/tax/total), promo code UI (try WELCOME10/FREESHIP/VIP20/AERO50) with apply/remove and error state, trust badges.
+   269→  - `checkout/page.tsx` + `_client.tsx` — 3-step horizontal Timeline indicator (Shipping → Payment → Review), shipping form, shipping-method radio cards (Standard/Express/Next-day), payment-method radio (Card/PayPal/Apple Pay) with card form, billing form, review summary with shipping+payment cards, order-confirmation screen, sticky order summary sidebar.
+   270→  - `reviews/page.tsx` + `_client.tsx` — 4 StatCards, rating-filter sidebar with Progress bars, status tabs (All + 4 statuses with counts), search, per-review card with reply form (post/cancel), feature/hide/delete actions, status badges, helpful count.
+   271→  - `coupons/page.tsx` + `_client.tsx` — 4 StatCards, search, status tabs, sortable DataTable with copy-to-clipboard code button, discount-type badge, usage Progress, revenue, applies-to, status, create-coupon Modal with code/description/discount-type/value/min-order/usage-limit/schedule + live preview.
+   272→  - `inventory/page.tsx` + `_client.tsx` — 4 StatCards (value/units/low-stock/warehouses), low-stock alerts grid with red/amber cards and restock CTA, HeliosChart bar (stock in vs out, 7 days), warehouse capacity Progress sidebar, items/warehouses view tabs, sortable inventory DataTable with status badges and per-row restock action, warehouse cards grid in warehouse view, restock Modal with live new-stock computation.
+   273→- Used the same `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern that task 4b established for interactive pages so every page exports `metadata`. Server-only detail pages (orders/detail, customers/detail) export `metadata` directly.
+   274→- Used `HeliosChart` for the product detail sales-trend area chart, customer detail spend-trend bar chart, inventory stock-movement bar chart, and (no chart needed on inventory warehouse view).
+   275→- All product/customer/review images use plain `<img>` with picsum.photos seeded URLs (consistent with spec). Avatars use the shared `Avatar` component.
+   276→- Cart and Checkout compute totals client-side with `useMemo`; cart supports promo codes (4 mock codes); checkout computes shipping/tax/total based on selected shipping method.
+   277→- Reviews page supports filtering by rating (1-5 stars) and shows reply/response forms per review with persisted state. Coupons table shows code/type/value/status/expiry/usage with a Create-coupon Modal. Inventory highlights low-stock items with red/amber badges + alert cards and offers per-item restock Modal.
+   278→- All icons imported from `@/components/Layouts/sidebar/icons` (and `icons-extra` for `SearchIcon`). No emojis. No `any` types.
+   279→- Did NOT modify `src/components/shared/*`, sidebar data, or `style.css`. Did NOT install new dependencies. Did NOT import `@/lib/db` or `@/lib/auth/auth-client`.
+   280→
+   281→Issues hit & fixed:
+   282→- `SearchIcon` is exported from `@/components/Layouts/sidebar/icons-extra`, not `icons` — fixed in all 4 _client files that use it (products, orders, customers, reviews).
+   283→- `ProductReview` type needed a `helpful?` field for the detail page — added as optional and used `review.helpful ?? 0` to avoid touching every existing mock entry.
+   284→- Initially wrote a bogus type assertion for `stockVariant` in inventory (Badge has `warning` already in its variant set) — removed the duplicate `stockVariant` map and kept a single `badgeVariant: Record<StockLevel, "success" | "warning" | "danger" | "info">`.
+   285→- Initially wrote `{ day, ... }` shorthand in the inventory stock-movement `useMemo` but the loop variable was `d`, not `day` — fixed to `{ day: d, ... }`.
+   286→
+   287→Stage Summary:
+   288→- Files produced (13 page files + 6 helper files + 6 data files = 25 files):
+   289→  - NEW (6 data files): `src/data/ecommerce/{products,orders,customers,reviews,coupons,inventory}.ts`
+   290→  - NEW (13 page files):
+   291→    - `ecommerce/products/page.tsx` (server, metadata)
+   292→    - `ecommerce/products/detail/page.tsx` (server, metadata)
+   293→    - `ecommerce/products/add/page.tsx` (server, metadata)
+   294→    - `ecommerce/products/edit/page.tsx` (server, metadata)
+   295→    - `ecommerce/orders/page.tsx` (server, metadata)
+   296→    - `ecommerce/orders/detail/page.tsx` (server, metadata)
+   297→    - `ecommerce/customers/page.tsx` (server, metadata)
+   298→    - `ecommerce/customers/detail/page.tsx` (server, metadata)
+   299→    - `ecommerce/cart/page.tsx` (server, metadata)
+   300→    - `ecommerce/checkout/page.tsx` (server, metadata)
+   301→    - `ecommerce/reviews/page.tsx` (server, metadata)
+   302→    - `ecommerce/coupons/page.tsx` (server, metadata)
+   303→    - `ecommerce/inventory/page.tsx` (server, metadata)
+   304→  - NEW (6 client helpers):
+   305→    - `ecommerce/products/_client.tsx`
+   306→    - `ecommerce/products/detail/_client.tsx`
+   307→    - `ecommerce/products/_form.tsx` (shared by add + edit)
+   308→    - `ecommerce/orders/_client.tsx`
+   309→    - `ecommerce/customers/_client.tsx`
+   310→    - `ecommerce/cart/_client.tsx`
+   311→    - `ecommerce/checkout/_client.tsx`
+   312→    - `ecommerce/reviews/_client.tsx`
+   313→    - `ecommerce/coupons/_client.tsx`
+   314→    - `ecommerce/inventory/_client.tsx`
+   315→  - (Total: 6 data + 13 page + 10 client helpers = 29 new files.)
+   316→- Decisions:
+   317→  - Reused the 4b `page.tsx` (server) + `_client.tsx` ("use client") split for every interactive page so all 13 pages export `metadata`.
+   318→  - Shared the product add/edit form via a single `_form.tsx` (same pattern as 4b's invoices `_form.tsx`) — `mode: "create" | "edit"` + optional `initialValues`.
+   319→  - All product/customer/review images are plain `<img>` with picsum.photos seeded URLs (per spec). Avatars use the shared `Avatar` component.
+   320→  - Cart totals compute client-side; promo codes are 4 mock codes (WELCOME10, AERO50, FREESHIP, VIP20) with apply/remove and error states.
+   321→  - Multi-step checkout uses the shared `Timeline` (horizontal) as the step indicator — current step is `primary`, completed steps are `success` with a check icon, future steps are `info` with the step number.
+   322→  - Reviews filtering: rating filter lives in a left sidebar with Progress bars; status filter uses `Tabs pills`; each review row has its own reply form with persisted state.
+   323→  - Coupons table uses a copy-to-clipboard code button (no `any`), and the Create-coupon Modal includes a live preview.
+   324→  - Inventory low-stock items are surfaced in a dedicated alert Card at the top with red/amber styling and per-item Restock CTA that opens a Modal showing live new-stock computation.
+   325→- `npx tsc --noEmit` produces NO project errors (output is empty after filtering skills/ and z-ai-web-dev-sdk lines). Verified clean before and after the 4 fixes above.
+   326→- All 13 routes resolve: `/ecommerce/products`, `/ecommerce/products/detail`, `/ecommerce/products/add`, `/ecommerce/products/edit`, `/ecommerce/orders`, `/ecommerce/orders/detail`, `/ecommerce/customers`, `/ecommerce/customers/detail`, `/ecommerce/cart`, `/ecommerce/checkout`, `/ecommerce/reviews`, `/ecommerce/coupons`, `/ecommerce/inventory`.
+   327→
+   328→---
+   329→Task ID: 4d
+   330→Agent: full-stack-developer (user-account)
+   331→Task: Build 10 user & account pages
+   332→
+   333→Work Log:
+   334→- Inherited an in-progress user-account section: 7 of the 10 routes already had `page.tsx` + `_client.tsx` pairs and 9 typed mock-data files were already present under `src/data/user-account/` (profile, account-settings, security-settings, billing-settings, team-members, roles, plus a `permissions/page.tsx` that imported a missing `permissions/_client.tsx`).
+   335→- Audited the 7 existing pages against the spec and the shared component library; they already use PageHeader, Card, CardHeader, DataTable, Modal, Drawer, Tabs, Avatar, AvatarGroup, Badge, Button, Breadcrumbs, EmptyState, Timeline, ActivityFeed, Progress, StatCard, FormSection, FormField, SettingsPanel, inputClass, CircularProgress, and HeliosChart correctly. billing-settings has an area chart for usage over time; account-settings uses SettingsPanel with General/Preferences/Notifications/Danger-zone panels; security-settings has password change with strength meter, 2FA toggle with QR placeholder, active sessions list, API tokens, and login history; team-members supports an invite Modal and a role-change Drawer; roles supports a create-role Modal and a role-editor Drawer.
+   336→- Built the 4 missing pieces (using the same `page.tsx` server + `_client.tsx` "use client" split pattern so every page exports `metadata`):
+   337→  - `permissions/_client.tsx` — real permission matrix: 8 modules (Dashboard, Users, Orders, Products, Customers, Reports, Settings, Billing) × 4 roles (Admin, Manager, Editor, Viewer). Each cell renders four View/Create/Edit/Delete checkboxes plus an "All" header toggle to flip all four at once. Top stats show modules/roles/allowed-rules/restricted-modules. A role-coverage card with per-role Progress bars and "Allow all / Block all" bulk toggles. A module-access breakdown card with per-module Progress bars. Sticky left column for the module name + summary.
+   338→  - `activity-log/_client.tsx` — filterable activity log with DataTable + Timeline. 4 StatCards (total events, security events, failed attempts, events today). Search by actor/action/target/IP/ID, severity dropdown filter, category pills (All + 7 categories with counts). Boxed view switcher between Table and Timeline. DataTable columns: ID, Actor (with Avatar + location), Category badge, Action + target, IP/device, timestamp, severity badge; rows are clickable and open a detail Drawer. Timeline view shows the latest 12 events with severity-coloured dots.
+   339→  - `notifications-settings/_client.tsx` — per-channel notification toggles in FormSection-style cards with a live preview. 4 StatCards (groups, active rules, channels, quiet hours). Pills tabs to switch between the 4 notification groups (security/team/billing/product); each group is a Card with a table of items × channels (email/push/sms/slack/digest) where every cell is a toggle switch, plus a "Bulk toggle All on/All off" per column. A Quiet-hours Card with start/end time pickers and an enable switch. Side panel with a live preview pane that renders a different mockup for each channel (email message, push notification, SMS bubble, Slack message, daily digest list) based on the currently-selected preview item, a Cycle button, and a channel summary list with per-channel rule counts.
+   340→  - `connected-apps/_client.tsx` — 3-column card grid of connected apps with revoke buttons + a connect-new Modal. 4 StatCards (total, active, revoked, categories). Search + pills category tabs (All + 7 categories). Each app card shows the colored initials icon, name, category, status badge, description, scope chips, connected-at + installed-by, and a Manage button (opens Drawer) plus a Revoke/Reconnect button. Manage Drawer shows description, authorized scopes, metadata, and a danger-zone Revoke block. Revoke confirmation Modal explains what happens. Connect-new Modal (size xl) shows the catalog of 6 available apps (Zoom, GitHub, Intercom, Figma, Segment, AWS S3) with their scopes and a Connect button that adds them to the grid.
+   341→- All interactive elements are stateful and work end-to-end (toggles persist in React state, modals/drawers open and close, revoke marks the app as Revoked and updates the active count, connect adds the new app to the top of the grid, save/reset buttons toggle the dirty state).
+   342→- Used only SVG icons from `@/components/Layouts/sidebar/icons` (PlugIcon, BellIcon, ChatIcon, MailIcon, ActivityIcon, ShieldIcon, CheckSquareIcon, XCircleIcon, User, MapPinIcon, AlertTriangleIcon, RefreshCwIcon, KeyIcon, LockIcon, UserPlusIcon, UsersIcon, CreditCardIcon, EditIcon, AlertIcon, ToggleIcon, etc.). No emojis.
+   343→- All icons used were verified to exist in the icon module before importing.
+   344→- No `any` types introduced. No `console.log`. No new dependencies installed. Did NOT import `@/lib/db` or `@/lib/auth/auth-client`. Did NOT modify `src/components/shared/*`, sidebar data, or `style.css`.
+   345→
+   346→Issues hit & fixed:
+   347→- Badge does not have a `"rose"` variant (only neutral/primary/accent/success/warning/danger/info/violet/outline). Two of my new files mapped a channel/category tone to `"rose"` and passed it to `<Badge variant={…}>`. Fixed by remapping `rose → danger`:
+   348→  - `activity-log/_client.tsx`: `categoryTone.Settings` is now `"danger"` (was `"rose"`); also tightened the union type to remove `"rose"`.
+   349→  - `notifications-settings/_client.tsx`: `channelBadge.slack` is now `"danger"` (was `"rose"`); also tightened the union type to remove `"rose"`.
+   350→- After these two fixes `npx tsc --noEmit` produces NO project errors (only the skills/ and z-ai-web-dev-sdk lines that are filtered out per spec).
+   351→
+   352→Stage Summary:
+   353→- Files produced (4 page files + 4 client helpers = 8 new files; the other 7 page/_client pairs and 9 data files were already present from earlier work and were only verified, not modified):
+   354→  - NEW: `src/app/(with-layout)/user-account/permissions/_client.tsx`
+   355→  - NEW: `src/app/(with-layout)/user-account/activity-log/page.tsx`
+   356→  - NEW: `src/app/(with-layout)/user-account/activity-log/_client.tsx`
+   357→  - NEW: `src/app/(with-layout)/user-account/notifications-settings/page.tsx`
+   358→  - NEW: `src/app/(with-layout)/user-account/notifications-settings/_client.tsx`
+   359→  - NEW: `src/app/(with-layout)/user-account/connected-apps/page.tsx`
+   360→  - NEW: `src/app/(with-layout)/user-account/connected-apps/_client.tsx`
+   361→  - (The `permissions/page.tsx` server wrapper was already present and imports the new `_client.tsx`.)
+   362→- Decisions:
+   363→  - Reused the `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern established by tasks 4b/4c so every interactive page can satisfy the "must export metadata" requirement without sacrificing stateful UX.
+   364→  - For the permission matrix, built a real `<table>` with a sticky first column (module names) and a checkbox grid per cell rather than a flat list — each cell has its own View/Create/Edit/Delete checkboxes plus an "All" toggle for one-click grant/revoke of all four actions.
+   365→  - For notifications, used the shared `Tabs pills` to switch between groups and rendered each group's item × channel matrix as a table (since channels differ per group, the table head adapts). The side "live preview" pane renders a distinct mockup for each channel so reviewers can see how the rule will look in email vs push vs SMS vs Slack vs the daily digest.
+   366→  - For connected apps, used a 3-column card grid on desktop (`xl:grid-cols-3`, `md:grid-cols-2`, `grid-cols-1` on mobile) per the spec, with colored initials tiles in lieu of brand logos (no external image dependencies), and a separate Drawer for the per-app Manage view plus a confirmation Modal for revoke (so revoke is a two-step action, not accidental).
+   367→  - All mock data already lived in `src/data/user-account/*.ts`; I did not need to add or modify any data files.
+   368→- `npx tsc --noEmit` produces NO project errors (output is empty after filtering skills/ and z-ai-web-dev-sdk lines). Verified clean before and after the two Badge-variant fixes.
+   369→- All 10 routes resolve: `/user-account/profile`, `/user-account/account-settings`, `/user-account/security-settings`, `/user-account/billing-settings`, `/user-account/team-members`, `/user-account/roles`, `/user-account/permissions`, `/user-account/activity-log`, `/user-account/notifications-settings`, `/user-account/connected-apps`.
+   370→
+   371→---
+   372→Task ID: 4e
+   373→Agent: full-stack-developer (forms)
+   374→Task: Build 12 forms pages
+   375→
+   376→Work Log:
+   377→- Inherited an in-progress forms section: 12 of 12 spec'd routes already had page files plus 10 sibling `_client.tsx` files (`advanced-inputs`, `selects`, `checkbox-radio`, `switches`, `date-picker`, `file-upload`, `rich-text-editor`, `form-validation`, `multi-step-form`, `payment-form`). `basic-inputs/page.tsx` and `form-layouts/page.tsx` are server components (no client state needed). Two legacy pages (`form-elements/page.tsx`, `form-layout/page.tsx`) were also present and left untouched per the worklog policy "Existing legacy pages kept at root: ... Leave these in place — they still compile."
+   378→- Audited all 12 spec'd pages against the spec and shared Helios Pro component library. Every page already:
+   379→  - Exports `metadata` (title + description) — server wrapper for the 10 client pages, inline in the 2 server pages.
+   380→  - Uses PageHeader, Card, CardHeader, FormSection, FormField, inputClass, Button, Badge (and Progress, Modal, Avatar where appropriate).
+   381→  - Imports only SVG icons from `@/components/Layouts/sidebar/icons` (no emojis).
+   382→  - Has no `any` types and no `console.log` calls.
+   383→  - Does not import `@/lib/db` or `@/lib/auth/auth-client`.
+   384→  - Has light/dark variants via `dark:` Tailwind prefixes.
+   385→- Per-page feature verification:
+   386→  - `basic-inputs` — text/email/password/number/textarea in default, focused, disabled, error and success states, with a state-reference cheat-sheet Card at the bottom.
+   387→  - `advanced-inputs` — input groups (prefix/suffix), phone + currency masks, tags input (Enter-to-add, click-to-remove, suggested chips), 6-digit OTP input with paste support, password-strength meter (live scoring + per-rule checkmarks), autocomplete combobox (filter-on-type + click-outside-to-close).
+   388→  - `selects` — native single select, multi-select chip box, native grouped select (optgroup), custom searchable dropdown with Avatar + click-outside handling, select-with-leading-avatar variant, and disabled/error state treatments.
+   389→  - `checkbox-radio` — basic + with-description, grouped with indeterminate "select all", inline radios (small grid + default-dashboard grid), card-as-radio plan picker (3-tier pricing with feature checklists), toggle-style checkboxes (switch-shaped) for preferences, disabled & checked states.
+   390→  - `switches` — basic + disabled, with labels, sm/md/lg sizes, primary/accent/danger/violet colors, icon switches (Wi-Fi/Notifications), 8-row grouped settings panel with "Enable all" bulk action and a switch-vs-checkbox decision Card.
+   391→  - `date-picker` — single, range, time (24h), and inline calendar (all powered by flatpickr initialized in `useEffect` with cleanup), 6 quick presets (Today, Yesterday, Last 7 days, Last 30 days, This month, This quarter) that drive both the single + range pickers, plus a states Card (disabled/error/success).
+   392→  - `file-upload` — 4 quick-stat cards, drag-and-drop zone (drag-over highlight + click-to-browse + native input fallback), file list with simulated progress (setInterval every 500ms, +8-20% per tick), per-file remove button, image preview grid (click-to-remove on hover), avatar-upload-with-crop Modal (live zoom + horizontal/vertical offset sliders, reset button, 256×256 final-size note).
+   393→  - `rich-text-editor` — contentEditable surface with full toolbar (Paragraph/H2/H3 block buttons, Bold/Italic/Underline/Strikethrough, bullet + numbered lists, left/center/right alignment, link insert via prompt), selectionchange listener that highlights active tools, word-count footer, Clear/Save draft/Publish actions, document-metadata sidebar (title/slug/tags), toolbar-reference Card.
+   394→  - `form-layouts` — vertical, horizontal (label-left grid), inline search form, 2-col, 3-col, sectioned 3-section onboarding Card, and a sidebar-form Card with left nav + right content panel.
+   395→  - `form-validation` — 7-field real-time validator (name, email, username, website, password, confirm, age) with on-blur validation, on-change reset-to-untouched, success (green border + check) and error (red border + message) states, live stat cards (total/valid/invalid/untouched), and a Submit button that force-validates every field. Rules: required, email regex, min-length, password match, custom URL validation, age range 18-120.
+   396→  - `multi-step-form` — 4-step wizard (Account → Profile → Preferences → Review) with clickable step indicator (completed steps are checkmarks + clickable), live Progress bar, per-step validation (Account requires email/username/password; Profile requires name/job title), avatar-color picker, theme + default-dashboard preferences, final Review step with summary rows, success confirmation screen with "Start over" / "Go to dashboard" actions, and a live-summary sidebar that updates as you progress.
+   397→  - `payment-form` — UI-only card form with: live card-type detection (Visa/Mastercard/Amex/Discover by prefix), formatted card number (auto-space every 4 digits), expiry MM/YY auto-format, CVC (3-4 digits), billing ZIP (uppercase, max 10 chars), country select, save-card checkbox. Animated card preview (chip + gradient + glow), validation checklist (Luhn check, expiry-in-future, CVC length, ZIP), accepted-cards grid, simulated payment-captured confirmation card, and a "try 4242 4242 4242 4242 / 5555 5555 5555 4444 / 3782 822463 10005" hint.
+   398→- All icons used (InputIcon, ToggleIcon, CalendarPlusIcon, UploadIcon, EditIcon, CheckIcon, CreditCardIcon) were verified to exist in `@/components/Layouts/sidebar/icons`.
+   399→- Ran `npx tsc --noEmit` — output is empty (zero project errors; not even skills/ or z-ai-web-dev-sdk lines, since skipLibCheck + tsconfig excludes handle them). Verified twice.
+   400→- Did NOT modify any file in `src/components/shared/`, `src/components/Layouts/sidebar/data/index.ts`, or `src/css/style.css`. Did NOT install any new dependencies. Did NOT import `@/lib/db` or `@/lib/auth/auth-client`. No `any` types. No emojis.
+   401→
+   402→Issues hit & fixed:
+   403→- None. The inherited work was already complete and type-clean. Only verification + worklog entry was needed.
+   404→
+   405→Stage Summary:
+   406→- Files verified (12 spec'd routes; 10 use the page.tsx server wrapper + _client.tsx pattern, 2 are pure server components):
+   407→  - `forms/basic-inputs/page.tsx` (server, 204 lines, metadata present)
+   408→  - `forms/advanced-inputs/page.tsx` (server wrapper) + `_client.tsx` (498 lines)
+   409→  - `forms/selects/page.tsx` (server wrapper) + `_client.tsx` (337 lines)
+   410→  - `forms/checkbox-radio/page.tsx` (server wrapper) + `_client.tsx` (390 lines)
+   411→  - `forms/switches/page.tsx` (server wrapper) + `_client.tsx` (283 lines)
+   412→  - `forms/date-picker/page.tsx` (server wrapper) + `_client.tsx` (246 lines, flatpickr)
+   413→  - `forms/file-upload/page.tsx` (server wrapper) + `_client.tsx` (407 lines, simulated upload progress + crop Modal)
+   414→  - `forms/rich-text-editor/page.tsx` (server wrapper) + `_client.tsx` (309 lines, contentEditable + execCommand)
+   415→  - `forms/form-layouts/page.tsx` (server, 300 lines, metadata present)
+   416→  - `forms/form-validation/page.tsx` (server wrapper) + `_client.tsx` (374 lines, real-time validation)
+   417→  - `forms/multi-step-form/page.tsx` (server wrapper) + `_client.tsx` (449 lines, 4-step wizard)
+   418→  - `forms/payment-form/page.tsx` (server wrapper) + `_client.tsx` (370 lines, card-type detection + Luhn)
+   419→- Decisions:
+   420→  - Confirmed the `page.tsx` (server, metadata) + `_client.tsx` ("use client") split pattern from tasks 4b/4c/4d is already in use for all 10 interactive pages — no refactor needed.
+   421→  - Did NOT touch the two legacy pages (`form-elements`, `form-layout`) per the worklog policy; they're out of spec scope but still compile.
+   422→  - For the date picker, kept flatpickr initialization inside a single `useEffect` with cleanup (destroy all 4 instances on unmount) to avoid leaks; presets drive the pickers via `inst.setDate(...)`.
+   423→  - For the rich text editor, used `document.execCommand` (legacy but works) with a `selectionchange` listener for live active-state highlighting — matches the spec's "Either approach is fine."
+   424→  - For the file upload, simulated progress with `setInterval` (500ms tick, +8-20% per tick, status flips to `done` at 100%) and let users remove items by clicking the close icon — matches spec.
+   425→  - For the payment form, the Luhn checksum + card-type detection by prefix is genuinely functional (try `4242 4242 4242 4242` for Visa or `5555 5555 5555 4444` for Mastercard).
+   426→- `npx tsc --noEmit` produces ZERO output (completely clean compile).
+   427→- All 12 routes resolve: `/forms/basic-inputs`, `/forms/advanced-inputs`, `/forms/selects`, `/forms/checkbox-radio`, `/forms/switches`, `/forms/date-picker`, `/forms/file-upload`, `/forms/rich-text-editor`, `/forms/form-layouts`, `/forms/form-validation`, `/forms/multi-step-form`, `/forms/payment-form`.
+   428→
