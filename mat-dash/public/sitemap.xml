@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://mtverse.io/</loc>
+    <lastmod>2025-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mtverse.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mtverse.io/es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mtverse.io/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mtverse.io/de"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mtverse.io/pt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mtverse.io/it"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mtverse.io/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mtverse.io/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mtverse.io/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mtverse.io/ko"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mtverse.io/ar"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://mtverse.io/hi"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://mtverse.io/tr"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mtverse.io/nl"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://mtverse.io/pl"/>
+  </url>
+  <url><loc>https://mtverse.io/dashboards/analytics</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/dashboards/modern</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/dashboards/minimal</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/ui/button</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/alert</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/badge</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/avatar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/accordion</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/modals</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/tooltip</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/tab</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/dropdowns</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/carousel</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/drawer</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/lists</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/toast</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/progressbar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/spinner</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/pagination</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/breadcrumbs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/ui/button-group</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/line</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/area</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/column</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/doughnut-pie</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/radialbar-radar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/gradient</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/charts/candlestick</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/forms/layouts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/forms/horizontal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/forms/vertical</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/forms/custom</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/forms/validation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/basic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/striped</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/hover</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/checkbox</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/react/basic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/react/sorting</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/react/filtering</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/react/pagination</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/tables/react/row-selection</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mtverse.io/apps/kanban</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/chats</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/calendar</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/email</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/contacts</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/ecommerce/shop</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/ecommerce/list</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/ecommerce/checkout</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/invoice/list</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/invoice/create</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/apps/social/gallery</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mtverse.io/pages/account-setting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/pages/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/pages/pricing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/pages/landing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/pages/rbac</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/widgets/cards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/widgets/banners</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/widgets/charts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/ai/table-builder</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/ai/form-builder</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/ai/chart-builder</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mtverse.io/auth/login</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/auth/register</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/icons/solar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/icons/tabler</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/utilities/typography</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/utilities/shadow</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/utilities/form</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/utilities/table</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mtverse.io/user-profile</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

@@ -1,0 +1,119 @@
+:root {
+  /* mtverse Brand Palette — clean modern solid blue identity */
+  --color-info: #3B82F6;
+  --color-success: #10B981;
+  --color-warning: #0EA5E9;
+  --color-error: #EF4444;
+  --color-darkinfo: #1E3A5F;
+  --color-white: #fff;
+  --color-dark: #0F172A;
+  --color-border: #E2E8F0;
+  --color-darkborder: #334155;
+  --color-link: #1E293B;
+  --color-muted: #F1F5F9;
+  --color-darkmuted: #1E293B;
+  --color-darklink: #64748B;
+  --color-lightgray: #F8FAFC;
+  --color-darkgray: #0F172A;
+  --color-bodytext: #64748B;
+  --color-primary: #237DD9;
+  --color-secondary: #0EA5E9;
+  --color-input: #E2E8F0;
+  --color-graymuted: #E2E8F0;
+  --color-darkgray: #0F172A;
+  --color-bodytext: #64748B;
+
+  /* Light Variants */
+  --color-lightprimary: color-mix(
+    in oklab,
+    var(--color-primary) 12%,
+    transparent
+  );
+  --color-lightsecondary: color-mix(
+    in oklab,
+    var(--color-secondary) 12%,
+    transparent
+  );
+  --color-lightsuccess: color-mix(
+    in oklab,
+    var(--color-success) 12%,
+    transparent
+  );
+  --color-lightwarning: color-mix(
+    in oklab,
+    var(--color-warning) 12%,
+    transparent
+  );
+  --color-lighterror: color-mix(in oklab, var(--color-error) 12%, transparent);
+  --color-lightinfo: color-mix(in oklab, var(--color-info) 12%, transparent);
+
+  /* Emphasis Variants */
+  --color-primary-emphasis: color-mix(
+    in oklab,
+    var(--color-primary) 85%,
+    black
+  );
+  --color-secondary-emphasis: color-mix(
+    in oklab,
+    var(--color-secondary) 85%,
+    black
+  );
+  --color-success-emphasis: color-mix(
+    in oklab,
+    var(--color-success) 85%,
+    black
+  );
+  --color-warning-emphasis: color-mix(
+    in oklab,
+    var(--color-warning) 85%,
+    black
+  );
+  --color-error-emphasis: color-mix(in oklab, var(--color-error) 85%, black);
+  --color-info-emphasis: color-mix(in oklab, var(--color-info) 85%, black);
+
+  /* common var for dark&light */
+  --color-charcoal: #1E293B;
+  --color-customdark: #0F172A;
+  --color-defaultBorder: #E2E8F0;
+  --color-slateGray: #64748B;
+  --color-breadcrumbColor: color-mix(in oklab, var(--color-primary) 12%, transparent);
+
+  --shadow-md: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+
+  /* shadCN Component */
+
+  --radius: 10px;
+  --background: #ffffff;
+  --foreground: var(--color-link);
+  --card: var(--color-white);
+  --card-foreground: var(--color-link);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-link);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-secondary);
+  --secondary-foreground: var(--color-white);
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: var(--color-lightprimary);
+  --accent-foreground: var(--color-primary);
+  --destructive: var(--color-error);
+  --destructive-foreground: var(--color-white);
+  --border: #E2E8F0;
+  --input: var(--color-input);
+  --ring: var(--color-lightprimary);
+  --chart-1: var(--color-primary);
+  --chart-2: var(--color-secondary);
+  --chart-3: var(--color-success);
+  --chart-4: var(--color-warning);
+  --chart-5: var(--color-error);
+  --sidebar: var(--color-white);
+  --sidebar-foreground: var(--color-link);
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: var(--color-white);
+  --sidebar-accent: var(--color-lightprimary);
+  --sidebar-accent-foreground: var(--color-primary);
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #94A3B8;
+}

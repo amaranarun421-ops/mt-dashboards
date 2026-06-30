@@ -1,0 +1,21 @@
+# mtverse robots.txt
+User-agent: *
+Allow: /
+Allow: /ui/
+Allow: /charts/
+Allow: /forms/
+Allow: /tables/
+Allow: /apps/
+Allow: /pages/
+Allow: /widgets/
+Allow: /dashboards/
+Allow: /ai/
+Allow: /icons/
+Allow: /utilities/
+Allow: /auth/
+
+# Sitemaps
+Sitemap: https://mtverse.io/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

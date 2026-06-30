@@ -1,0 +1,1125 @@
+/* ========================================================================
+   mtverse Dashboard — Premium Enterprise SaaS Design System
+   Typography: Outfit (body + headings) + JetBrains Mono (code)
+   Inspired by Linear, Stripe, Vercel, TailAdmin
+   ======================================================================== */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================================================
+   @theme inline - Tailwind v4 token mappings
+   ======================================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand scale (indigo identity) */
+  --color-brand-25: #f2f7ff;
+  --color-brand-50: #ecf3ff;
+  --color-brand-100: #dde9ff;
+  --color-brand-200: #c2d6ff;
+  --color-brand-300: #9cb9ff;
+  --color-brand-400: #7592ff;
+  --color-brand-500: #465fff;
+  --color-brand-600: #3641f5;
+  --color-brand-700: #2a31d8;
+  --color-brand-800: #252dae;
+  --color-brand-900: #262e89;
+  --color-brand-950: #161950;
+
+  /* Neutral gray scale */
+  --color-gray-25: #fcfcfd;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f2f4f7;
+  --color-gray-200: #e4e7ec;
+  --color-gray-300: #d0d5dd;
+  --color-gray-400: #98a2b3;
+  --color-gray-500: #667085;
+  --color-gray-600: #475467;
+  --color-gray-700: #344054;
+  --color-gray-800: #1d2939;
+  --color-gray-900: #101828;
+  --color-gray-950: #0c111d;
+
+  /* Semantic colors */
+  --color-success-50: #ecfdf3;
+  --color-success-100: #d1fadf;
+  --color-success-500: #12b76a;
+  --color-success-600: #039855;
+  --color-success-700: #027a48;
+
+  --color-warning-50: #fffaeb;
+  --color-warning-100: #fef0c7;
+  --color-warning-500: #f79009;
+  --color-warning-600: #dc6803;
+  --color-warning-700: #b54708;
+
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+
+  --color-info-50: #eff8ff;
+  --color-info-100: #d1e9ff;
+  --color-info-500: #0ba5ec;
+  --color-info-600: #0086c9;
+  --color-info-700: #026aa2;
+
+  /* Chart palette */
+  --color-chart-1: #465fff;
+  --color-chart-2: #12b76a;
+  --color-chart-3: #f79009;
+  --color-chart-4: #f04438;
+  --color-chart-5: #7a5af8;
+  --color-chart-6: #0ba5ec;
+
+  /* ========================================================================
+     Typography — TailAdmin-aligned
+     Single font family (Outfit) for body + headings + UI.
+     JetBrains Mono only for code. No Inter.
+     ======================================================================== */
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* TailAdmin text tokens (exact values from reference) */
+  --text-title-2xl: 72px;
+  --text-title-2xl--line-height: 90px;
+  --text-title-xl: 60px;
+  --text-title-xl--line-height: 72px;
+  --text-title-lg: 48px;
+  --text-title-lg--line-height: 60px;
+  --text-title-md: 36px;
+  --text-title-md--line-height: 44px;
+  --text-title-sm: 30px;
+  --text-title-sm--line-height: 38px;
+  --text-theme-2xl: 24px;
+  --text-theme-2xl--line-height: 32px;
+  --text-theme-xl: 20px;
+  --text-theme-xl--line-height: 30px;
+  --text-theme-lg: 18px;
+  --text-theme-lg--line-height: 28px;
+  --text-theme-md: 16px;
+  --text-theme-md--line-height: 24px;
+  --text-theme-sm: 14px;
+  --text-theme-sm--line-height: 20px;
+  --text-theme-xs: 12px;
+  --text-theme-xs--line-height: 18px;
+
+  /* Shadows — Stripe/Vercel-style layered elevation */
+  --shadow-theme-xs: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.02);
+  --shadow-theme-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04), 0 0 0 1px rgba(16, 24, 40, 0.02);
+  --shadow-theme-md: 0 4px 12px -2px rgba(16, 24, 40, 0.08), 0 2px 4px -2px rgba(16, 24, 40, 0.04), 0 0 0 1px rgba(16, 24, 40, 0.02);
+  --shadow-theme-lg: 0 12px 24px -6px rgba(16, 24, 40, 0.10), 0 4px 8px -4px rgba(16, 24, 40, 0.04), 0 0 0 1px rgba(16, 24, 40, 0.02);
+  --shadow-theme-xl: 0 24px 48px -12px rgba(16, 24, 40, 0.14), 0 8px 16px -6px rgba(16, 24, 40, 0.05), 0 0 0 1px rgba(16, 24, 40, 0.02);
+  --shadow-focus-ring: 0 0 0 4px rgba(70, 95, 255, 0.14);
+
+  /* Custom breakpoints */
+  --breakpoint-3xl: 2000px;
+}
+
+/* ========================================================================
+   :root - Light mode tokens
+   ======================================================================== */
+:root {
+  --radius: 0.5rem;
+
+  --background: #f9fafb;
+  --foreground: #101828;
+
+  --card: #ffffff;
+  --card-foreground: #101828;
+
+  --popover: #ffffff;
+  --popover-foreground: #101828;
+
+  --primary: #465fff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f2f4f7;
+  --secondary-foreground: #344054;
+
+  --muted: #f9fafb;
+  --muted-foreground: #667085;
+
+  --accent: #ecf3ff;
+  --accent-foreground: #3641f5;
+
+  --destructive: #f04438;
+  --destructive-foreground: #ffffff;
+
+  --border: #e4e7ec;
+  --input: #e4e7ec;
+  --ring: #465fff;
+
+  /* Sidebar tokens */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #344054;
+  --sidebar-border: #e4e7ec;
+  --sidebar-accent: #ecf3ff;
+  --sidebar-accent-foreground: #3641f5;
+  --sidebar-ring: #465fff;
+
+  /* Surface tokens */
+  --surface-ground: #f9fafb;
+  --surface-elevated: #ffffff;
+  --surface-sunken: #f2f4f7;
+
+  /* Text tokens */
+  --text-strong: #101828;
+  --text-body: #344054;
+  --text-muted: #667085;
+  --text-subtle: #98a2b3;
+  --text-faint: #d0d5dd;
+
+  /* Border tokens */
+  --border-subtle: #f2f4f7;
+  --border-strong: #d0d5dd;
+
+  /* Sidebar layout */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+  --header-height: 74px;
+}
+
+/* ========================================================================
+   .dark - Dark mode tokens
+   ======================================================================== */
+.dark {
+  --background: #090d15;
+  --foreground: #f0f2f5;
+
+  --card: #0f141d;
+  --card-foreground: #f0f2f5;
+
+  --popover: #0f141d;
+  --popover-foreground: #f0f2f5;
+
+  --primary: #7592ff;
+  --primary-foreground: #090d15;
+
+  --secondary: #1a212e;
+  --secondary-foreground: #f0f2f5;
+
+  --muted: #1a212e;
+  --muted-foreground: #8b95a8;
+
+  --accent: rgba(70, 95, 255, 0.14);
+  --accent-foreground: #9cb9ff;
+
+  --destructive: #f04438;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.10);
+  --ring: #7592ff;
+
+  --sidebar: #070b12;
+  --sidebar-foreground: #c5cdd9;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --sidebar-accent: rgba(70, 95, 255, 0.14);
+  --sidebar-accent-foreground: #9cb9ff;
+  --sidebar-ring: #7592ff;
+
+  --surface-ground: #090d15;
+  --surface-elevated: #0f141d;
+  --surface-sunken: #070b12;
+
+  --text-strong: #f9fafb;
+  --text-body: #d0d5dd;
+  --text-muted: #8b95a8;
+  --text-subtle: #5e6878;
+  --text-faint: #3e4654;
+
+  --border-subtle: rgba(255, 255, 255, 0.035);
+  --border-strong: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================================================
+   @layer base - Foundation
+   ======================================================================== */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--text-faint) transparent;
+    scrollbar-width: thin;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "calt" 1;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    /* TailAdmin doesn't override body letter-spacing — keeps Outfit's natural spacing */
+  }
+
+  /* Headings — TailAdmin uses font-medium (500) for everything except page titles.
+     We match that: h1 keeps 600, h2-h6 use 500. No aggressive letter-spacing. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  h1 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; letter-spacing: -0.01em; }
+  h2 { font-size: 1.1875rem; line-height: 1.5rem; }
+  h3 { font-size: 1.0625rem; line-height: 1.5rem; }
+  h4 { font-size: 0.9375rem; line-height: 1.375rem; }
+  h5 { font-size: 0.875rem; line-height: 1.25rem; }
+  h6 { font-size: 0.8125rem; line-height: 1.125rem; }
+
+  /* Navigation and sidebar — match TailAdmin menu items (text-theme-sm font-medium) */
+  nav, aside, .sidebar-nav {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  /* Reusable typography classes — TailAdmin-aligned weights.
+     Page title is the only place that uses semibold (600). Everything else
+     uses medium (500) to match TailAdmin's lighter, more refined feel. */
+  .ds-page-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: -0.01em;
+    color: var(--text-strong);
+  }
+
+  .ds-section-title {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: var(--text-strong);
+  }
+
+  .ds-card-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: var(--text-strong);
+  }
+
+  .ds-body-large {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: var(--text-body);
+  }
+
+  .ds-body {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    color: var(--text-body);
+  }
+
+  .ds-secondary {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .ds-muted-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.125rem;
+    letter-spacing: 0;
+    color: var(--text-muted);
+  }
+
+  .ds-micro-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    letter-spacing: 0;
+    color: var(--text-subtle);
+  }
+
+  /* Tabular numbers for statistics — lighter weight for premium feel */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* Stat number / metric value — TailAdmin uses font-medium for stats (500).
+     We keep 600 because stats genuinely need emphasis, but loosen the letter-spacing. */
+  .ds-stat-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text-strong);
+  }
+
+  /* Code uses JetBrains Mono */
+  code, pre, .font-mono, kbd {
+    font-family: var(--font-mono);
+    font-feature-settings: "calt" 1;
+  }
+
+  /* Modern custom scrollbars — thin, rounded, subtle */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-subtle);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  ::selection {
+    background-color: rgba(70, 95, 255, 0.2);
+  }
+
+  /* Ensure pointer cursor on all interactive elements */
+  a[href],
+  button:not(:disabled),
+  summary,
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"],
+  [role="menuitem"],
+  [role="option"],
+  [role="switch"],
+  [role="checkbox"],
+  [role="radio"],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  label[for]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"],
+  select:disabled,
+  input:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea {
+    cursor: text;
+  }
+
+  input[type="range"] {
+    cursor: ew-resize;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Modern scrollbar utility — thinner for inner panels */
+  .modern-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  .modern-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
+  }
+
+  .modern-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--text-subtle);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ========================================================================
+   @layer components - Reusable design primitives
+   ======================================================================== */
+@layer components {
+  /* Card primitive — premium elevation */
+  .ds-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-theme-xs);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1), transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease;
+  }
+
+  .ds-card-hover:hover {
+    box-shadow: var(--shadow-theme-md);
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+  }
+
+  .ds-card-pad {
+    padding: 1.25rem;
+  }
+
+  /* Interactive tile */
+  .ds-interactive {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ds-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-theme-md);
+  }
+
+  /* Icon tile */
+  .ds-icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+    background-color: var(--surface-sunken);
+    flex-shrink: 0;
+  }
+
+  /* Trend badges */
+  .ds-trend-up {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background-color: var(--color-success-50);
+    color: var(--color-success-700);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .dark .ds-trend-up {
+    background-color: rgba(18, 183, 106, 0.12);
+    color: var(--color-success-500);
+  }
+
+  .ds-trend-down {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background-color: var(--color-error-50);
+    color: var(--color-error-700);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .dark .ds-trend-down {
+    background-color: rgba(240, 68, 56, 0.12);
+    color: var(--color-error-500);
+  }
+
+  /* Status badges */
+  .ds-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .ds-badge-success {
+    background-color: var(--color-success-50);
+    color: var(--color-success-700);
+  }
+  .dark .ds-badge-success {
+    background-color: rgba(18, 183, 106, 0.14);
+    color: var(--color-success-500);
+  }
+
+  .ds-badge-warning {
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-700);
+  }
+  .dark .ds-badge-warning {
+    background-color: rgba(247, 144, 9, 0.14);
+    color: var(--color-warning-500);
+  }
+
+  .ds-badge-error {
+    background-color: var(--color-error-50);
+    color: var(--color-error-700);
+  }
+  .dark .ds-badge-error {
+    background-color: rgba(240, 68, 56, 0.14);
+    color: var(--color-error-500);
+  }
+
+  .ds-badge-info {
+    background-color: var(--color-info-50);
+    color: var(--color-info-700);
+  }
+  .dark .ds-badge-info {
+    background-color: rgba(11, 165, 236, 0.14);
+    color: var(--color-info-500);
+  }
+
+  .ds-badge-neutral {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  .ds-badge-brand {
+    background-color: var(--color-brand-50);
+    color: var(--color-brand-700);
+  }
+  .dark .ds-badge-brand {
+    background-color: rgba(70, 95, 255, 0.16);
+    color: var(--color-brand-300);
+  }
+
+  /* Status dot */
+  .ds-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .ds-dot-success { background-color: var(--color-success-500); }
+  .ds-dot-warning { background-color: var(--color-warning-500); }
+  .ds-dot-error { background-color: var(--color-error-500); }
+  .ds-dot-info { background-color: var(--color-info-500); }
+  .ds-dot-neutral { background-color: var(--text-subtle); }
+  .ds-dot-brand { background-color: var(--color-brand-500); }
+
+  /* Page heading — mirrors the base classes above (TailAdmin-aligned weights) */
+  .ds-page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: -0.01em;
+    color: var(--text-strong);
+  }
+
+  .ds-section-title {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: var(--text-strong);
+  }
+
+  .ds-muted-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.25rem;
+  }
+
+  /* Buttons */
+  .ds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .ds-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .ds-btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: var(--shadow-theme-xs);
+  }
+  .ds-btn-primary:not(:disabled):hover {
+    background-color: var(--color-brand-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-theme-sm);
+  }
+  .dark .ds-btn-primary:not(:disabled):hover {
+    background-color: var(--color-brand-500);
+  }
+
+  .ds-btn-secondary {
+    background-color: var(--card);
+    color: var(--text-strong);
+    border-color: var(--border);
+  }
+  .ds-btn-secondary:not(:disabled):hover {
+    background-color: var(--surface-sunken);
+    border-color: var(--border-strong);
+  }
+
+  .ds-btn-ghost {
+    background-color: transparent;
+    color: var(--text-body);
+  }
+  .ds-btn-ghost:not(:disabled):hover {
+    background-color: var(--surface-sunken);
+  }
+
+  .ds-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .ds-btn-icon:hover {
+    background-color: var(--surface-sunken);
+    color: var(--text-strong);
+    border-color: var(--border-strong);
+  }
+
+  .ds-btn-icon-lg {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 14px;
+  }
+
+  /* Inputs */
+  .ds-input {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 0.875rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    color: var(--text-strong);
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 180ms ease;
+    outline: none;
+  }
+
+  .ds-input::placeholder {
+    color: var(--text-subtle);
+    font-weight: 400;
+  }
+
+  .ds-input:focus {
+    border-color: var(--color-brand-400);
+    box-shadow: 0 0 0 4px rgba(70, 95, 255, 0.12);
+  }
+
+  /* Tabs */
+  .ds-tab {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 180ms ease;
+    border: 1px solid transparent;
+  }
+  .ds-tab:hover {
+    color: var(--text-strong);
+    background-color: var(--surface-sunken);
+  }
+  .ds-tab[data-active="true"] {
+    color: var(--color-brand-700);
+    background-color: var(--color-brand-50);
+    border-color: var(--color-brand-100);
+  }
+  .dark .ds-tab[data-active="true"] {
+    color: var(--color-brand-300);
+    background-color: rgba(70, 95, 255, 0.16);
+    border-color: rgba(70, 95, 255, 0.24);
+  }
+
+  /* Divider */
+  .ds-divider {
+    height: 1px;
+    background-color: var(--border);
+    border: none;
+    margin: 0;
+  }
+
+  /* Popover */
+  .ds-popover {
+    position: absolute;
+    z-index: 50;
+    min-width: 200px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background-color: var(--popover);
+    box-shadow: var(--shadow-theme-lg);
+    overflow: hidden;
+    animation: dsFadeIn 140ms ease-out;
+  }
+
+  .ds-popover-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 14px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-body);
+    text-align: left;
+    transition: background-color 140ms ease;
+    cursor: pointer;
+  }
+
+  .ds-popover-item:hover {
+    background-color: var(--surface-sunken);
+    color: var(--text-strong);
+  }
+}
+
+/* ========================================================================
+   react-calendar custom styles
+   ======================================================================== */
+.rc-wrap .react-calendar {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.rc-wrap .react-calendar__navigation {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.rc-wrap .react-calendar__navigation button {
+  min-width: 36px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-strong);
+  cursor: pointer;
+  padding: 6px 8px;
+  transition: background-color 150ms ease;
+}
+
+.rc-wrap .react-calendar__navigation button:enabled:hover {
+  background-color: var(--surface-sunken);
+}
+
+.rc-wrap .react-calendar__navigation button:disabled {
+  background-color: transparent;
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.rc-wrap .react-calendar__navigation__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.rc-wrap .react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-bottom: 4px;
+}
+
+.rc-wrap .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.rc-wrap .react-calendar__month-view__days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.rc-wrap .react-calendar__tile {
+  position: relative;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-body);
+  cursor: pointer;
+  padding: 8px 6px;
+  transition: all 150ms ease;
+  aspect-ratio: 1;
+}
+
+.rc-wrap .react-calendar__tile:enabled:hover {
+  background-color: var(--surface-sunken);
+  color: var(--text-strong);
+}
+
+.rc-wrap .react-calendar__tile:disabled {
+  color: var(--text-faint);
+  background: none;
+  cursor: not-allowed;
+}
+
+.rc-wrap .react-calendar__tile--now {
+  background-color: var(--color-brand-50);
+  color: var(--color-brand-600);
+  font-weight: 600;
+}
+
+.dark .rc-wrap .react-calendar__tile--now {
+  background-color: rgba(70, 95, 255, 0.16);
+  color: var(--color-brand-300);
+}
+
+.rc-wrap .react-calendar__tile--active,
+.rc-wrap .react-calendar__tile--hasActive {
+  background-color: var(--color-brand-500) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.rc-wrap .react-calendar__tile--range {
+  background-color: rgba(70, 95, 255, 0.12);
+  color: var(--color-brand-700);
+  border-radius: 0;
+}
+
+.dark .rc-wrap .react-calendar__tile--range {
+  background-color: rgba(70, 95, 255, 0.24);
+  color: var(--color-brand-300);
+}
+
+.rc-wrap .react-calendar__tile--rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: var(--color-brand-500) !important;
+  color: white !important;
+  border-radius: 8px 0 0 8px;
+}
+
+.rc-wrap .react-calendar__tile--rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: var(--color-brand-500) !important;
+  color: white !important;
+  border-radius: 0 8px 8px 0;
+}
+
+.rc-wrap .react-calendar__tile--rangeStart.react-calendar__tile--rangeEnd {
+  border-radius: 8px;
+}
+
+.rc-wrap .react-calendar__month-view__days__day--neighboringMonth {
+  color: var(--text-faint);
+}
+
+.rc-wrap .react-calendar__year-view__tiles,
+.rc-wrap .react-calendar__decade-view__tiles,
+.rc-wrap .react-calendar__century-view__tiles {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.rc-wrap .react-calendar__year-view__tile,
+.rc-wrap .react-calendar__decade-view__tile,
+.rc-wrap .react-calendar__century-view__tile {
+  padding: 14px 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ========================================================================
+   Animations
+   ======================================================================== */
+@keyframes dsFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dsFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dsSlideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Ecommerce dashboard animations */
+@keyframes ecomFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ecomPopoverIn {
+  from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes ecomDrawerIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes dashFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dsShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes dsPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.ds-fade-up {
+  animation: dsFadeUp 380ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.ds-fade-in {
+  animation: dsFadeIn 240ms ease-out both;
+}
+
+.ds-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+
+.ds-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: dsShimmer 1.5s ease-in-out infinite;
+}
+
+.dark .ds-skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Page transition */
+.ds-page-enter {
+  animation: dsFadeUp 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Text animation keyframes */
+@keyframes textRotate {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes textGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes textShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

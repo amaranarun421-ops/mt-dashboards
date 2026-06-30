@@ -1,0 +1,217 @@
+@import 'tailwindcss';
+@import './app.css';
+
+@import './layouts/container.css' layer(utilities);
+@import './layouts/sidebar.css' layer(utilities);
+@import './layouts/header.css' layer(utilities);
+@import './theme/default-colors.css' layer(utilities);
+@import './theme/dark-colors.css' layer(utilities);
+@import './override/reboot.css' layer(utilities);
+@import "tw-animate-css";
+
+
+@custom-variant dark (&:is(.dark *));
+
+html,
+main {
+  scroll-behavior: smooth;
+}
+
+/* ===== Custom Modern Scrollbars ===== */
+/* Webkit (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.3);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(35, 125, 217, 0.5);
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.3) transparent;
+}
+
+/* Sidebar specific scrollbar — slightly wider for nav */
+.simplebar-content-wrapper::-webkit-scrollbar,
+[data-simplebar]::-webkit-scrollbar {
+  width: 6px;
+}
+
+@theme {
+  
+  --shadow-lg: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-btn-shadow: rgba(15, 23, 42, 0.04) 0 4px 12px;
+  --shadow-boxShadow: 0 1px 3px 0 rgba(15, 23, 42, 0.06);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-tw: 12px;
+
+  --leading-21: 21px;
+
+  --gap-30: 30px;
+
+  --padding-15: 15px;
+  --padding-30: 30px;
+
+  --margin-30: 30px;
+
+  --color-cyan-500: var(--color-primary);
+  --color-cyan-600: var(--color-primary);
+  --color-cyan-700: var(--color-primary);
+
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-info: var(--color-info);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-lightprimary: var(--color-lightprimary);
+  --color-lightsecondary: var(--color-lightsecondary);
+  --color-lightsuccess: var(--color-lightsuccess);
+  --color-lighterror: var(--color-lighterror);
+  --color-lightinfo: var(--color-lightinfo);
+  --color-lightwarning: var(--color-lightwarning);
+  --color-border: var(--color-border);
+  --color-graymuted: var(--color-graymuted);
+  --color-darkgray: var(--color-darkgray);
+  --color-bordergray: var(--color-bordergray);
+  --color-lightgray: var(--color-lightgray);
+  --color-muted: var(--color-muted);
+  --color-darkmuted: var(--color-darkmuted);
+  --color-bodytext: var(--color-bodytext);
+  --color-dark: var(--color-dark);
+  --color-link: var(--color-link);
+  --color-darklink: var(--color-darklink);
+  --color-darkborder: var(--color-darkborder);
+  --color-primaryemphasis: var(--color-primary-emphasis);
+  --color-secondaryemphasis: var(--color-secondary-emphasis);
+  --color-warningemphasis: var(--color-warning-emphasis);
+  --color-erroremphasis: var(--color-error-emphasis);
+  --color-successemphasis: var(--color-success-emphasis);
+  --color-infoemphasis: var(--color-info-emphasis);
+  --color-charcoal: var(--color-charcoal);
+  --color-defaultBorder: var(--color-defaultBorder);
+  --color-slateGray: var(--color-slateGray);
+  --color-breadcrumbColor: var(--color-breadcrumbColor);
+}
+
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility form-control {
+  & input {
+    @apply border rounded-md border-defaultBorder bg-transparent ring-transparent dark:ring-transparent dark:bg-transparent w-full text-sm transition-colors;
+  }
+
+  & input:focus {
+    @apply shadow-none dark:shadow-none ring-transparent dark:ring-transparent;
+  }
+
+  & input:focus {
+    @apply border-primary dark:border-primary outline-hidden shadow-none ring-offset-0 ring-transparent;
+  }
+}
+
+@utility form-control-textarea {
+  @apply rounded-md border border-defaultBorder bg-transparent dark:bg-transparent w-full text-sm p-4 transition-colors;
+
+  &:focus {
+    @apply border-primary dark:border-primary outline-hidden shadow-none ring-offset-0 ring-transparent;
+  }
+}
+
+@utility card-title {
+  @apply text-base font-semibold text-dark dark:text-white;
+}
+
+@utility border-ld {
+  @apply border-defaultBorder;
+}
+
+@utility bg-hover {
+  @apply hover:bg-lightprimary dark:hover:bg-lightprimary;
+}
+
+@layer utilities {
+  .left-part {
+    @apply p-6 border-e border-defaultBorder;
+  }
+}
+
+@layer components {
+  .container {
+    @apply !max-w-[1400px];
+  }
+
+  body {
+    @apply text-sm overflow-x-hidden antialiased;
+    background: var(--background);
+  }
+
+  body {
+    @apply text-link dark:text-darklink;
+  }
+
+  /*heading text color*/
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-dark dark:text-white font-semibold tracking-tight;
+  }
+
+  input::placeholder {
+    @apply text-darklink dark:text-darklink
+  }
+
+  button {
+    @apply !cursor-pointer;
+  }
+
+  #fileUpload input {
+    @apply flex items-center gap-4 p-3;
+  }
+
+  .sales-overview select{
+    @apply pr-9!;
+  }
+
+  /* Focus visible styles for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary/50;
+  }
+
+}

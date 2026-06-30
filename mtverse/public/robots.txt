@@ -1,0 +1,29 @@
+User-agent: Googlebot
+Allow: /
+Disallow: /auth/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /auth/
+Disallow: /api/
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /api/
+Disallow: /*?lang=
+
+Sitemap: https://mtverse.example.com/sitemap.xml

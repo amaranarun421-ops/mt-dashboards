@@ -1,0 +1,47 @@
+/*---break---*/
+.dark {
+    --background: #0B1120;
+    --foreground: var(--color-white);
+    --card: #111827;
+    --card-foreground: var(--color-white);
+    --popover: #111827;
+    --popover-foreground: var(--color-white);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-white);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-white);
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    --accent: var(--color-lightprimary);
+    --accent-foreground: var(--color-primary);
+    --destructive: var(--color-error);
+    --border: #1E293B;
+    --input: #1E293B;
+    --ring: var(--color-lightprimary);
+    --chart-1: var(--color-primary);
+    --chart-2: var(--color-secondary);
+    --chart-3: var(--color-success);
+    --chart-4: var(--color-warning);
+    --chart-5: var(--color-error);
+    --sidebar: #0F172A;
+    --sidebar-foreground: #E2E8F0;
+    --sidebar-primary: var(--color-primary);
+    --sidebar-primary-foreground: var(--color-white);
+    --sidebar-accent: var(--color-lightprimary);
+    --sidebar-accent-foreground: var(--color-primary);
+    --sidebar-border: #1E293B;
+    --sidebar-ring: #475569;
+    --color-lightprimary: color-mix(in oklab, var(--color-primary) 20%, transparent);
+
+    /* common var for dark&light */
+    --color-charcoal: #94A3B8;
+    --color-customdark: #ffffff;
+    --color-defaultBorder: #1E293B;
+    --color-slateGray: #94A3B8;
+    --color-breadcrumbColor: #1E3A5F;
+    --color-darkgray: #0B1120;
+    --color-dark: #0F172A;
+    --color-lightgray: #111827;
+    --color-link: #E2E8F0;
+    --color-border: #1E293B;
+}

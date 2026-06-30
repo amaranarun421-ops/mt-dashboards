@@ -1,0 +1,75 @@
+{
+  "name": "MTVerse — Enterprise Dashboard Kit",
+  "short_name": "MTVerse",
+  "description": "A premium enterprise dashboard kit built for modern teams. Modular, accessible, and production-ready.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#0a0a0f",
+  "theme_color": "#7c3aed",
+  "orientation": "any",
+  "dir": "auto",
+  "lang": "en",
+  "categories": ["business", "productivity", "developer"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/sitelogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/sitelogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/sitelogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Analytics Dashboard",
+      "short_name": "Analytics",
+      "description": "View traffic and user behavior analytics",
+      "url": "/dashboards/analytics",
+      "icons": [{ "src": "/sitelogo.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Ecommerce Dashboard",
+      "short_name": "Ecommerce",
+      "description": "Monitor sales, orders, and inventory",
+      "url": "/dashboards/ecommerce",
+      "icons": [{ "src": "/sitelogo.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "CRM Dashboard",
+      "short_name": "CRM",
+      "description": "Track customers, deals, and pipeline",
+      "url": "/dashboards/crm",
+      "icons": [{ "src": "/sitelogo.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "AI Assistant",
+      "short_name": "AI",
+      "description": "Open the MTVerse AI workspace",
+      "url": "/apps/ai-assistant",
+      "icons": [{ "src": "/sitelogo.png", "sizes": "96x96", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [],
+  "file_handlers": [],
+  "launch_handlers": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "mtverse — Modern Admin Dashboard",
+  "short_name": "mtverse",
+  "description": "Premium modern admin dashboard and UI kit with 96+ pages, 25+ components, dark mode, charts, tables, forms, ecommerce, kanban, chat, calendar, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#237DD9",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "developer"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Dashboard", "url": "/", "description": "Open the main dashboard" },
+    { "name": "Search", "url": "/?search=open", "description": "Open search palette" },
+    { "name": "UI Components", "url": "/ui/button", "description": "Browse UI components" },
+    { "name": "Apps", "url": "/apps/kanban", "description": "Open Kanban board" }
+  ]
+}
