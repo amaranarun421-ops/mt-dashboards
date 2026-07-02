@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Nexus Pro — premium Next.js dashboard kit
+# https://nexuspro.dashboard
+Sitemap: https://nexuspro.dashboard/sitemap.xml

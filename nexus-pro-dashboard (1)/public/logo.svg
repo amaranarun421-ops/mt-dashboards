@@ -1,0 +1,13 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nexus-logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#465fff"/>
+      <stop offset="100%" stop-color="#7a5af8"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" x="4" y="4" rx="8" fill="url(#nexus-logo-grad)"/>
+  <path d="M12 11.5H15.5L23 22V11.5H26.5V28.5H23L15.5 18V28.5H12V11.5Z" fill="white"/>
+  <circle cx="29.5" cy="11.5" r="2" fill="white" opacity="0.7"/>
+  <text x="46" y="25" font-family="Outfit, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#1d2939">Nexus</text>
+  <text x="106" y="25" font-family="Outfit, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#465fff">Pro</text>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "name": "Nexus Pro — Premium Dashboard Kit",
+  "short_name": "Nexus Pro",
+  "description": "Premium Next.js App Router dashboard kit for modern SaaS teams.",
+  "start_url": "/dashboard/ecommerce",
+  "display": "standalone",
+  "background_color": "#101828",
+  "theme_color": "#465fff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "business", "developer"]
+}
