@@ -1,0 +1,13 @@
+{
+    "name":  "dashboards-workspace",
+    "private":  true,
+    "packageManager":  "npm@11.17.0",
+    "workspaces":  [
+                       "helios-pro",
+                       "mat-dash",
+                       "mt-modular",
+                       "mtverse",
+                       "nimbus-pro",
+                       "pipeline-pilot-production"
+                   ]
+}
